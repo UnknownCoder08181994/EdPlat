@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat — AWM Institute of Technology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.built.css') }}?v=333">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat/messages-video.css') }}?v=4">
+    <link rel="prefetch" href="/?skip">
+    <link rel="prefetch" href="/modules">
+</head>
+<body class="dark-theme page-standalone page-chat">
+    <div id="app">
+        <!-- Nav -->
+        <nav class="main-nav scrolled" id="main-nav">
+            <div class="nav-inner container">
+                <a href="/" class="nav-logo">
+                    <span class="logo-awm">AWM</span>
+                    <span class="logo-institute">Institute of Technology</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/?skip" class="nav-link">Home</a></li>
+                    <li><a href="/chat" class="nav-link active">Chat</a></li>
+                    <li><a href="/modules" class="nav-link">Modules</a></li>
+                    <li><a href="/tutorials" class="nav-link">Tutorials</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-glow-line"></div>
+        </nav>
+
+        <!-- Chat Page -->
+        <div class="chat-page">
+            <div class="section-bg">
+                <div class="chat-grid-bg"></div>
+                <div class="chat-grid-sweep"></div>
+            </div>
+
+            <div class="chat-main">
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Welcome Screen -->
+                    <div class="chat-welcome" id="chat-welcome">
+                        <div class="welcome-icon">
+                            <div class="welcome-pulse-ring"></div>
+                            <div class="welcome-pulse-ring welcome-pulse-ring-2"></div>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </div>
+                        <div class="agent-status">
+                            <span class="agent-status-dot"></span>
+                            ONLINE
+                        </div>
+                        <h2 class="welcome-title">AWMIT Assistant</h2>
+                        <p class="welcome-subtitle"><span id="welcome-typewriter"></span><span class="welcome-cursor">&#9608;</span></p>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <div class="chat-glow-line"></div>
+                    <div class="chat-autocomplete" id="chat-autocomplete"></div>
+                    <div class="chat-input-wrapper" style="position:relative;">
+                        <input type="text" class="chat-input" id="chat-input" placeholder="Ask a question..." autocomplete="off">
+                        <span class="chat-input-cursor" id="chat-input-cursor"></span>
+                        <button class="chat-send-btn" id="chat-send">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 2L11 13"/>
+                                <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <small class="chat-disclaimer">Responses are deterministic and based on AWMIT platform knowledge.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-fade-overlay" id="page-fade-overlay"></div>
+    <script>
+    (function() {
+        const overlay = document.getElementById('page-fade-overlay');
+        if (!overlay) return;
+        overlay.style.opacity = '1';
+        overlay.style.transition = 'opacity 0.35s ease';
+        requestAnimationFrame(() => { requestAnimationFrame(() => {
+            overlay.style.opacity = '0';
+            overlay.addEventListener('transitionend', () => { overlay.style.pointerEvents = 'none'; }, { once: true });
+        }); });
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href]');
+            if (!link) return;
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('javascript') || link.target === '_blank') return;
+            if (href.startsWith('http') && !href.startsWith(location.origin)) return;
+            e.preventDefault();
+            overlay.style.pointerEvents = 'all';
+            overlay.style.opacity = '1';
+            setTimeout(() => { window.location.href = href; }, 350);
+        });
+    })();
+    </script>
+    <script src="{{ url_for('static', filename='js/chat/chat-core.js') }}?v=4"></script>
+    <script src="{{ url_for('static', filename='js/chat/chat-messages.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chat/chat-messages-video.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chat/chat-autocomplete.js') }}"></script>
+</body>
+</html>

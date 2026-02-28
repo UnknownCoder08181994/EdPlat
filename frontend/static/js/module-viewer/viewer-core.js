@@ -1,0 +1,212 @@
+/* ============================================
+   AWM V2 — Module Viewer (AWMIT Coach + Video)
+   Per-section video: each topic has its own mp4
+   ============================================ */
+
+class ModuleCoach {
+    constructor(moduleData) {
+        this.slug = moduleData.slug;
+        this.title = moduleData.title;
+        this.category = moduleData.category;
+        this.sections = moduleData.sections;
+        this.currentSectionId = moduleData.currentSectionId;
+        this.currentVideo = moduleData.currentVideo;
+
+        // Derive current section index and object
+        this.currentSectionIndex = this.sections.findIndex(s => s.id === this.currentSectionId);
+        if (this.currentSectionIndex < 0) this.currentSectionIndex = 0;
+        this.currentSection = this.sections[this.currentSectionIndex];
+
+        this.completedSections = new Set();
+        this.pendingFollowUp = null;
+        this.isTyping = false;
+        this.videoDuration = 0;
+        this._pauseOverlayTimer = null;
+
+        // DOM refs
+        this.messagesEl = document.getElementById('viewer-chat-messages');
+        this.inputEl = document.getElementById('viewer-chat-input');
+        this.sendBtn = document.getElementById('viewer-send');
+        this.videoEl = document.getElementById('viewer-video');
+        this.videoSource = document.getElementById('viewer-video-source');
+        this.videoOverlay = document.getElementById('viewer-video-overlay');
+        this.playBtn = document.getElementById('viewer-play-btn');
+        this.titleEl = document.getElementById('viewer-title');
+        this.subtitleEl = document.getElementById('viewer-subtitle');
+        this.chipsEl = document.getElementById('viewer-chips');
+        this.sectionsListEl = document.getElementById('sections-list');
+        this.sectionsToggle = document.getElementById('sections-toggle');
+
+        // Timeline DOM refs
+        this.timelineBar = document.getElementById('timeline-bar');
+        this.timelineTrack = document.getElementById('timeline-track');
+        this.timelinePlayhead = document.getElementById('timeline-playhead');
+        this.timelineLabels = document.getElementById('timeline-labels');
+        this.currentTimeEl = document.getElementById('timeline-current');
+        this.totalTimeEl = document.getElementById('timeline-total');
+
+        // Set title to current section
+        this.titleEl.textContent = this.currentSection.title;
+
+        // Breakdown times from section data
+        this.breakdownTimes = (this.currentSection.breakdown || []).map(item => item.time || 0);
+
+        this.bindEvents();
+        this.showWelcome();
+        this.inputEl.focus();
+    }
+
+    /* ---- Events ---- */
+    bindEvents() {
+        this.sendBtn.addEventListener('click', () => this.handleSend());
+
+        this.inputEl.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                this.handleSend();
+            }
+        });
+
+        // Quick chips (delegated — chips live inside welcome message now)
+        this.messagesEl.addEventListener('click', (e) => {
+            const chip = e.target.closest('.viewer-chip');
+            if (chip && chip.dataset.query) {
+                this.inputEl.value = chip.dataset.query;
+                this.handleSend();
+            }
+        });
+
+        // Section nav (sidebar) — seeks video to breakdown topic timestamp
+        this.sectionsListEl.querySelectorAll('.viewer-section-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const time = parseInt(item.dataset.time, 10) || 0;
+                if (this.videoEl.duration && !isNaN(this.videoEl.duration)) {
+                    this.videoEl.currentTime = Math.min(time, this.videoEl.duration);
+                    this.playVideo();
+                }
+            });
+        });
+
+        // Sections collapse toggle
+        this.sectionsToggle.addEventListener('click', () => {
+            this.sectionsListEl.classList.toggle('collapsed');
+            this.sectionsToggle.classList.toggle('flipped');
+        });
+
+        // Video play/pause
+        this.hasStarted = false;
+
+        this.playBtn.addEventListener('click', (e) => { e.stopPropagation(); this.playVideo(); });
+        this.videoOverlay.addEventListener('click', () => this.playVideo());
+        this.videoEl.addEventListener('click', () => this.togglePlayPause());
+
+        this.videoEl.addEventListener('play', () => {
+            clearTimeout(this._pauseOverlayTimer);
+            this.hasStarted = true;
+            this.videoOverlay.classList.add('hidden');
+            this.updateOverlayIcon();
+        });
+        this.videoEl.addEventListener('pause', () => {
+            if (this.hasStarted) {
+                // Browser-initiated pause (not user) — auto-retry once
+                if (!this._userPaused && !this._autoRetried) {
+                    this._autoRetried = true;
+                    this.videoEl.play().catch(() => {});
+                    return;
+                }
+                clearTimeout(this._pauseOverlayTimer);
+                this._pauseOverlayTimer = setTimeout(() => {
+                    if (this.videoEl.paused && this.hasStarted) {
+                        this.updateOverlayIcon();
+                        this.videoOverlay.classList.remove('hidden');
+                    }
+                }, 200);
+            }
+        });
+        this.videoEl.addEventListener('ended', () => {
+            clearTimeout(this._pauseOverlayTimer);
+            this.markCurrentSectionComplete();
+            this.hasStarted = false;
+            this.updateOverlayIcon();
+            this.videoOverlay.classList.remove('hidden');
+        });
+
+        // Timeline events
+        this.videoEl.addEventListener('timeupdate', () => this.updateTimelineProgress());
+        this.videoEl.addEventListener('loadedmetadata', () => {
+            this.videoDuration = this.videoEl.duration;
+            this.totalTimeEl.textContent = this.formatTime(this.videoDuration);
+            this.currentTimeEl.textContent = '0:00';
+            this.initTimeline();
+
+            // If ?t= param exists, seek to that time and auto-play
+            const params = new URLSearchParams(window.location.search);
+            const startTime = parseInt(params.get('t'), 10);
+            if (startTime && !isNaN(startTime) && startTime > 0) {
+                this.videoEl.currentTime = Math.min(startTime, this.videoDuration);
+                this.playVideo();
+            }
+        });
+        this.timelineBar.addEventListener('click', (e) => this.handleTimelineClick(e));
+
+        // Handle cached video where loadedmetadata already fired
+        if (this.videoEl.readyState >= 1 && this.videoEl.duration) {
+            this.videoDuration = this.videoEl.duration;
+            this.totalTimeEl.textContent = this.formatTime(this.videoDuration);
+            this.currentTimeEl.textContent = '0:00';
+            this.initTimeline();
+        }
+
+        // Video controls
+        this.muteBtn = document.getElementById('viewer-mute-btn');
+        this.expandBtn = document.getElementById('viewer-expand-btn');
+
+        this.muteBtn.addEventListener('click', () => this.toggleMute());
+        this.expandBtn.addEventListener('click', () => this.toggleFullscreen());
+
+        this.videoEl.addEventListener('volumechange', () => this.updateMuteIcon());
+    }
+
+    /* ---- Video ---- */
+    showWelcome() {
+        const section = this.currentSection;
+        const msg = document.createElement('div');
+        msg.className = 'viewer-welcome';
+        msg.innerHTML = `
+            <div class="viewer-welcome-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><circle cx="9" cy="14" r="1.5"/><circle cx="15" cy="14" r="1.5"/><path d="M9 18h6"/><line x1="12" y1="2" x2="12" y2="8"/><circle cx="12" cy="2" r="1.5" fill="currentColor"/></svg>
+            </div>
+            <div class="viewer-welcome-status">
+                <span class="viewer-status-dot"></span>
+                AWMIT COACH
+            </div>
+            <p class="viewer-welcome-text">
+                I'm your AWMIT coach for <strong>${this.title}</strong>.<br>Ask me anything about this topic.
+            </p>
+            <div class="viewer-welcome-chips">
+                <button class="viewer-chip" data-query="Summarize this video section">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    Video Summary
+                </button>
+            </div>
+        `;
+        this.messagesEl.appendChild(msg);
+    }
+
+    clearChat() {
+        this.messagesEl.innerHTML = '';
+        this.pendingFollowUp = null;
+    }
+
+    /* ---- Scroll ---- */
+    scrollToBottom() {
+        this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+    }
+}
+
+/* ---- Init ---- */
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.MODULE_DATA) {
+        new ModuleCoach(window.MODULE_DATA);
+    }
+});

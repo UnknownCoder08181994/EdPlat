@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ module.title }} — AWM Institute of Technology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.built.css') }}?v=336">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="prefetch" href="/?skip">
+    <link rel="prefetch" href="/chat">
+    <link rel="prefetch" href="/modules">
+</head>
+<body class="dark-theme page-standalone page-modules page-module-detail" data-accent="{{ module.accent }}" data-difficulty="{{ module.difficulty }}">
+    <div id="app">
+        <!-- Nav -->
+        <nav class="main-nav scrolled" id="main-nav">
+            <div class="nav-inner container">
+                <a href="/" class="nav-logo">
+                    <span class="logo-awm">AWM</span>
+                    <span class="logo-institute">Institute of Technology</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/?skip" class="nav-link">Home</a></li>
+                    <li><a href="/chat" class="nav-link">Chat</a></li>
+                    <li><a href="/modules" class="nav-link active">Modules</a></li>
+                    <li><a href="/tutorials" class="nav-link">Tutorials</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-glow-line"></div>
+        </nav>
+
+        <!-- Detail Page -->
+        <div class="standalone-page" id="module-detail">
+            <div class="section-bg">
+                <div class="modules-grid-bg"></div>
+            </div>
+
+            <div class="section-content container">
+
+                <!-- Back link -->
+                <a href="/modules" class="detail-back-link" style="opacity:0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                    Back to Modules
+                </a>
+
+                <!-- Breadcrumb -->
+                <div class="detail-breadcrumb" style="opacity:0">
+                    <a href="/modules">Modules</a>
+                    <span class="detail-breadcrumb-sep">/</span>
+                    <span>{{ module.title }}</span>
+                </div>
+
+                <!-- Hero Banner -->
+                <div class="detail-hero" style="opacity:0">
+                    <div class="detail-hero-inner">
+                        <span class="detail-category-label">MODULE</span>
+                        <h1 class="detail-hero-title">{{ module.title }}</h1>
+                        <p class="detail-hero-subtitle">{{ module.subtitle }}</p>
+
+                        <div class="detail-hero-meta">
+                            <span class="detail-meta-pill difficulty-badge {{ module.difficulty }}">{{ module.difficulty | capitalize }}</span>
+                            <span class="detail-meta-pill">{{ module.duration }}</span>
+                            <span class="detail-meta-pill">{{ module.sections | length }} topics</span>
+                        </div>
+
+                        <div class="detail-author-area">
+                            <img class="author-avatar" src="{{ url_for('static', filename='pictures/shane_avatar.png') }}" alt="{{ module.author.name }}">
+                            <div class="author-info">
+                                <span class="author-name">{{ module.author.name }}</span>
+                                <span class="author-role">{{ module.author.role }}</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-hero-actions">
+                            <a href="/modules/{{ slug }}/{{ module.sections[0].id }}" class="detail-start-btn">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                Start Module
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Two-column body -->
+                <div class="detail-body">
+
+                    <!-- Main content -->
+                    <div class="detail-main">
+
+                        <!-- What You'll Learn -->
+                        <div class="detail-section-card" style="opacity:0">
+                            <h2 class="detail-section-heading">What you'll learn</h2>
+                            <div class="detail-learn-grid">
+                                {% for obj in module.learning_objectives %}
+                                <div class="detail-learn-item">
+                                    <svg class="detail-check-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span>{{ obj }}</span>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="detail-section-card" style="opacity:0">
+                            <h2 class="detail-section-heading">About this module</h2>
+                            <p class="detail-description">{{ module.description }}</p>
+                        </div>
+
+                        <!-- Topics -->
+                        {% set has_any_breakdown = module.sections | selectattr('breakdown', 'defined') | selectattr('breakdown') | list | length > 0 %}
+                        {% if has_any_breakdown %}
+                        <h2 class="detail-section-heading detail-topics-heading" style="opacity:0">Topics</h2>
+                        <div class="detail-chapters-list" id="detail-chapters">
+                            {% for section in module.sections %}
+                            <div class="detail-chapter-card" style="opacity:0" data-chapter-index="{{ loop.index0 }}">
+                                <!-- Always visible: number + title + description -->
+                                <div class="detail-chapter-top">
+                                    <div class="detail-chapter-heading">
+                                        <span class="detail-chapter-number">{{ loop.index }}</span>
+                                        <span class="detail-chapter-title">{{ section.title }}</span>
+                                    </div>
+                                    <p class="detail-chapter-desc">{{ section.description }}</p>
+                                </div>
+
+                                <!-- Separator -->
+                                <div class="detail-chapter-divider"></div>
+
+                                <!-- Bottom row: toggle + start button -->
+                                <div class="detail-chapter-actions">
+                                    <button class="detail-chapter-toggle" type="button">
+                                        <span class="detail-chapter-toggle-text">View Topic Details</span>
+                                        <svg class="detail-chapter-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                                    </button>
+                                    <a href="/modules/{{ slug }}/{{ section.id }}" class="detail-chapter-start-btn">Start Topic</a>
+                                </div>
+
+                                <!-- Expandable breakdown list -->
+                                <div class="detail-chapter-breakdown">
+                                    <div class="detail-chapter-breakdown-inner">
+                                        <div class="detail-chapter-breakdown-list">
+                                            {% for item in section.breakdown %}
+                                            <div class="detail-breakdown-item">
+                                                <svg class="detail-breakdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                                                <span class="detail-breakdown-text">{{ item.label }}</span>
+                                                <a href="/modules/{{ slug }}/{{ section.id }}?t={{ item.time }}" class="detail-breakdown-start-btn">Start Here</a>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="detail-sidebar">
+                        <div class="detail-sidebar-card" style="opacity:0">
+                            <div class="detail-sidebar-stats">
+                                <div class="detail-stat">
+                                    <span class="detail-stat-label">Duration</span>
+                                    <span class="detail-stat-value">{{ module.duration }}</span>
+                                </div>
+                                <div class="detail-stat">
+                                    <span class="detail-stat-label">Topics</span>
+                                    <span class="detail-stat-value">{{ module.sections | length }}</span>
+                                </div>
+                                <div class="detail-stat">
+                                    <span class="detail-stat-label">Difficulty</span>
+                                    <span class="detail-stat-value detail-stat-difficulty {{ module.difficulty }}">{{ module.difficulty | capitalize }}</span>
+                                </div>
+                                <div class="detail-stat">
+                                    <span class="detail-stat-label">Category</span>
+                                    <span class="detail-stat-value">{{ module.category | capitalize }}</span>
+                                </div>
+                            </div>
+                            <a href="/modules/{{ slug }}/{{ module.sections[0].id }}" class="detail-sidebar-start-btn">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                Start Module
+                            </a>
+                        </div>
+                    </aside>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-fade-overlay" id="page-fade-overlay"></div>
+    <script>
+    (function() {
+        const overlay = document.getElementById('page-fade-overlay');
+        if (!overlay) return;
+        overlay.style.opacity = '1';
+        overlay.style.transition = 'opacity 0.35s ease';
+        requestAnimationFrame(() => { requestAnimationFrame(() => {
+            overlay.style.opacity = '0';
+            overlay.addEventListener('transitionend', () => { overlay.style.pointerEvents = 'none'; }, { once: true });
+        }); });
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href]');
+            if (!link) return;
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('javascript') || link.target === '_blank') return;
+            if (href.startsWith('http') && !href.startsWith(location.origin)) return;
+            e.preventDefault();
+            overlay.style.pointerEvents = 'all';
+            overlay.style.opacity = '1';
+            setTimeout(() => { window.location.href = href; }, 350);
+        });
+    })();
+    </script>
+    <script src="{{ url_for('static', filename='js/modules/module-detail.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/modules/card-fx.js') }}?v=2"></script>
+</body>
+</html>

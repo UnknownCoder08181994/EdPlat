@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ module.title }} — AWM Institute of Technology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.built.css') }}?v=336">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="prefetch" href="/?skip">
+    <link rel="prefetch" href="/chat">
+    <link rel="prefetch" href="/modules">
+</head>
+<body class="dark-theme page-standalone page-modules page-viewer" data-accent="{{ module.accent }}">
+    <div id="app">
+        <!-- Nav -->
+        <nav class="main-nav scrolled" id="main-nav">
+            <div class="nav-inner container">
+                <a href="/" class="nav-logo">
+                    <span class="logo-awm">AWM</span>
+                    <span class="logo-institute">Institute of Technology</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/?skip" class="nav-link">Home</a></li>
+                    <li><a href="/chat" class="nav-link">Chat</a></li>
+                    <li><a href="/modules" class="nav-link{% if not back_url %} active{% endif %}">Modules</a></li>
+                    <li><a href="/tutorials" class="nav-link{% if back_url %} active{% endif %}">Tutorials</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-glow-line"></div>
+        </nav>
+
+        <!-- Viewer Layout -->
+        <div class="viewer-layout">
+            <!-- Background -->
+            <div class="section-bg"></div>
+
+            <!-- Left Sidebar: AI Coach -->
+            <aside class="viewer-sidebar" id="viewer-sidebar" style="opacity:0">
+                <!-- Section Navigator (breakdown topics for current section) -->
+                <div class="viewer-sections" id="viewer-sections">
+                    <div class="viewer-sections-header">
+                        <span class="viewer-sections-label">SECTIONS</span>
+                        <button class="viewer-sections-toggle" id="sections-toggle">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                    </div>
+                    <div class="viewer-sections-list" id="sections-list">
+                        {% for item in section.breakdown %}
+                        <button class="viewer-section-item{% if loop.first %} active{% endif %}"
+                                data-breakdown-index="{{ loop.index0 }}"
+                                data-time="{{ item.time }}">
+                            <span class="viewer-section-number">{{ loop.index }}</span>
+                            <span class="viewer-section-title">{{ item.label }}</span>
+                            <span class="viewer-section-time">{{ '%d:%02d' % (item.time // 60, item.time % 60) }}</span>
+                        </button>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Chat Messages -->
+                <div class="viewer-chat-messages" id="viewer-chat-messages">
+                    <!-- Welcome injected by JS -->
+                </div>
+
+                <!-- Input -->
+                <div class="viewer-chat-input-area">
+                    <div class="viewer-chat-glow-line"></div>
+                    <div class="viewer-input-wrapper">
+                        <input type="text" class="viewer-chat-input" id="viewer-chat-input"
+                               placeholder="Ask about {{ module.title }}..." autocomplete="off">
+                        <button class="viewer-send-btn" id="viewer-send">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 2L11 13"/>
+                                <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Main: Video + Content -->
+            <main class="viewer-main" id="viewer-main">
+                <div class="viewer-content">
+                    <!-- Module Header -->
+                    <div class="viewer-header" style="opacity:0">
+                        <a href="{{ back_url if back_url else '/modules/' + slug }}" class="viewer-back-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                            {{ 'Back to Tutorials' if back_url else 'Back to Overview' }}
+                        </a>
+                        <h1 class="viewer-title" id="viewer-title">{{ module.title }}</h1>
+                        <p class="viewer-subtitle" id="viewer-subtitle">{{ module.subtitle }}</p>
+                    </div>
+
+                    <!-- Video Player + Timeline Wrapper (fullscreen target) -->
+                    <div class="viewer-video-wrapper" id="viewer-video-wrapper">
+                    <div class="viewer-video-container" id="viewer-video-container" style="opacity:0">
+                        <video class="viewer-video" id="viewer-video" playsinline preload="metadata">
+                            {% if section.video %}<source src="{{ vid_url(section.video) }}"
+                                    type="video/mp4" id="viewer-video-source">{% endif %}
+                        </video>
+                        <video id="viewer-preview-video" muted playsinline preload="none" style="display:none">
+                            {% if section.video %}<source src="{{ vid_url(section.video) }}" type="video/mp4">{% endif %}
+                        </video>
+                        <div class="viewer-video-overlay" id="viewer-video-overlay">
+                            <button class="viewer-play-btn" id="viewer-play-btn">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="7 3 21 12 7 21 7 3"/></svg>
+                            </button>
+                        </div>
+                        <!-- Video Controls -->
+                        <div class="viewer-video-controls" id="viewer-video-controls">
+                            <button class="viewer-ctrl-btn" id="viewer-mute-btn" title="Mute / Unmute">
+                                <svg class="mute-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                                </svg>
+                            </button>
+                            <button class="viewer-ctrl-btn" id="viewer-expand-btn" title="Fullscreen">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <polyline points="9 21 3 21 3 15"/>
+                                    <line x1="21" y1="3" x2="14" y2="10"/>
+                                    <line x1="3" y1="21" x2="10" y2="14"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Video Timeline -->
+                    <div class="viewer-timeline" id="viewer-timeline" style="opacity:0">
+                        <span class="viewer-timeline-time" id="timeline-current">0:00</span>
+                        <div class="viewer-timeline-bar" id="timeline-bar">
+                            <div class="viewer-timeline-track" id="timeline-track">
+                                <!-- Section segments injected by JS -->
+                            </div>
+                            <div class="viewer-timeline-playhead" id="timeline-playhead"></div>
+                            <div class="viewer-timeline-preview" id="timeline-preview">
+                                <canvas id="timeline-preview-canvas" width="160" height="90"></canvas>
+                                <span class="viewer-timeline-preview-time" id="timeline-preview-time">0:00</span>
+                            </div>
+                            <div class="viewer-timeline-labels" id="timeline-labels">
+                                <!-- Breakdown labels injected by JS -->
+                            </div>
+                        </div>
+                        <span class="viewer-timeline-time" id="timeline-total">0:00</span>
+                    </div>
+                    </div><!-- /.viewer-video-wrapper -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        window.MODULE_DATA = {
+            slug: {{ slug | tojson }},
+            title: {{ module.title | tojson }},
+            category: {{ module.category | tojson }},
+            sections: {{ module.sections | tojson }},
+            currentSectionId: {{ section_id | tojson }},
+            currentVideo: {{ section.video | tojson }},
+        };
+    </script>
+    <div class="page-fade-overlay" id="page-fade-overlay"></div>
+    <script>
+    (function() {
+        const overlay = document.getElementById('page-fade-overlay');
+        if (!overlay) return;
+        overlay.style.opacity = '1';
+        overlay.style.transition = 'opacity 0.35s ease';
+        requestAnimationFrame(() => { requestAnimationFrame(() => {
+            overlay.style.opacity = '0';
+            overlay.addEventListener('transitionend', () => { overlay.style.pointerEvents = 'none'; }, { once: true });
+        }); });
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href]');
+            if (!link) return;
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('javascript') || link.target === '_blank') return;
+            if (href.startsWith('http') && !href.startsWith(location.origin)) return;
+            e.preventDefault();
+            overlay.style.pointerEvents = 'all';
+            overlay.style.opacity = '1';
+            setTimeout(() => { window.location.href = href; }, 350);
+        });
+    })();
+    </script>
+    <script src="{{ url_for('static', filename='js/module-viewer/viewer-core.js') }}?v=2"></script>
+    <script src="{{ url_for('static', filename='js/module-viewer/viewer-video.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/module-viewer/viewer-timeline.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/module-viewer/viewer-chat.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/module-viewer/viewer-chat-video.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/modules/card-fx.js') }}"></script>
+</body>
+</html>

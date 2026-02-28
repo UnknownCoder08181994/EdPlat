@@ -1,0 +1,49 @@
+/* ---- Page Transition — Digital Dissolve ---- */
+.fp-section.fp-fade-out-down {
+    animation: fp-digital-exit-down 0.5s cubic-bezier(0.4, 0, 1, 1) forwards !important;
+}
+
+.fp-section.fp-fade-out-up {
+    animation: fp-digital-exit-up 0.5s cubic-bezier(0.4, 0, 1, 1) forwards !important;
+}
+
+.fp-section.fp-fade-in-down {
+    animation: fp-digital-enter-down 0.5s cubic-bezier(0, 0, 0.2, 1) forwards !important;
+}
+
+.fp-section.fp-fade-in-up {
+    animation: fp-digital-enter-up 0.5s cubic-bezier(0, 0, 0.2, 1) forwards !important;
+}
+
+@keyframes fp-digital-exit-down {
+    0%   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0) brightness(1); }
+    25%  { opacity: 1; transform: translateY(0) scale(1); filter: blur(0.039vw) brightness(1.4); }
+    50%  { opacity: 0.6; transform: translateY(-1.172vw) scale(0.98); filter: blur(0.117vw) brightness(0.7); }
+    100% { opacity: 0; transform: translateY(-2.344vw) scale(0.96); filter: blur(0.313vw) brightness(0.3); }
+}
+
+@keyframes fp-digital-exit-up {
+    0%   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0) brightness(1); }
+    25%  { opacity: 1; transform: translateY(0) scale(1); filter: blur(0.039vw) brightness(1.4); }
+    50%  { opacity: 0.6; transform: translateY(1.172vw) scale(0.98); filter: blur(0.117vw) brightness(0.7); }
+    100% { opacity: 0; transform: translateY(2.344vw) scale(0.96); filter: blur(0.313vw) brightness(0.3); }
+}
+
+@keyframes fp-digital-enter-down {
+    0%   { opacity: 0; transform: translateY(1.563vw) scale(0.96); filter: blur(0.313vw) brightness(2); }
+    30%  { opacity: 0.5; transform: translateY(0.781vw) scale(0.98); filter: blur(0.156vw) brightness(1.5); }
+    60%  { opacity: 0.85; transform: translateY(0.195vw) scale(0.99); filter: blur(0.039vw) brightness(1.15); }
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0) brightness(1); }
+}
+
+@keyframes fp-digital-enter-up {
+    0%   { opacity: 0; transform: translateY(-1.563vw) scale(0.96); filter: blur(0.313vw) brightness(2); }
+    30%  { opacity: 0.5; transform: translateY(-0.781vw) scale(0.98); filter: blur(0.156vw) brightness(1.5); }
+    60%  { opacity: 0.85; transform: translateY(-0.195vw) scale(0.99); filter: blur(0.039vw) brightness(1.15); }
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0) brightness(1); }
+}
+
+/* Hidden section content — removed from render tree for performance */
+.fp-hidden {
+    display: none !important;
+}

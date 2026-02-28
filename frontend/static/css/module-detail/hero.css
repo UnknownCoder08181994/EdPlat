@@ -1,0 +1,205 @@
+/* ============================================
+   MODULE DETAIL — Overview / Landing Page
+   ============================================ */
+
+/* ---- Breadcrumb ---- */
+.detail-breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 0.575vw;
+    color: var(--text-muted);
+    margin-top: 0.938vw;
+    margin-bottom: 0.938vw;
+    position: relative;
+    z-index: 1;
+}
+
+.detail-breadcrumb a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.detail-breadcrumb a:hover {
+    color: var(--text-primary);
+}
+
+.detail-breadcrumb > span:last-child {
+    color: var(--text-primary);
+}
+
+.detail-breadcrumb-sep {
+    margin: 0 0.391vw;
+    opacity: 0.5;
+}
+
+/* ---- Hero Banner ---- */
+.detail-hero {
+    position: relative;
+    background: rgba(6, 8, 22, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(0.625vw) saturate(1.3);
+    -webkit-backdrop-filter: blur(0.625vw) saturate(1.3);
+    padding: 2.188vw 2.5vw;
+    margin-bottom: 1.563vw;
+    overflow: hidden;
+    z-index: 1;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease,
+                background 0.35s ease,
+                backdrop-filter 0.35s ease,
+                -webkit-backdrop-filter 0.35s ease;
+}
+
+.detail-hero::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0.156vw;
+    opacity: 0.7;
+}
+
+/* Accent stripe colors by difficulty */
+body.page-module-detail[data-difficulty="beginner"] .detail-hero::before {
+    background: linear-gradient(180deg, #60a5fa, #3b82f6);
+}
+body.page-module-detail[data-difficulty="intermediate"] .detail-hero::before {
+    background: linear-gradient(180deg, #fb923c, #f59e0b);
+}
+body.page-module-detail[data-difficulty="advanced"] .detail-hero::before {
+    background: linear-gradient(180deg, #ef4444, #dc2626);
+}
+
+.detail-hero-inner {
+    max-width: 30.469vw;
+}
+
+.detail-category-label {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.513vw;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    opacity: 0.85;
+    margin-bottom: 0.547vw;
+}
+
+.detail-hero-title {
+    font-size: 2vw;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    line-height: 1.15;
+    margin-bottom: 0.625vw;
+}
+
+.detail-hero-subtitle {
+    font-size: 0.763vw;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 1.094vw;
+}
+
+/* ---- Hero Meta Pills ---- */
+.detail-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.469vw;
+    margin-bottom: 1.094vw;
+}
+
+.detail-meta-pill {
+    font-family: var(--font-mono);
+    font-size: 0.55vw;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.938vw;
+    padding: 0.273vw 0.703vw;
+}
+
+.detail-meta-pill.difficulty-badge.beginner {
+    color: var(--accent-blue);
+    background: rgba(96, 165, 250, 0.1);
+    border-color: rgba(96, 165, 250, 0.2);
+}
+
+.detail-meta-pill.difficulty-badge.intermediate {
+    color: var(--accent-orange);
+    background: rgba(251, 146, 60, 0.1);
+    border-color: rgba(251, 146, 60, 0.2);
+}
+
+.detail-meta-pill.difficulty-badge.advanced {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* ---- Author Area ---- */
+.detail-author-area {
+    display: flex;
+    align-items: center;
+    gap: 0.547vw;
+    margin-bottom: 1.25vw;
+}
+
+.detail-author-area .author-avatar {
+    width: 1.719vw;
+    height: 1.719vw;
+    font-size: 0.531vw;
+}
+
+.detail-author-area .author-name {
+    font-size: 0.638vw;
+    color: var(--text-primary);
+}
+
+.detail-author-area .author-role {
+    font-size: 0.55vw;
+    color: #0e7490;
+}
+
+/* ---- Start Button ---- */
+.detail-hero-actions {
+    display: flex;
+    gap: 0.547vw;
+}
+
+.detail-start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.391vw;
+    font-family: var(--font-mono);
+    font-size: 0.625vw;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #000;
+    background: var(--accent-cyan);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.586vw 1.328vw;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.detail-start-btn:hover {
+    background: #333;
+    box-shadow: none;
+    transform: translateY(-1px);
+}
+
+/* ---- Breathe Effect — hover on detail page elements ---- */
+.detail-hero:hover {
+    animation: hover-breathe 2s ease-in-out infinite;
+    background: rgba(6, 8, 22, 0.35);
+    backdrop-filter: blur(0.2vw) saturate(1.1);
+    -webkit-backdrop-filter: blur(0.2vw) saturate(1.1);
+}
+.detail-hero:hover::before {
+    animation: bar-breathe 2s ease-in-out infinite;
+}

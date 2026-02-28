@@ -1,0 +1,173 @@
+/* ============================================
+   MODULE VIEWER — DataCamp-style learning page
+   ============================================ */
+
+/* ---- Accent color — always cyan to match chat page ---- */
+.page-viewer {
+    --module-accent: var(--accent-cyan);
+    --module-accent-rgb: 34, 211, 238;
+}
+
+/* ---- Layout ---- */
+.viewer-layout {
+    position: fixed;
+    inset: 0;
+    top: 0;
+    display: flex;
+    z-index: 1;
+}
+
+.viewer-layout .section-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ---- Sidebar ---- */
+.viewer-sidebar {
+    position: relative;
+    z-index: 2;
+    width: 26.042vw;
+    min-width: 22.917vw;
+    display: flex;
+    flex-direction: column;
+    background: rgb(6, 8, 22);
+    backdrop-filter: blur(0.833vw);
+    -webkit-backdrop-filter: blur(0.833vw);
+    border-right: 1px solid rgba(var(--module-accent-rgb), 0.1);
+    padding-top: 3.854vw;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease,
+                background 0.35s ease,
+                backdrop-filter 0.35s ease,
+                -webkit-backdrop-filter 0.35s ease;
+}
+
+/* ---- Section Navigator ---- */
+.viewer-sections {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.viewer-sections-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0vw 1.042vw 0.625vw;
+}
+
+.viewer-sections-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.625vw;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--module-accent);
+}
+
+.viewer-sections-toggle {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    padding: 0.208vw;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.viewer-sections-toggle:hover { color: rgba(255, 255, 255, 0.8); }
+
+.viewer-sections-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 12.5vw;
+    overflow-y: auto;
+    transition: max-height 0.3s ease;
+}
+
+.viewer-sections-list.collapsed {
+    max-height: 0;
+    overflow: hidden;
+}
+
+.viewer-sections-list::-webkit-scrollbar { width: 0.208vw; }
+.viewer-sections-list::-webkit-scrollbar-track { background: transparent; }
+.viewer-sections-list::-webkit-scrollbar-thumb { background: rgba(var(--module-accent-rgb), 0.3); border-radius: 0.104vw; }
+
+.viewer-section-item {
+    display: flex;
+    align-items: center;
+    gap: 0.729vw;
+    padding: 0.625vw 1.25vw;
+    background: none;
+    border: none;
+    border-left: 0.156vw solid transparent;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.781vw;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+.viewer-section-item:hover {
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.viewer-section-item.active {
+    border-left-color: var(--module-accent);
+    color: var(--text-primary);
+    background: rgba(var(--module-accent-rgb), 0.05);
+}
+
+.viewer-section-time {
+    flex-shrink: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.625vw;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.viewer-section-item.active .viewer-section-time {
+    color: var(--module-accent);
+    opacity: 0.7;
+}
+
+.viewer-section-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.677vw;
+    font-weight: 600;
+    width: 1.563vw;
+    height: 1.563vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+}
+
+.viewer-section-item.active .viewer-section-number {
+    background: rgba(var(--module-accent-rgb), 0.15);
+    color: var(--module-accent);
+}
+
+.viewer-section-title {
+    flex: 1;
+    font-size: 0.781vw;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* ---- Breathe Effect — hover on viewer page elements ---- */
+/* Uses hover-breathe keyframes from modules/catalog.css */
+.viewer-sidebar:hover {
+    animation: hover-breathe 2s ease-in-out infinite;
+    background: rgba(6, 8, 22, 0.35);
+    backdrop-filter: blur(0.2vw) saturate(1.1);
+    -webkit-backdrop-filter: blur(0.2vw) saturate(1.1);
+}
+
+.viewer-video-container:hover:not(.fx-tv-on) {
+    animation: hover-breathe 2s ease-in-out infinite;
+}
+

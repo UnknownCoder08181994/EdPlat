@@ -1,0 +1,266 @@
+/* ============================================
+   FAQ (Page 3 / data-section="2") — Mission Control
+   ============================================ */
+#faq {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* --- FAQ Background --- */
+.faq-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+    background: #020408;
+}
+
+.faq-bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.faq-fx-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.faq-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(34, 211, 238, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+    background-size: 2.34vw 2.34vw;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 15%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 15%, transparent 70%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.faq-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.faq-orb-1 {
+    width: 28vw;
+    height: 22vw;
+    background: radial-gradient(ellipse, rgba(34, 211, 238, 0.08) 0%, rgba(34, 211, 238, 0.02) 40%, transparent 70%);
+    top: -8%;
+    right: -5%;
+    filter: blur(3.906vw);
+    animation: orb-drift-2 22s ease-in-out infinite;
+}
+
+.faq-orb-2 {
+    width: 22vw;
+    height: 22vw;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.07) 0%, rgba(96, 165, 250, 0.02) 50%, transparent 70%);
+    bottom: -5%;
+    left: -8%;
+    filter: blur(4.297vw);
+    animation: orb-drift-1 28s ease-in-out infinite;
+}
+
+.faq-orb-3 {
+    width: 18vw;
+    height: 18vw;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+    top: 45%;
+    left: -6%;
+    filter: blur(4.688vw);
+    animation: orb-drift-1 30s ease-in-out infinite reverse;
+}
+
+.faq-scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 0.078vw,
+        rgba(34, 211, 238, 0.012) 0.078vw,
+        rgba(34, 211, 238, 0.012) 0.156vw
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+.faq-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 65% 60% at 50% 50%, transparent 25%, rgba(0, 0, 0, 0.65) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 18%),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.45) 0%, transparent 14%);
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* --- FAQ Content Wrapper --- */
+.faq-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100vh;
+    padding: 7.8vw 1.56vw 3.12vw;
+    gap: 1.56vw;
+    position: relative;
+    z-index: 5;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-cyan) rgba(6, 8, 22, 0.2);
+}
+
+.faq-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.faq-content::-webkit-scrollbar-track {
+    background: rgba(6, 8, 22, 0.4);
+    border-radius: 4px;
+    box-shadow: inset 0 0 8px rgba(34, 211, 238, 0.1);
+}
+
+.faq-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #22d3ee, #38bdf8, #22d3ee);
+    border-radius: 4px;
+    box-shadow: 0 0 14px rgba(34, 211, 238, 0.7), 0 0 6px rgba(34, 211, 238, 0.9), inset 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.faq-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #67e8f9, #38bdf8, #67e8f9);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.9), 0 0 8px rgba(34, 211, 238, 1), inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+/* --- Section Header --- */
+.faq-header {
+    text-align: center;
+    margin-bottom: 0;
+    opacity: 0;
+    transform: translateY(0.469vw);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-header.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.faq-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.47vw;
+    margin-bottom: 0.78vw;
+}
+
+.faq-tag-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.5vw;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(34,211,238,0.7);
+}
+
+.faq-tag-line {
+    display: block;
+    width: 1.95vw;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-cyan));
+}
+
+.faq-tag-line:last-child {
+    background: linear-gradient(90deg, var(--accent-cyan), transparent);
+}
+
+.faq-title {
+    font-size: 1.875vw;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    animation: glitch-trigger 5s linear infinite;
+}
+
+/* Word stagger — same effect as page 2 headline */
+.faq-title-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.469vw);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--word-i) * 0.08s);
+}
+
+.faq-header.revealed .faq-title-word {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Light sweep across title after words settle */
+.faq-title::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(34, 211, 238, 0.06) 40%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(34, 211, 238, 0.06) 60%,
+        transparent
+    );
+    transform: skewX(-15deg);
+    pointer-events: none;
+    opacity: 0;
+}
+
+.faq-header.revealed .faq-title::after {
+    animation: faq-headline-sweep 1.2s ease-out 0.4s forwards;
+}
+
+@keyframes faq-headline-sweep {
+    0% {
+        left: -100%;
+        opacity: 1;
+    }
+    100% {
+        left: 200%;
+        opacity: 0;
+    }
+}
+
+.faq-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.625vw;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.6;
+    margin: 0;
+}
+

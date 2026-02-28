@@ -1,0 +1,210 @@
+/* ---- Galaxy Explosion Effect ---- */
+.galaxy-explosion {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 40;
+    pointer-events: none;
+    background: radial-gradient(circle,
+        rgba(255,255,255,1) 0%,
+        rgba(255,255,255,0.6) 15%,
+        rgba(200,200,200,0.3) 35%,
+        rgba(160,160,160,0.15) 55%,
+        transparent 70%
+    );
+    animation: galaxy-explode 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.galaxy-explosion-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 39;
+    pointer-events: none;
+    border: 0.117vw solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        0 0 30px rgba(255, 255, 255, 0.15),
+        0 0 60px rgba(200, 200, 200, 0.08),
+        inset 0 0 30px rgba(255, 255, 255, 0.05);
+    animation: galaxy-ring-expand 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes galaxy-explode {
+    0%   {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    30%  {
+        width: 120vw;
+        height: 120vw;
+        opacity: 0.9;
+    }
+    60%  {
+        width: 200vw;
+        height: 200vw;
+        opacity: 0.4;
+    }
+    100% {
+        width: 300vw;
+        height: 300vw;
+        opacity: 0;
+    }
+}
+
+@keyframes galaxy-ring-expand {
+    0%   {
+        width: 0;
+        height: 0;
+        opacity: 1;
+        border-width: 0.117vw;
+    }
+    40%  {
+        width: 100vw;
+        height: 100vw;
+        opacity: 0.7;
+        border-width: 0.078vw;
+    }
+    100% {
+        width: 250vw;
+        height: 250vw;
+        opacity: 0;
+        border-width: 0.039vw;
+    }
+}
+
+/* ============================================
+   Keyframes
+   ============================================ */
+
+@keyframes cinematic-fade-out {
+    0%   { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes lens-flare-grow {
+    0%   { opacity: 0; transform: scale(0.15); }
+    4%   { opacity: 0.5; transform: scale(0.25); }
+    10%  { opacity: 0.3; transform: scale(0.2); }
+    16%  { opacity: 0.7; transform: scale(0.45); }
+    22%  { opacity: 0.4; transform: scale(0.35); }
+    30%  { opacity: 0.8; transform: scale(0.7); }
+    36%  { opacity: 0.5; transform: scale(0.55); }
+    44%  { opacity: 0.85; transform: scale(0.95); }
+    50%  { opacity: 0.6; transform: scale(0.8); }
+    58%  { opacity: 0.9; transform: scale(1.2); }
+    64%  { opacity: 0.65; transform: scale(1.0); }
+    72%  { opacity: 0.95; transform: scale(1.5); }
+    78%  { opacity: 0.7; transform: scale(1.3); }
+    86%  { opacity: 1; transform: scale(1.7); }
+    92%  { opacity: 0.8; transform: scale(1.5); }
+    100% { opacity: 1; transform: scale(2.0); }
+}
+
+@keyframes streak-inward {
+    0%   { opacity: 0; transform: translate(var(--sx, 0), var(--sy, 0)) rotate(var(--streak-angle, 0deg)) scaleY(1); }
+    15%  { opacity: 0.8; }
+    70%  { opacity: 0.5; }
+    100% { opacity: 0; transform: translate(0, 0) rotate(var(--streak-angle, 0deg)) scaleY(0.3); }
+}
+
+@keyframes shock-ring-expand {
+    0%   { transform: scale(1); opacity: 0.5; border-width: 0.059vw; }
+    40%  { opacity: 0.3; border-width: 0.039vw; }
+    100% { transform: scale(25); opacity: 0; border-width: 0.02vw; }
+}
+
+@keyframes flash-white {
+    0%   { opacity: 0; }
+    15%  { opacity: 0.06; }
+    100% { opacity: 0; }
+}
+
+@keyframes blur-fade-in {
+    0%   { opacity: 0; filter: blur(10px); }
+    100% { opacity: 1; filter: blur(0); }
+}
+
+/* CRT power-on: scanline → open vertical → open horizontal (no distortion) */
+@keyframes crt-power-on {
+    0%   {
+        clip-path: inset(49% 49% 49% 49%);
+        opacity: 1;
+        filter: brightness(2);
+    }
+    30%  {
+        clip-path: inset(10% 10% 10% 10%);
+        opacity: 1;
+        filter: brightness(1.3);
+    }
+    60%  {
+        clip-path: inset(2% 2% 2% 2%);
+        opacity: 0.8;
+        filter: brightness(1.4);
+    }
+    75%  {
+        clip-path: inset(0% 0% 0% 0%);
+        opacity: 1;
+        filter: brightness(1.1);
+    }
+    100% {
+        clip-path: inset(0% 0% 0% 0%);
+        opacity: 1;
+        filter: brightness(1) blur(0);
+    }
+}
+
+@keyframes bg-fade-in {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes glow-burst-fade {
+    0%   { text-shadow: 0 0 10px rgba(0,0,0,0.15), 0 0 25px rgba(0,0,0,0.08), 0 0 50px rgba(0,0,0,0.03); }
+    100% { text-shadow: none; }
+}
+
+@keyframes sweep-across {
+    0%   { left: -60%; opacity: 1; }
+    60%  { opacity: 1; }
+    75%  { left: 100%; opacity: 0; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes institute-fade-in {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes institute-fade-out {
+    0%   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+@keyframes institute-type {
+    0%   { color: rgba(0,0,0,0); letter-spacing: 0.5em; }
+    50%  { color: rgba(0,0,0,0.7); }
+    100% { color: rgba(100,100,110,0.8); letter-spacing: 0.35em; }
+}
+
+@keyframes letter-lock-flash {
+    0%   { filter: brightness(0) blur(2px); transform: scale(1.15); }
+    50%  { filter: brightness(0.5) blur(0); transform: scale(0.95); }
+    100% { filter: brightness(1) blur(0); transform: scale(1); }
+}
+
+@keyframes glitch-flicker-anim {
+    0%   { opacity: 0.8; }
+    25%  { opacity: 0; }
+    50%  { opacity: 0.6; }
+    75%  { opacity: 0; }
+    100% { opacity: 0; }
+}

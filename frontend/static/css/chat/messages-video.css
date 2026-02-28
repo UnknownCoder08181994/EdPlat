@@ -1,0 +1,346 @@
+/* ---- Video Card (embedded in chat answers) ---- */
+.msg-video-card {
+    margin-top: 0.65vw;
+    border-radius: 0.5vw;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.4);
+    border: 0.05vw solid rgba(200, 200, 210, 0.22);
+    animation: msg-materialize 0.4s ease both;
+}
+
+.msg-video-header {
+    display: flex;
+    align-items: center;
+    gap: 0.35vw;
+    padding: 0.4vw 0.7vw;
+    background: rgba(200, 200, 210, 0.10);
+    border-bottom: 0.05vw solid rgba(200, 200, 210, 0.16);
+}
+
+.msg-video-header svg {
+    width: 0.65vw;
+    height: 0.65vw;
+    color: #111;
+    flex-shrink: 0;
+}
+
+.msg-video-label {
+    font-family: var(--font-mono);
+    font-size: 0.5vw;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #111;
+}
+
+.msg-video-module-btn {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.3vw;
+    font-family: var(--font-mono);
+    font-size: 0.45vw;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.25vw 0.55vw;
+    border: 0.05vw solid rgba(255, 255, 255, 0.25);
+    border-radius: 0.3vw;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+}
+
+.msg-video-module-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.msg-video-module-btn svg {
+    width: 0.6vw;
+    height: 0.6vw;
+    flex-shrink: 0;
+}
+
+.msg-video-wrapper {
+    position: relative;
+}
+
+.msg-video-inner {
+    position: relative;
+}
+
+.msg-video-player {
+    display: block;
+    width: 100%;
+    max-height: 15vw;
+    background: #000;
+    cursor: pointer;
+}
+
+/* ---- Video Play/Pause Overlay ---- */
+
+.msg-video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    transition: opacity 0.3s;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.msg-video-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.msg-play-btn {
+    width: 14%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    color: #111;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 1.2vw rgba(0, 0, 0, 0.3);
+}
+
+.msg-play-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 1.8vw rgba(0, 0, 0, 0.4);
+}
+
+.msg-play-btn svg {
+    width: 50%;
+    height: 50%;
+}
+
+/* ---- Video Control Buttons (mute + fullscreen) ---- */
+.msg-video-controls {
+    position: absolute;
+    bottom: 0.35vw;
+    right: 0.5vw;
+    display: flex;
+    gap: 0.35vw;
+    z-index: 2;
+}
+
+.msg-ctrl-btn {
+    width: 1.6vw;
+    height: 1.6vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(0.4vw);
+    -webkit-backdrop-filter: blur(0.4vw);
+    border: 0.05vw solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.msg-ctrl-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(200, 200, 210, 0.4);
+    color: rgba(200, 200, 210, 0.85);
+}
+
+.msg-ctrl-btn svg {
+    width: 55%;
+    height: 55%;
+}
+
+/* ---- Video Timeline Scrubber ---- */
+.msg-video-timeline {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    padding: 0.45vw 0.6vw 0.35vw;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.msg-timeline-time {
+    font-family: var(--font-mono);
+    font-size: 0.7vw;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    min-width: 2.2vw;
+    user-select: none;
+}
+
+.msg-timeline-current { text-align: right; }
+
+.msg-timeline-bar {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+    padding: 0.4vw 0;
+}
+
+.msg-timeline-track {
+    position: relative;
+    width: 100%;
+    height: 0.2vw;
+    border-radius: 0.1vw;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: visible;
+    transition: height 0.15s ease;
+}
+
+.msg-timeline-bar:hover .msg-timeline-track {
+    height: 0.3vw;
+}
+
+.msg-timeline-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    background: rgba(200, 200, 210, 0.85);
+    border-radius: inherit;
+    transition: width 0.15s linear;
+}
+
+.msg-timeline-playhead {
+    position: absolute;
+    width: 0.55vw;
+    height: 0.55vw;
+    border-radius: 50%;
+    background: rgba(200, 200, 210, 0.85);
+    box-shadow: 0 0 0.4vw rgba(200, 200, 210, 0.5);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 0%;
+    transition: left 0.15s linear;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.msg-timeline-bar:hover .msg-timeline-playhead {
+    width: 0.65vw;
+    height: 0.65vw;
+    box-shadow: 0 0 0.6vw rgba(200, 200, 210, 0.7);
+}
+
+.msg-timeline-playhead.dragging {
+    transition: none;
+}
+
+/* ---- Timeline Preview Tooltip ---- */
+.msg-timeline-preview {
+    position: absolute;
+    bottom: calc(100% + 0.5vw);
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2vw;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 10;
+}
+
+.msg-timeline-preview.visible {
+    opacity: 1;
+}
+
+.msg-timeline-canvas {
+    display: block;
+    width: 8vw;
+    height: 4.5vw;
+    border-radius: 0.3vw;
+    border: 0.05vw solid rgba(200, 200, 210, 0.3);
+    background: #000;
+    box-shadow: 0 0.2vw 0.8vw rgba(0, 0, 0, 0.5);
+}
+
+.msg-timeline-preview-time {
+    font-family: var(--font-mono);
+    font-size: 0.5vw;
+    font-weight: 600;
+    color: rgba(200, 200, 210, 0.85);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0.1vw 0.35vw;
+    border-radius: 0.2vw;
+}
+
+/* Fullscreen — .fs-active class toggled by JS */
+.msg-video-wrapper.fs-active {
+    background: #000;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+}
+.msg-video-wrapper.fs-active .msg-video-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 2.6vw;
+}
+.msg-video-wrapper.fs-active .msg-video-player {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: contain;
+}
+.msg-video-wrapper.fs-active .msg-ctrl-btn {
+    width: 2.4vw;
+    height: 2.4vw;
+}
+.msg-video-wrapper.fs-active .msg-video-controls {
+    bottom: 0.8vw;
+    right: 0.8vw;
+    gap: 0.5vw;
+}
+.msg-video-wrapper.fs-active .msg-video-timeline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5vw 1.2vw 0.4vw;
+    background: rgba(0, 0, 0, 0.9);
+    gap: 0.625vw;
+    align-items: flex-start;
+}
+.msg-video-wrapper.fs-active .msg-timeline-time {
+    font-size: 0.8vw;
+    font-weight: 600;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.75);
+    min-width: 2.5vw;
+    padding-top: 0.28vw;
+}
+.msg-video-wrapper.fs-active .msg-timeline-bar {
+    padding: 0.521vw 0 1.875vw;
+}
+.msg-video-wrapper.fs-active .msg-timeline-track {
+    height: 0.313vw;
+}
+.msg-video-wrapper.fs-active .msg-timeline-playhead {
+    width: 0.729vw;
+    height: 0.729vw;
+    top: 0.313vw;
+    transform: translateX(-50%);
+}
+.msg-video-wrapper.fs-active .msg-timeline-canvas {
+    width: 12vw;
+    height: 6.75vw;
+}
+.msg-video-wrapper.fs-active .msg-timeline-preview-time {
+    font-size: 0.65vw;
+}

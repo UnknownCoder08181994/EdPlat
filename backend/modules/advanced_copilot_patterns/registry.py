@@ -1,0 +1,45 @@
+"""
+Advanced Copilot Patterns — Module Registry
+"""
+
+MODULE = {
+    'title': 'Advanced Copilot Patterns',
+    'subtitle': 'Multi-file generation, test-driven prompting, and architecture-aware completions.',
+    'category': 'copilot',
+    'accent': 'purple',
+    'difficulty': 'advanced',
+    'duration': '75 minutes',
+    'ai_native': True,
+    'author': {'name': 'Shane Anderson', 'role': 'AI/ML Data Operations Lead', 'initials': 'SA'},
+    'description': 'Take your Copilot skills to an advanced level. This module covers multi-file generation with workspace context, test-driven development with AI, architecture-aware completions that follow your existing patterns, large-scale refactoring, debugging workflows, custom instructions configuration, workspace context management for monorepos, and team collaboration patterns. You will operate at a professional level with AI-assisted development.',
+    'learning_objectives': [
+        'Generate entire feature scaffolds across multiple files simultaneously',
+        'Practice test-driven prompting with the red-green-refactor cycle',
+        'Configure architecture-aware completions with copilot-instructions.md',
+        'Use Copilot for large-scale refactoring and debugging workflows',
+        'Manage workspace context effectively for large monorepos',
+        'Set up Copilot for team collaboration with shared policies',
+    ],
+    'sections': [
+        {'id': 'intro', 'title': 'Introduction', 'video': None, 'start': 0,
+         'description': 'Moving beyond basics to multi-file generation, test-driven AI, and workspace-level context.'},
+        {'id': 'multi-file', 'title': 'Multi-File Generation', 'video': None, 'start': 0,
+         'description': 'Using Copilot Chat with workspace context to scaffold models, controllers, services, and tests simultaneously.'},
+        {'id': 'tdd', 'title': 'Test-Driven Prompting', 'video': None, 'start': 0,
+         'description': 'Writing tests first, then asking Copilot to generate passing implementations with the red-green-refactor cycle.'},
+        {'id': 'arch-aware', 'title': 'Architecture-Aware Completions', 'video': None, 'start': 0,
+         'description': 'How Copilot reads neighboring files and type definitions, plus configuring copilot-instructions.md.'},
+        {'id': 'refactor', 'title': 'Refactoring with Copilot', 'video': None, 'start': 0,
+         'description': 'Renaming across files, extracting functions, converting callbacks to async/await, and library migrations.'},
+        {'id': 'debugging', 'title': 'Debugging Assistance', 'video': None, 'start': 0,
+         'description': 'The /fix command, stack trace analysis, /explain for unfamiliar code, and AI-assisted logging.'},
+        {'id': 'custom-inst', 'title': 'Custom Instructions', 'video': None, 'start': 0,
+         'description': 'Setting coding standards, preferred libraries, naming conventions, and architectural patterns in copilot-instructions.md.'},
+        {'id': 'workspace', 'title': 'Workspace Context', 'video': None, 'start': 0,
+         'description': 'Using @workspace, #file and #selection references, managing context limits, and monorepo strategies.'},
+        {'id': 'collab', 'title': 'Team Collaboration', 'video': None, 'start': 0,
+         'description': 'Shared custom instructions, organization policies, Copilot-generated PR descriptions, and documentation.'},
+        {'id': 'wrap-up', 'title': 'Wrap-Up & Next Steps', 'video': None, 'start': 0,
+         'description': 'Full review of advanced patterns and your roadmap for professional-level AI-assisted development.'},
+    ],
+}

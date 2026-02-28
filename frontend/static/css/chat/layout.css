@@ -1,0 +1,280 @@
+/* ============================================
+   CHAT PAGE
+   ============================================ */
+body.page-chat {
+    overflow: hidden;
+}
+
+/* Grid breathing wave — narrow light band sweeps right→left across grid */
+.chat-grid-breathe {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(34, 211, 238, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.25) 1px, transparent 1px);
+    background-size: 2.34vw 2.34vw;
+    pointer-events: none;
+    mask-image:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(0,0,0,0.4) 5%,
+            black 10%,
+            black 14%,
+            rgba(0,0,0,0.4) 19%,
+            transparent 24%
+        ),
+        radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 75%);
+    -webkit-mask-image:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(0,0,0,0.4) 5%,
+            black 10%,
+            black 14%,
+            rgba(0,0,0,0.4) 19%,
+            transparent 24%
+        ),
+        radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 75%);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+    mask-size: 300% 100%, 100% 100%;
+    -webkit-mask-size: 300% 100%, 100% 100%;
+    mask-repeat: no-repeat, no-repeat;
+    -webkit-mask-repeat: no-repeat, no-repeat;
+    animation: grid-breathe 19s linear infinite;
+}
+
+@keyframes grid-breathe {
+    0%      { mask-position: 30% 0, 0 0; -webkit-mask-position: 30% 0, 0 0; }
+    26.32%  { mask-position: -45% 0, 0 0; -webkit-mask-position: -45% 0, 0 0; }
+    100%    { mask-position: -45% 0, 0 0; -webkit-mask-position: -45% 0, 0 0; }
+}
+
+/* ============================================
+   CHAT PAGE — Agentic Redesign (all vw @ 2560)
+   ============================================ */
+.chat-page {
+    position: fixed;
+    inset: 0;
+    top: 2.89vw;
+    display: flex;
+    z-index: 1;
+}
+
+.chat-page .section-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
+
+.chat-page .section-grid-overlay {
+    background-size: 2.34vw 2.34vw;
+}
+
+.chat-page .section-scanlines {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 0.078vw,
+        rgba(167, 139, 250, 0.015) 0.078vw,
+        rgba(167, 139, 250, 0.015) 0.156vw
+    );
+}
+
+.chat-page .section-orb {
+    filter: blur(3.125vw);
+}
+
+/* Enhanced background orbs with drift animation */
+.chat-page .section-orb-1 {
+    width: 26vw;
+    height: 20vw;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.08), transparent 70%);
+    opacity: 0.5;
+    animation: orb-drift-1 24s ease-in-out infinite;
+}
+
+.chat-page .section-orb-2 {
+    width: 22vw;
+    height: 18vw;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.06), transparent 70%);
+    opacity: 0.4;
+    animation: orb-drift-2 20s ease-in-out infinite;
+}
+
+/* Vignette overlay for depth */
+.chat-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 70% 65% at 50% 50%, transparent 20%, rgba(0, 0, 0, 0.55) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, transparent 15%),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0%, transparent 12%);
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* Ambient glow behind chat area */
+.chat-ambient-glow {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 27.34vw;
+    height: 27.34vw;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.06) 0%, rgba(167, 139, 250, 0.03) 40%, transparent 70%);
+    filter: blur(3.125vw);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ---- Main Chat Area (full width, centered) ---- */
+.chat-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2.2vw 1.3vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-cyan) rgba(6, 8, 22, 0.2);
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 0.35vw;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: rgba(6, 8, 22, 0.4);
+    border-radius: 0.2vw;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #22d3ee, #38bdf8, #22d3ee);
+    border-radius: 0.2vw;
+    box-shadow: 0 0 0.547vw rgba(34, 211, 238, 0.7), 0 0 0.234vw rgba(34, 211, 238, 0.9);
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #67e8f9, #38bdf8, #67e8f9);
+    box-shadow: 0 0 0.78vw rgba(34, 211, 238, 0.9), 0 0 0.312vw rgba(34, 211, 238, 1);
+}
+
+/* ---- Welcome screen (centered hero) ---- */
+.chat-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 36vw;
+    margin: auto;
+    padding: 2.2vw 1.1vw 1.1vw;
+}
+
+.chat-welcome > * {
+    opacity: 0;
+    animation: welcome-fade-up 0.6s ease forwards;
+}
+
+.chat-welcome > :nth-child(1) { animation-delay: 0.1s; }
+.chat-welcome > :nth-child(2) { animation-delay: 0.25s; }
+.chat-welcome > :nth-child(3) { animation-delay: 0.4s; }
+.chat-welcome > :nth-child(4) { animation-delay: 0.55s; }
+
+/* Welcome icon — gradient border, glow */
+.welcome-icon {
+    position: relative;
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 0.9vw;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(167, 139, 250, 0.08));
+    border: 0.05vw solid rgba(34, 211, 238, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-cyan);
+    margin-bottom: 1.1vw;
+    box-shadow:
+        0 0 1.2vw rgba(34, 211, 238, 0.1),
+        0 0 2.5vw rgba(34, 211, 238, 0.04),
+        inset 0 0.05vw 0 rgba(255, 255, 255, 0.06);
+}
+
+.welcome-icon svg {
+    width: 1.4vw;
+    height: 1.4vw;
+}
+
+/* Pulse rings */
+.welcome-pulse-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.9vw;
+    border: 0.05vw solid rgba(34, 211, 238, 0.3);
+    animation: welcome-ring-pulse 3s ease-out infinite;
+    pointer-events: none;
+}
+
+.welcome-pulse-ring-2 {
+    animation-delay: 1.5s;
+}
+
+/* Status tag */
+.agent-status {
+    display: flex;
+    align-items: center;
+    gap: 0.35vw;
+    font-family: var(--font-mono);
+    font-size: 0.5vw;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: rgba(52, 211, 153, 0.8);
+    text-transform: uppercase;
+    margin-bottom: 0.7vw;
+}
+
+.agent-status-dot {
+    width: 0.28vw;
+    height: 0.28vw;
+    border-radius: 50%;
+    background: rgba(52, 211, 153, 0.9);
+    box-shadow: 0 0 0.42vw rgba(52, 211, 153, 0.4);
+    animation: status-pulse 2s ease-in-out infinite;
+}
+
+.welcome-title {
+    font-family: var(--font-body);
+    font-size: 1.1vw;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.5vw;
+    text-shadow: 0 0 2vw rgba(34, 211, 238, 0.25);
+}
+
+.welcome-subtitle {
+    font-size: 0.7vw;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 35vw;
+    min-height: 1.4em;
+}
+
+.welcome-cursor {
+    display: inline-block;
+    color: var(--accent-cyan);
+    font-weight: normal;
+    font-size: 0.95em;
+    animation: cursor-blink 0.7s step-end infinite;
+    vertical-align: baseline;
+    text-shadow: 0 0 0.5vw var(--accent-cyan);
+}

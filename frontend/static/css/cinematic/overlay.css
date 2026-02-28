@@ -1,0 +1,139 @@
+/* ============================================
+   AWM V2 — Cinematic Intro (V1 flow + V2 bg)
+   ============================================ */
+
+/* ---- Cinematic Overlay ---- */
+.cinematic-overlay {
+    position: fixed;
+    top: 2.89vw;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.cinematic-overlay.fade-out {
+    animation: cinematic-fade-out 1.2s ease forwards;
+}
+
+/* ---- Lens Flare ---- */
+.lens-flare {
+    position: absolute;
+    width: 11.72vw;
+    height: 11.72vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.02) 30%, transparent 70%);
+    filter: blur(1.56vw);
+    opacity: 0;
+    animation: lens-flare-grow 6s ease-out forwards;
+}
+
+/* ---- Streak Particles ---- */
+.streak-particle {
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.streak-particle.animate {
+    animation: streak-inward var(--streak-dur, 1.5s) ease-in var(--streak-delay, 0s) forwards;
+}
+
+/* ---- Shockwave Rings ---- */
+.shock-ring {
+    position: fixed;
+    top: calc(2.89vw + (100vh - 2.89vw) / 2);
+    left: 50%;
+    width: 5.47vw;
+    height: 5.47vw;
+    margin-left: -2.73vw;
+    margin-top: -2.73vw;
+    border-radius: 50%;
+    z-index: 10001;
+    pointer-events: none;
+    opacity: 0;
+    border: 0.039vw solid rgba(0,0,0,0.15);
+    will-change: transform, opacity;
+}
+
+.shock-ring.fire {
+    animation: shock-ring-expand 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.shock-ring-2 { border-color: rgba(0,0,0,0.10); }
+.shock-ring-2.fire {
+    animation: shock-ring-expand 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+}
+
+.shock-ring-3 { border-color: rgba(0,0,0,0.05); }
+.shock-ring-3.fire {
+    animation: shock-ring-expand 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.24s forwards;
+}
+
+/* ---- Screen Flash ---- */
+.screen-flash {
+    position: fixed;
+    top: 2.89vw;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10002;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.screen-flash.fire {
+    animation: flash-white 0.4s ease-out forwards;
+}
+
+/* ---- Sweep Highlight ---- */
+.sweep-highlight {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), rgba(0,0,0,0.03), transparent);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.sweep-highlight.animate {
+    animation: sweep-across 0.8s ease-in-out forwards;
+}
+
+/* ============================================
+   Splash Overlay (independent of page 1)
+   ============================================ */
+.splash-overlay {
+    position: fixed;
+    top: 2.89vw;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    background: #fff;
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.splash-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.splash-overlay.fade-out {
+    transition: opacity 0.8s ease;
+    opacity: 0;
+}
+

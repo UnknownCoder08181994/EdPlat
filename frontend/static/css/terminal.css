@@ -1,0 +1,285 @@
+/* ============================================
+   AWM V2 — Terminal Styling (V1 layout, V2 colors)
+   ============================================ */
+
+.hero-terminal {
+    perspective: 35.156vw;
+    position: relative;
+}
+
+/* ---- Holographic Projector Base ---- */
+.holo-projector {
+    position: absolute;
+    bottom: -1.172vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2.344vw;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.holo-ring {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(96,165,250,0.15);
+    border-radius: 50%;
+    transform: translateX(-50%) rotateX(75deg);
+    animation: holo-pulse 3s ease-out infinite;
+}
+
+.holo-ring-2 {
+    animation-delay: 1s;
+    border-color: rgba(192,132,252,0.12);
+}
+
+.holo-ring-3 {
+    animation-delay: 2s;
+    border-color: rgba(34,211,238,0.08);
+}
+
+.holo-base-glow {
+    position: absolute;
+    bottom: -0.195vw;
+    left: 50%;
+    transform: translateX(-50%) rotateX(75deg);
+    width: 60%;
+    height: 1.563vw;
+    background: radial-gradient(ellipse, rgba(96,165,250,0.1) 0%, rgba(192,132,252,0.05) 40%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(0.313vw);
+    animation: holo-glow-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes holo-pulse {
+    0% {
+        transform: translateX(-50%) rotateX(75deg) scale(0.6);
+        opacity: 0.6;
+        border-width: 1.5px;
+    }
+    100% {
+        transform: translateX(-50%) rotateX(75deg) scale(1.4);
+        opacity: 0;
+        border-width: 0.5px;
+    }
+}
+
+@keyframes holo-glow-pulse {
+    0%   { opacity: 0.3; transform: translateX(-50%) rotateX(75deg) scale(0.9); }
+    100% { opacity: 0.7; transform: translateX(-50%) rotateX(75deg) scale(1.1); }
+}
+
+/* ---- Terminal Window ---- */
+.terminal-window {
+    width: 100%;
+    background: rgba(6, 8, 18, 0.75);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(129,140,248,0.1);
+    overflow: hidden;
+    box-shadow:
+        0 0 1.172vw rgba(129,140,248,0.05),
+        0 0 2.344vw rgba(192,132,252,0.03),
+        0 0.977vw 2.734vw rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(129,140,248,0.05);
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+    transform-style: preserve-3d;
+    animation: holo-float 5s ease-in-out infinite;
+}
+
+@keyframes holo-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-0.313vw); }
+}
+
+.terminal-window:hover {
+    transform: rotateY(-3deg) rotateX(2deg) translateY(-0.625vw) scale(1.025);
+    border-color: rgba(129,140,248,0.35);
+    box-shadow:
+        0 0 2.344vw rgba(129,140,248,0.15),
+        0 0 4.688vw rgba(192,132,252,0.08),
+        0 0 0.234vw rgba(129,140,248,0.4),
+        0 0 7.031vw rgba(96,165,250,0.04),
+        0 1.563vw 3.516vw rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(129,140,248,0.15),
+        inset 0 0 1.563vw rgba(129,140,248,0.02);
+}
+
+/* Holographic scan lines overlay */
+.terminal-window::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 0.078vw,
+        rgba(129,140,248,0.01) 0.078vw,
+        rgba(129,140,248,0.01) 0.156vw
+    );
+    pointer-events: none;
+    z-index: 9;
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+}
+
+.terminal-window:hover::before { opacity: 1; }
+
+/* Moving scan line */
+.terminal-window::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0.078vw;
+    background: linear-gradient(90deg, transparent, rgba(129,140,248,0.05), transparent);
+    animation: scan-line 5s linear infinite;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+}
+
+.terminal-window:hover::after {
+    opacity: 1;
+    height: 0.117vw;
+    background: linear-gradient(90deg, transparent, rgba(129,140,248,0.15), rgba(192,132,252,0.1), transparent);
+}
+
+/* ---- Title Bar ---- */
+.terminal-titlebar {
+    height: 2.109vw;
+    background: rgba(6,6,14,0.85);
+    display: flex;
+    align-items: center;
+    padding: 0 0.781vw;
+    gap: 0.391vw;
+    border-bottom: 1px solid rgba(129,140,248,0.06);
+}
+
+.terminal-dot {
+    width: 0.547vw;
+    height: 0.547vw;
+    border-radius: 50%;
+    transition: box-shadow 0.4s ease;
+}
+
+.terminal-dot.red    { background: #ff5f57; }
+.terminal-dot.yellow { background: #febc2e; }
+.terminal-dot.green  { background: #28c840; }
+
+.terminal-window:hover .terminal-dot.red    { box-shadow: 0 0 0.391vw #ff5f57, 0 0 0.781vw rgba(255,95,87,0.25); }
+.terminal-window:hover .terminal-dot.yellow { box-shadow: 0 0 0.391vw #febc2e, 0 0 0.781vw rgba(254,188,46,0.25); }
+.terminal-window:hover .terminal-dot.green  { box-shadow: 0 0 0.391vw #28c840, 0 0 0.781vw rgba(40,200,64,0.25); }
+
+.terminal-title {
+    font-family: var(--font-mono);
+    font-size: 0.531vw;
+    color: var(--text-muted);
+    margin-left: auto;
+}
+
+/* ---- Terminal Body ---- */
+.terminal-body {
+    padding: 1.563vw 1.875vw;
+    font-family: var(--font-mono);
+    font-size: 0.813vw;
+    line-height: 1.8;
+    min-height: 23.438vw;
+    max-height: 27.344vw;
+    overflow: hidden;
+    position: relative;
+}
+
+.terminal-line {
+    white-space: pre-wrap;
+    word-break: break-all;
+    min-height: 1.7em;
+}
+
+.terminal-prompt {
+    color: var(--neon-green);
+    user-select: none;
+}
+
+.terminal-cursor {
+    color: var(--neon-green);
+    animation: blink 1s step-end infinite;
+    font-weight: normal;
+}
+
+.terminal-cursor-line {
+    display: flex;
+    align-items: center;
+}
+
+/* Syntax colors */
+.t-comment  { color: #6a737d; font-style: italic; }
+.t-keyword  { color: #ff7b72; }
+.t-string   { color: #a5d6ff; }
+.t-function { color: #d2a8ff; }
+.t-number   { color: #79c0ff; }
+.t-operator { color: #ff7b72; }
+.t-plain    { color: #e2e8f0; }
+
+.t-ghost {
+    color: rgba(192,132,252,0.35);
+    font-style: italic;
+    transition: all 0.4s ease;
+}
+
+.t-ghost.accepted {
+    color: #e2e8f0;
+    font-style: normal;
+    opacity: 1;
+}
+
+.t-success { color: var(--neon-green); }
+.t-info    { color: var(--neon-cyan); }
+.t-warn    { color: #febc2e; }
+
+/* Tool label */
+.terminal-tool-label {
+    position: absolute;
+    top: 0.391vw;
+    right: 0.625vw;
+    font-family: var(--font-mono);
+    font-size: 0.500vw;
+    padding: 0.117vw 0.391vw;
+    border-radius: 0.156vw;
+    background: rgba(129,140,248,0.05);
+    border: 1px solid rgba(129,140,248,0.08);
+    color: var(--text-muted);
+    z-index: 5;
+}
+
+/* Demo cycle dots */
+.terminal-demo-dots {
+    position: absolute;
+    bottom: 0.313vw;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.234vw;
+    z-index: 5;
+}
+
+.demo-dot {
+    width: 0.313vw;
+    height: 0.313vw;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    transition: all var(--transition-base);
+}
+
+.demo-dot.active {
+    background: var(--neon-purple);
+    box-shadow: 0 0 0.234vw var(--neon-purple);
+}
+
+.demo-dot:nth-child(2).active { background: var(--neon-cyan); box-shadow: 0 0 0.234vw var(--neon-cyan); }
+.demo-dot:nth-child(3).active { background: var(--neon-green); box-shadow: 0 0 0.234vw var(--neon-green); }

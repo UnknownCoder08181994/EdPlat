@@ -1,0 +1,400 @@
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* --- TABLET (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+
+    .container {
+        max-width: 100%;
+        padding: 0 1.25vw;
+    }
+
+    /* Nav: hamburger + slide-out */
+    .nav-hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 10.938vw;
+        height: 100vh;
+        background: rgba(5, 5, 16, 0.97);
+        backdrop-filter: blur(0.938vw);
+        -webkit-backdrop-filter: blur(0.938vw);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 3.125vw 1.563vw;
+        gap: 1.25vw !important;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 10010;
+        border-left: 1px solid rgba(34, 211, 238, 0.1);
+    }
+
+    .nav-links.open {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 0.688vw;
+        padding: 0.313vw 0;
+    }
+
+    .nav-hamburger.open .hamburger-bar:nth-child(1) {
+        transform: rotate(45deg) translate(0.195vw, 0.195vw);
+    }
+    .nav-hamburger.open .hamburger-bar:nth-child(2) {
+        opacity: 0;
+    }
+    .nav-hamburger.open .hamburger-bar:nth-child(3) {
+        transform: rotate(-45deg) translate(0.195vw, -0.195vw);
+    }
+
+    /* Hero: stack columns */
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 1.563vw;
+        padding-top: 0.781vw;
+    }
+
+    .headline-line {
+        font-size: 3.75vw;
+        white-space: normal;
+    }
+
+    .headline-terminal-body {
+        font-size: 2.813vw;
+        padding: 0.625vw 0.781vw;
+    }
+
+    /* Humanoid: stack cards */
+    .humanoid-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25vw;
+    }
+
+    .hcard {
+        width: 100%;
+        max-width: 18.359vw;
+    }
+
+    .humanoid-title {
+        font-size: 1.5vw;
+    }
+
+    .humanoid-content {
+        gap: 1.094vw;
+        padding: 0.781vw 0;
+    }
+
+    /* Programs: 2 columns */
+    .program-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.781vw;
+        max-width: 100%;
+    }
+
+    /* Dot nav: tighter */
+    .fp-dots {
+        right: 0.625vw;
+    }
+
+    .dot-label {
+        display: none;
+    }
+
+    /* Modules catalogue: 2-column grid */
+    .catalogue-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* --- SMALL TABLET / LANDSCAPE PHONE (max-width: 768px) --- */
+@media (max-width: 768px) {
+
+    .container {
+        padding: 0 0.781vw;
+    }
+
+    /* Nav */
+    .nav-inner {
+        height: 2.344vw;
+    }
+
+    .fp-wrapper {
+        top: 2.344vw;
+    }
+
+    .splash-overlay,
+    .cinematic-overlay,
+    .screen-flash,
+    .glitch-flicker {
+        top: 2.344vw;
+    }
+
+    .shock-ring {
+        top: calc(2.344vw + (100vh - 2.344vw) / 2);
+    }
+
+    .institute-reveal {
+        top: calc(2.344vw + (100vh - 2.344vw) / 2);
+    }
+
+    .logo-institute {
+        display: none;
+    }
+
+    .logo-awm {
+        font-size: 0.688vw;
+    }
+
+    /* Hero */
+    .headline-line {
+        font-size: 2.813vw;
+    }
+
+    .headline-terminal-body {
+        font-size: 2.188vw;
+        padding: 0.469vw 0.625vw;
+    }
+
+    .headline-terminal-bar {
+        padding: 0.234vw 0.391vw;
+    }
+
+    .headline-terminal-title {
+        font-size: 0.438vw;
+    }
+
+    /* Humanoid */
+    .humanoid-header {
+        max-width: 100%;
+    }
+
+    .humanoid-title {
+        font-size: 1.25vw;
+    }
+
+    .humanoid-subtitle {
+        font-size: 0.625vw;
+    }
+
+    .hcard {
+        max-width: 100%;
+    }
+
+    .hcard-body {
+        height: auto;
+        min-height: 7.813vw;
+    }
+
+    .hcard-preview {
+        height: 7.031vw;
+    }
+
+    .hcard-content {
+        padding: 0 0.938vw;
+    }
+
+    .hcard-title {
+        font-size: 0.813vw;
+    }
+
+    .hcard-desc {
+        font-size: 0.594vw;
+        max-width: 100%;
+    }
+
+    /* Hide card tracers (fixed px clip-path breaks at auto height) */
+    .hcard-tracer {
+        display: none;
+    }
+
+    /* Programs: single column */
+    .program-grid {
+        grid-template-columns: 1fr;
+        gap: 0.625vw;
+    }
+
+    .section-header {
+        margin-bottom: 1.25vw;
+    }
+
+    .section-subtitle {
+        font-size: 0.594vw;
+    }
+
+    /* Dot nav: hidden */
+    .fp-dots {
+        display: none;
+    }
+
+    /* Allow overflow scrolling within sections */
+    .fp-section {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Chat page */
+    .chat-messages {
+        max-width: 100%;
+    }
+
+    /* Modules catalogue: single column */
+    .catalogue-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Module viewer: stack vertically */
+    .viewer-layout {
+        flex-direction: column;
+        position: relative;
+        top: auto;
+        overflow-y: auto;
+        height: auto;
+        min-height: calc(100vh - 2.344vw);
+    }
+
+    .viewer-sidebar {
+        width: 100%;
+        min-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+    }
+
+    .viewer-sections-list {
+        max-height: 6.25vw;
+    }
+
+}
+
+/* --- PHONE (max-width: 480px) --- */
+@media (max-width: 480px) {
+
+    .container {
+        padding: 0 0.625vw;
+    }
+
+    .nav-inner {
+        height: 2.109vw;
+    }
+
+    .fp-wrapper {
+        top: 2.109vw;
+    }
+
+    .splash-overlay,
+    .cinematic-overlay,
+    .screen-flash,
+    .glitch-flicker {
+        top: 2.109vw;
+    }
+
+    .shock-ring {
+        top: calc(2.109vw + (100vh - 2.109vw) / 2);
+    }
+
+    .institute-reveal {
+        top: calc(2.109vw + (100vh - 2.109vw) / 2);
+    }
+
+    /* Hero */
+    .hero-content {
+        gap: 0.938vw;
+    }
+
+    .headline-line {
+        font-size: 2.188vw;
+    }
+
+    .headline-terminal {
+        margin-top: 0.469vw;
+    }
+
+    .headline-terminal-body {
+        font-size: 1.563vw;
+        padding: 0.391vw 0.547vw;
+        white-space: normal;
+    }
+
+    .headline-terminal-bar {
+        padding: 0.195vw 0.313vw;
+    }
+
+    .term-ctrl {
+        width: 0.703vw;
+        height: 0.625vw;
+        font-size: 0.375vw;
+    }
+
+    .headline-terminal-title {
+        font-size: 0.375vw;
+    }
+
+    /* Humanoid */
+    .humanoid-title {
+        font-size: 1vw;
+    }
+
+    .humanoid-subtitle {
+        font-size: 0.563vw;
+        min-height: auto;
+    }
+
+    .humanoid-content {
+        gap: 0.781vw;
+        padding: 0.586vw 0;
+    }
+
+    .hcard-preview {
+        height: 5.859vw;
+    }
+
+    .hcard-content {
+        padding: 0 0.781vw;
+        margin-top: -0.313vw;
+    }
+
+    .hcard-title {
+        font-size: 0.719vw;
+        letter-spacing: 0.08em;
+    }
+
+    .hcard-desc {
+        font-size: 0.55vw;
+    }
+
+    .hcard-rule {
+        margin: 0.469vw 0;
+    }
+
+    /* Programs */
+    .card-inner {
+        padding: 0.938vw 0.781vw 0.781vw;
+    }
+
+    /* Neon grid lines: hide on phone for performance */
+    .h2-neon-lines-canvas {
+        display: none;
+    }
+
+    /* Chat */
+    .chat-input-area {
+        padding: 0.469vw 0.625vw 0.781vw;
+    }
+
+    .suggestion-chip {
+        padding: 0.313vw 0.547vw;
+        font-size: 0.513vw;
+    }
+
+    /* Module viewer: adjust for phone nav */
+    .viewer-layout {
+        min-height: calc(100vh - 2.109vw);
+    }
+}

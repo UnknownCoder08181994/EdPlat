@@ -1,0 +1,174 @@
+/* ============================================
+   PROGRAMS / AGENT COMMAND CENTER (Page 3)
+   ============================================ */
+#programs {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---- Section Background ---- */
+.section-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.section-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(167, 139, 250, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(167, 139, 250, 0.06) 1px, transparent 1px);
+    background-size: 2.34vw 2.34vw;
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 75%);
+    pointer-events: none;
+}
+
+/* Grid sweep — narrow light band sweeps right→left across grid */
+.grid-breathe {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(34, 211, 238, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.25) 1px, transparent 1px);
+    background-size: 2.34vw 2.34vw;
+    pointer-events: none;
+    mask-image:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(0,0,0,0.4) 5%,
+            black 10%,
+            black 14%,
+            rgba(0,0,0,0.4) 19%,
+            transparent 24%
+        ),
+        radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 75%);
+    -webkit-mask-image:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(0,0,0,0.4) 5%,
+            black 10%,
+            black 14%,
+            rgba(0,0,0,0.4) 19%,
+            transparent 24%
+        ),
+        radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 75%);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+    mask-size: 300% 100%, 100% 100%;
+    -webkit-mask-size: 300% 100%, 100% 100%;
+    mask-repeat: no-repeat, no-repeat;
+    -webkit-mask-repeat: no-repeat, no-repeat;
+    animation: grid-breathe 14s linear infinite;
+}
+
+@keyframes grid-breathe {
+    0%      { mask-position: 30% 0, 0 0; -webkit-mask-position: 30% 0, 0 0; }
+    80%     { mask-position: -45% 0, 0 0; -webkit-mask-position: -45% 0, 0 0; }
+    100%    { mask-position: -45% 0, 0 0; -webkit-mask-position: -45% 0, 0 0; }
+}
+
+.section-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(3.125vw);
+}
+
+.section-orb-1 {
+    width: 23.4vw;
+    height: 23.4vw;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.15), transparent 70%);
+    top: 5%;
+    right: -10%;
+    animation: orb-drift-2 22s ease-in-out infinite;
+}
+
+.section-orb-2 {
+    width: 19.5vw;
+    height: 19.5vw;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.12), transparent 70%);
+    bottom: 5%;
+    left: -10%;
+    animation: orb-drift-1 28s ease-in-out infinite;
+}
+
+.section-scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 0.078vw,
+        rgba(167, 139, 250, 0.015) 0.078vw,
+        rgba(167, 139, 250, 0.015) 0.156vw
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ---- Section Header ---- */
+.section-content {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: clamp(1.094vw, 1.88vw, 1.875vw);
+    opacity: 0;
+    transform: translateY(0.781vw);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-header.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(0.313vw, 0.47vw, 0.469vw);
+    font-family: var(--font-body);
+    font-size: clamp(0.344vw, 0.333vw, 0.450vw);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: clamp(0.391vw, 0.63vw, 0.625vw);
+}
+
+.tag-line {
+    display: inline-block;
+    width: clamp(0.703vw, 1.17vw, 1.172vw);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent));
+}
+
+.tag-line:last-child {
+    background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.section-title {
+    font-size: clamp(1.375vw, 4.5vw, 2.188vw);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: clamp(0.313vw, 0.47vw, 0.469vw);
+}
+
+.section-subtitle {
+    font-size: clamp(0.531vw, 0.518vw, 0.656vw);
+    color: var(--text-secondary);
+    max-width: clamp(14.063vw, 21.1vw, 21.094vw);
+    margin: 0 auto;
+    line-height: 1.7;
+}
+

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modules — AWM Institute of Technology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.built.css') }}?v=336">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="prefetch" href="/?skip">
+    <link rel="prefetch" href="/chat">
+</head>
+<body class="dark-theme page-standalone page-modules">
+    <div id="app">
+        <!-- Nav -->
+        <nav class="main-nav scrolled" id="main-nav">
+            <div class="nav-inner container">
+                <a href="/" class="nav-logo">
+                    <span class="logo-awm">AWM</span>
+                    <span class="logo-institute">Institute of Technology</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/?skip" class="nav-link">Home</a></li>
+                    <li><a href="/chat" class="nav-link">Chat</a></li>
+                    <li><a href="/modules" class="nav-link active">Modules</a></li>
+                    <li><a href="/tutorials" class="nav-link">Tutorials</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-glow-line"></div>
+        </nav>
+
+        <!-- Modules Page -->
+        <div class="standalone-page" id="modules">
+            <div class="section-bg">
+                <div class="modules-grid-bg"></div>
+                <div class="modules-grid-sweep"></div>
+            </div>
+
+            <div class="section-content container">
+
+                <!-- Hero Banner -->
+                <div class="catalogue-hero" style="opacity:0">
+                    <div class="catalogue-hero-badge">
+                        <span class="badge-glow-dot"></span>
+                        Virtual Learning
+                    </div>
+                    <h1 class="catalogue-hero-title">Modules</h1>
+                    <p class="catalogue-hero-desc">Hands-on modules covering Pro Code tools in the AWM ecosystem.<br>Pick a topic and start learning.</p>
+                </div>
+
+                <!-- Filter Pills -->
+                <div class="catalogue-filters-row" style="opacity:0">
+                    <div class="catalogue-filters-track">
+                        <button class="filter-pill active" data-filter="all">All</button>
+                        <button class="filter-pill" data-filter="copilot">Copilot</button>
+                    </div>
+                </div>
+
+                <!-- Toolbar -->
+                <div class="catalogue-toolbar" style="opacity:0">
+                    <span class="toolbar-count" id="toolbar-count">1 Module</span>
+
+                    <div class="toolbar-search">
+                        <svg class="toolbar-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" class="toolbar-search-input" id="toolbar-search" placeholder="Search modules..." autocomplete="off">
+                    </div>
+
+                    <div class="toolbar-dropdown" id="toolbar-topic-dropdown">
+                        <button class="toolbar-dropdown-btn" id="toolbar-topic-btn" type="button">
+                            <span class="toolbar-dropdown-label">All Topics</span>
+                            <svg class="toolbar-dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="toolbar-dropdown-menu" id="toolbar-topic-menu">
+                            <div class="toolbar-dropdown-item active" data-value="">All Topics</div>
+                            <div class="toolbar-dropdown-item" data-value="copilot">Copilot</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Course Grid -->
+                <div class="catalogue-grid" id="catalogue-grid">
+
+                    <!-- Card 1: Copilot Basics -->
+                    <article class="course-card" style="opacity:0" data-accent="blue" data-tags="copilot beginner" data-ai="true" data-slug="copilot-basics">
+                        <div class="course-card-inner">
+                            <span class="course-category-label">MODULE</span>
+                            <h3 class="course-card-title">Copilot Basics</h3>
+                            <div class="course-difficulty">
+                                <div class="difficulty-bars beginner">
+                                    <span class="diff-bar diff-sm"></span>
+                                    <span class="diff-bar diff-md"></span>
+                                    <span class="diff-bar diff-lg"></span>
+                                </div>
+                                <span class="difficulty-badge beginner">Beginner</span>
+                            </div>
+                            <p class="course-card-desc">Learn how to request and set up GitHub Copilot access through myTechHub.</p>
+                            <div class="course-author-area">
+                                <img class="author-avatar" src="{{ url_for('static', filename='pictures/shane_avatar.png') }}" alt="Shane Anderson">
+                                <div class="author-info">
+                                    <span class="author-name">Shane Anderson</span>
+                                    <span class="author-role">AI/ML Data Operations Lead</span>
+                                </div>
+                            </div>
+                            <div class="course-card-footer">
+                                <div class="course-meta">
+                                    <span class="course-meta-item">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                        45 minutes
+                                    </span>
+                                    <span class="course-meta-sep"></span>
+                                    <span class="course-meta-item">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                        1 Section
+                                    </span>
+                                </div>
+                                <button class="course-start-btn">Start</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Empty State -->
+                <div class="catalogue-empty" id="catalogue-empty">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    <p>No modules match your filters.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="page-fade-overlay" id="page-fade-overlay"></div>
+    <script>
+    (function() {
+        const overlay = document.getElementById('page-fade-overlay');
+        if (!overlay) return;
+        overlay.style.opacity = '1';
+        overlay.style.transition = 'opacity 0.35s ease';
+        requestAnimationFrame(() => { requestAnimationFrame(() => {
+            overlay.style.opacity = '0';
+            overlay.addEventListener('transitionend', () => { overlay.style.pointerEvents = 'none'; }, { once: true });
+        }); });
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href]');
+            if (!link) return;
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('javascript') || link.target === '_blank') return;
+            if (href.startsWith('http') && !href.startsWith(location.origin)) return;
+            e.preventDefault();
+            overlay.style.pointerEvents = 'all';
+            overlay.style.opacity = '1';
+            setTimeout(() => { window.location.href = href; }, 350);
+        });
+    })();
+    </script>
+    <script src="{{ url_for('static', filename='js/modules/modules.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/modules/card-fx.js') }}"></script>
+</body>
+</html>

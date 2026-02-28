@@ -1,0 +1,120 @@
+/* ============================================
+   MODULES CATALOGUE
+   ============================================ */
+#modules {
+    background: transparent;
+}
+
+/* ---- Hero Banner ---- */
+.catalogue-hero {
+    position: relative;
+    background: rgba(6, 8, 22, 0.94);
+    border: 1px solid rgba(34, 211, 238, 0.06);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(0.833vw) saturate(1.3);
+    -webkit-backdrop-filter: blur(0.833vw) saturate(1.3);
+    padding: 1.812vw 2.175vw;
+    margin-bottom: 1.268vw;
+    overflow: hidden;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease,
+                background 0.35s ease,
+                backdrop-filter 0.35s ease,
+                -webkit-backdrop-filter 0.35s ease;
+}
+
+.catalogue-hero::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0.136vw;
+    background: linear-gradient(180deg, var(--accent-cyan), var(--accent-blue));
+    opacity: 0.6;
+    transition: opacity 0.4s ease, box-shadow 0.4s ease;
+}
+
+.catalogue-hero-inner {
+    max-width: 29.0vw;
+}
+
+.catalogue-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.453vw;
+    font-size: 0.594vw;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    background: rgba(34, 211, 238, 0.07);
+    border: 1px solid rgba(34, 211, 238, 0.18);
+    border-radius: 0.907vw;
+    padding: 0.181vw 0.634vw;
+    margin-bottom: 0.725vw;
+}
+
+.hero-badge-dot {
+    width: 0.272vw;
+    height: 0.272vw;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    box-shadow: 0 0 0.313vw var(--accent-cyan);
+    animation: status-pulse 2s ease-in-out infinite;
+}
+
+.catalogue-hero-title {
+    font-size: 2.262vw;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin-bottom: 0.634vw;
+}
+
+.catalogue-hero-desc {
+    font-size: 0.87vw;
+    color: #b0b4d4;
+    line-height: 1.7;
+    max-width: 28.094vw;
+}
+
+/* ---- Breathe Effect — hover on any modules page element ---- */
+@keyframes hover-breathe {
+    0%, 100% {
+        border-color: rgba(34, 211, 238, 0.06);
+        box-shadow:
+            0 0 0 rgba(34, 211, 238, 0),
+            inset 0 0 0 rgba(34, 211, 238, 0);
+    }
+    50% {
+        border-color: rgba(34, 211, 238, 0.3);
+        box-shadow:
+            0 0 1.8vw rgba(34, 211, 238, 0.12),
+            inset 0 0 1vw rgba(34, 211, 238, 0.05);
+    }
+}
+
+@keyframes bar-breathe {
+    0%, 100% { opacity: 0.5; box-shadow: 0 0 0 transparent; }
+    50%      { opacity: 1; box-shadow: 0 0 0.8vw rgba(34, 211, 238, 0.4); }
+}
+
+/* Hero hover */
+.catalogue-hero:hover {
+    animation: hover-breathe 2s ease-in-out infinite;
+    background: rgba(6, 8, 22, 0.35);
+    backdrop-filter: blur(0.2vw) saturate(1.1);
+    -webkit-backdrop-filter: blur(0.2vw) saturate(1.1);
+}
+.catalogue-hero:hover::before {
+    animation: bar-breathe 2s ease-in-out infinite;
+}
+
+/* Course cards hover */
+.course-card:hover {
+    animation: hover-breathe 2s ease-in-out infinite;
+}
+
+/* Toolbar / search bar hover */
+.catalogue-toolbar:hover {
+    animation: hover-breathe 2s ease-in-out infinite;
+}

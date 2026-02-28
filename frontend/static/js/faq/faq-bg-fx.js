@@ -1,0 +1,153 @@
+/* ============================================
+   FAQ Background FX — Particle Nebula (Optimized)
+   120 glowing particles with sinusoidal drift,
+   pre-rendered glow sprites, edge wrapping.
+   ============================================ */
+(function () {
+    const canvas = document.getElementById('faq-fx-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let W, H, running = false, animId, lastTime = 0;
+    let particles = [];
+    let resizeTimer;
+
+    const PARTICLE_COUNT = 120;
+
+    /* ---------- Colors ---------- */
+    const CYAN   = [34, 211, 238];
+    const BLUE   = [30, 144, 255];
+    const PURPLE = [167, 139, 250];
+    const WHITE  = [220, 230, 255];
+
+    const COLOR_POOL = [
+        ...Array(5).fill(CYAN),
+        ...Array(4).fill(BLUE),
+        ...Array(2).fill(PURPLE),
+        WHITE,
+    ];
+
+    /* ---------- Pre-rendered glow sprites ---------- */
+    const glowCache = new Map();
+
+    function getGlowSprite(color, radius) {
+        const key = `${color[0]},${color[1]},${color[2]},${radius}`;
+        if (glowCache.has(key)) return glowCache.get(key);
+
+        const size = Math.ceil((radius + 14) * 2);
+        const offscreen = document.createElement('canvas');
+        offscreen.width = size;
+        offscreen.height = size;
+        const oCtx = offscreen.getContext('2d');
+        const cx = size / 2;
+
+        // Glow layer
+        oCtx.shadowBlur = 12;
+        oCtx.shadowColor = `rgba(${color[0]},${color[1]},${color[2]},0.6)`;
+        oCtx.beginPath();
+        oCtx.arc(cx, cx, radius, 0, Math.PI * 2);
+        oCtx.fillStyle = `rgba(${color[0]},${color[1]},${color[2]},1)`;
+        oCtx.fill();
+
+        glowCache.set(key, { canvas: offscreen, offset: cx });
+        return glowCache.get(key);
+    }
+
+    function initParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            const r = 1 + Math.random() * 3;
+            const color = COLOR_POOL[Math.floor(Math.random() * COLOR_POOL.length)];
+            particles.push({
+                x: W * 0.5 + Math.random() * W * 0.5,
+                y: Math.random() * H,
+                vx: (Math.random() - 0.5) * 8,
+                vy: (Math.random() - 0.5) * 8,
+                r,
+                color,
+                phase: Math.random() * Math.PI * 2,
+                freq: 0.3 + Math.random() * 0.7,
+                glow: r > 2.5 ? getGlowSprite(color, Math.round(r)) : null,
+            });
+        }
+    }
+
+    function draw(dt) {
+        ctx.clearRect(0, 0, W, H);
+
+        for (const p of particles) {
+            p.phase += dt * p.freq;
+            p.x += p.vx * dt + Math.sin(p.phase) * 0.3;
+            p.y += p.vy * dt + Math.cos(p.phase * 0.7) * 0.2;
+
+            const leftBound = W * 0.45;
+            if (p.x < leftBound) p.x = W + 10;
+            if (p.x > W + 10) p.x = leftBound;
+            if (p.y < -10) p.y = H + 10;
+            if (p.y > H + 10) p.y = -10;
+
+            const pulse = 0.6 + Math.sin(p.phase) * 0.4;
+            const alpha = 0.04 + pulse * 0.08;
+
+            if (p.glow) {
+                // Stamp pre-rendered glow sprite
+                ctx.globalAlpha = alpha;
+                ctx.drawImage(p.glow.canvas, p.x - p.glow.offset, p.y - p.glow.offset);
+                ctx.globalAlpha = 1;
+            } else {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${p.color[0]},${p.color[1]},${p.color[2]},${alpha})`;
+                ctx.fill();
+            }
+        }
+    }
+
+    function animate(now) {
+        if (!running) return;
+        const dt = Math.min((now - lastTime) / 1000, 0.05);
+        lastTime = now;
+        draw(dt);
+        animId = requestAnimationFrame(animate);
+    }
+
+    function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        glowCache.clear();
+        initParticles();
+    }
+
+    function start() {
+        if (running) return;
+        resize();
+        running = true;
+        lastTime = performance.now();
+        animId = requestAnimationFrame(animate);
+    }
+
+    function stop() {
+        running = false;
+        if (animId) { cancelAnimationFrame(animId); animId = null; }
+    }
+
+    // Debounced resize
+    window.addEventListener('resize', () => {
+        if (!running) return;
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(resize, 200);
+    }, { passive: true });
+
+    document.addEventListener('section-revealed', (e) => {
+        if (e.detail && e.detail.index === 3) start();
+        else stop();
+    });
+
+    // Also stop on tab hidden
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop();
+        // Restart handled by section-revealed when tab becomes visible
+    });
+
+    window.faqBgFx = { start, stop };
+})();

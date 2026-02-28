@@ -1,0 +1,296 @@
+/* ---- Two-Column Body ---- */
+.detail-body {
+    display: grid;
+    grid-template-columns: 1fr 14.063vw;
+    gap: 1.406vw;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Section Cards (What You'll Learn, Description, Topics) ---- */
+.detail-section-card {
+    background: rgba(6, 8, 22, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(0.625vw) saturate(1.3);
+    -webkit-backdrop-filter: blur(0.625vw) saturate(1.3);
+    padding: 1.719vw 1.875vw;
+    margin-bottom: 1.094vw;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease,
+                background 0.35s ease,
+                backdrop-filter 0.35s ease,
+                -webkit-backdrop-filter 0.35s ease;
+}
+
+.detail-section-heading {
+    font-size: 0.938vw;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 1.094vw;
+}
+
+/* ---- What You'll Learn Grid ---- */
+.detail-learn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.781vw 1.25vw;
+}
+
+.detail-learn-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.547vw;
+    font-size: 0.656vw;
+    color: var(--text-primary);
+    line-height: 1.55;
+}
+
+.detail-check-icon {
+    flex-shrink: 0;
+    color: var(--accent-cyan);
+    margin-top: 0.117vw;
+}
+
+/* ---- Description ---- */
+.detail-description {
+    font-size: 0.688vw;
+    color: var(--text-primary);
+    line-height: 1.8;
+}
+
+/* ---- Topics Heading (outside card) ---- */
+.detail-topics-heading {
+    margin-bottom: 0.781vw;
+}
+
+/* ---- Topics List ---- */
+.detail-chapters-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.391vw;
+}
+
+/* ---- Topic Card (DataCamp-style) ---- */
+.detail-chapter-card {
+    background: rgba(26, 29, 46, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 1.094vw 1.25vw;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease,
+                background 0.35s ease;
+}
+
+.detail-chapter-card:hover {
+    animation: hover-breathe 2s ease-in-out infinite;
+    background: rgba(26, 29, 46, 0.35);
+}
+
+/* -- Always-visible top section -- */
+.detail-chapter-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.625vw;
+    margin-bottom: 0.547vw;
+}
+
+.detail-chapter-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.563vw;
+    height: 1.563vw;
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.594vw;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    background: rgba(34, 211, 238, 0.08);
+    border: 1px solid rgba(34, 211, 238, 0.15);
+    border-radius: 50%;
+}
+
+.detail-chapter-title {
+    font-size: 0.719vw;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.detail-chapter-desc {
+    font-size: 0.638vw;
+    color: var(--text-primary);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* -- Separator -- */
+.detail-chapter-divider {
+    height: 1px;
+    background: rgba(34, 211, 238, 0.25);
+    margin: 0.781vw 0;
+}
+
+/* -- Bottom action row -- */
+.detail-chapter-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Toggle button (text link style) */
+.detail-chapter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.273vw;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: 0.594vw;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.detail-chapter-toggle:hover {
+    color: #67e8f9;
+}
+
+.detail-chapter-toggle-icon {
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+}
+
+.detail-chapter-card.open .detail-chapter-toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Coming soon placeholder */
+.detail-chapter-coming-soon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.513vw;
+    font-weight: 500;
+    color: rgba(148, 163, 184, 0.6);
+    letter-spacing: 0.04em;
+    font-style: italic;
+}
+
+/* Start Topic button */
+.detail-chapter-start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.313vw;
+    font-family: var(--font-mono);
+    font-size: 0.575vw;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--accent-cyan);
+    background: rgba(34, 211, 238, 0.08);
+    border: 1px solid rgba(34, 211, 238, 0.18);
+    border-radius: var(--radius-sm);
+    padding: 0.391vw 0.859vw;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.detail-chapter-start-btn:hover {
+    background: rgba(34, 211, 238, 0.15);
+    border-color: rgba(34, 211, 238, 0.3);
+    color: var(--text-primary);
+}
+
+/* -- Expandable breakdown section -- */
+.detail-chapter-breakdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.detail-chapter-breakdown-inner {
+    padding: 0.703vw 0 0.156vw 0;
+}
+
+.detail-chapter-breakdown-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Each breakdown row — icon + label + start button */
+.detail-breakdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.547vw;
+    padding: 0.547vw 0.625vw;
+    border-radius: 0.313vw;
+    transition: background 0.15s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.detail-breakdown-item:last-child {
+    border-bottom: none;
+}
+
+.detail-breakdown-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.detail-breakdown-icon {
+    flex-shrink: 0;
+    width: 0.703vw;
+    height: 0.703vw;
+    color: var(--accent-cyan);
+    opacity: 0.65;
+}
+
+.detail-breakdown-item:hover .detail-breakdown-icon {
+    opacity: 1;
+}
+
+.detail-breakdown-text {
+    flex: 1;
+    font-size: 0.656vw;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.detail-breakdown-item:hover .detail-breakdown-text {
+    color: var(--text-primary);
+}
+
+.detail-breakdown-start-btn {
+    flex-shrink: 0;
+    padding: 0.234vw 0.703vw;
+    font-size: 0.513vw;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--accent-cyan);
+    background: transparent;
+    border: 1px solid rgba(34, 211, 238, 0.25);
+    border-radius: 0.234vw;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    opacity: 0.7;
+}
+
+.detail-breakdown-item:hover .detail-breakdown-start-btn {
+    opacity: 1;
+}
+
+.detail-breakdown-start-btn:hover {
+    background: rgba(34, 211, 238, 0.1);
+    border-color: rgba(34, 211, 238, 0.45);
+    color: var(--text-primary);
+}
+
+/* Breathe hover on section cards */
+.detail-section-card:hover {
+    animation: hover-breathe 2s ease-in-out infinite;
+    background: rgba(6, 8, 22, 0.35);
+    backdrop-filter: blur(0.2vw) saturate(1.1);
+    -webkit-backdrop-filter: blur(0.2vw) saturate(1.1);
+}

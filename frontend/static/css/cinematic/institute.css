@@ -1,0 +1,156 @@
+/* ---- Institute Reveal (Studio Logo) ---- */
+.institute-reveal {
+    position: fixed;
+    z-index: 10003;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    top: calc(2.89vw + (100vh - 2.89vw) / 2);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.institute-reveal.visible {
+    animation: institute-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.institute-reveal.fade-out {
+    animation: institute-fade-out 0.6s ease forwards;
+}
+
+.institute-awm {
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 7.5vw;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    display: flex;
+}
+
+.institute-awm .decode-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0,0,0,0.15);
+    transition: color 0.1s ease;
+    position: relative;
+    text-align: center;
+    overflow: visible;
+}
+
+.institute-awm .decode-letter.scrambling {
+    font-family: var(--font-mono);
+    color: rgba(0,0,0,0.4);
+    text-shadow: none;
+}
+
+.institute-awm .decode-letter.locked {
+    font-family: var(--font-body);
+    color: #111111;
+    text-shadow: none;
+}
+
+.institute-awm .decode-letter.lock-flash {
+    animation: letter-lock-flash 0.3s ease-out forwards;
+}
+
+/* Graduate silhouette above AWM */
+.splash-grad-person {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-45%);
+    height: 100%;
+    width: auto;
+    margin-bottom: 0.3vw;
+    pointer-events: none;
+    opacity: 0;
+    animation: grad-person-in 1.4s ease forwards;
+}
+
+@keyframes grad-person-in {
+    0% { opacity: 0; transform: translateX(-45%) translateY(2.5vw); }
+    100% { opacity: 1; transform: translateX(-45%) translateY(0); }
+}
+
+/* Glitch flicker */
+.glitch-flicker {
+    position: fixed;
+    top: 2.89vw;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10005;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(
+        0deg,
+        transparent 40%,
+        rgba(0,0,0,0.02) 40.5%,
+        transparent 41%,
+        transparent 60%,
+        rgba(0,0,0,0.015) 60.5%,
+        transparent 61%
+    );
+    background-size: 100% 0.156vw;
+}
+
+.glitch-flicker.fire {
+    animation: glitch-flicker-anim 0.15s steps(2) forwards;
+}
+
+.institute-divider {
+    width: 0;
+    height: 0.039vw;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.5), rgba(0,0,0,0.5), transparent);
+    margin: 0.47vw 0;
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.institute-divider.expand {
+    width: 17.58vw;
+}
+
+.institute-name {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.25vw;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(100,100,110,0);
+    white-space: nowrap;
+}
+
+/* AWM glow burst after reveal */
+.awm-glow-burst {
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.3),
+        0 0 25px rgba(255,255,255,0.15),
+        0 0 50px rgba(255,255,255,0.06);
+    animation: glow-burst-fade 1.5s ease-out forwards;
+}
+
+/* Post-cinematic state */
+body.cinematic-done .headline-line,
+body.cinematic-done .headline-terminal,
+body.cinematic-done .hero-terminal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+}
+
+body.cinematic-done .hero-bg-canvas {
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body.cinematic-done .hero-galaxy-bg,
+body.cinematic-done .hero-grid-overlay,
+body.cinematic-done .hero-orb,
+body.cinematic-done .hero-scanlines {
+    opacity: 1;
+}

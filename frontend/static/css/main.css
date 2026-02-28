@@ -1,0 +1,83 @@
+/* ============================================
+   AWM Institute of Technology — Master Stylesheet
+   Split from monolithic main.css into feature modules
+   ============================================ */
+
+/* --- Foundation --- */
+@import url('variables.css');
+@import url('reset.css');
+@import url('layout.css');
+@import url('typography.css');
+@import url('nav.css');
+
+/* --- Fullpage Scroll System --- */
+@import url('fullpage/scroll.css');
+@import url('fullpage/transitions.css');
+@import url('fullpage/dots.css');
+
+/* --- Gateway Section (Page 0) --- */
+@import url('gateway/section.css');
+
+/* --- Hero Section (Page 1) --- */
+@import url('hero/backgrounds.css');
+@import url('hero/content.css');
+@import url('hero/text.css');
+@import url('hero/terminal.css');
+@import url('hero/misc.css');
+
+/* --- Humanoid Section (Page 2) --- */
+@import url('humanoid/section.css');
+@import url('humanoid/header.css');
+@import url('humanoid/glitch.css');
+@import url('humanoid/cards-layout.css');
+@import url('humanoid/lab-environment.css');
+@import url('humanoid/card-base.css');
+@import url('humanoid/card-frame.css');
+@import url('humanoid/card-body.css');
+@import url('humanoid/card-status.css');
+@import url('humanoid/card-typography.css');
+@import url('humanoid/card-hover.css');
+@import url('humanoid/v3-upgrades.css');
+
+/* --- Programs / Agent Command Center (Page 3) --- */
+@import url('faq/programs-section.css');
+@import url('faq/programs-cards.css');
+@import url('faq/programs-previews.css');
+
+/* --- Standalone Pages --- */
+@import url('standalone.css');
+
+/* --- Modules Catalogue --- */
+@import url('modules/catalog.css');
+@import url('modules/filters.css');
+@import url('modules/toolbar.css');
+@import url('modules/cards.css');
+@import url('modules/card-fx.css');
+@import url('modules/learning-paths.css');
+
+/* --- FAQ Section --- */
+@import url('faq/section.css');
+@import url('faq/cards.css');
+
+/* --- Chat Page --- */
+@import url('chat/layout.css');
+@import url('chat/messages.css');
+@import url('chat/messages-video.css');
+@import url('chat/input.css');
+
+/* --- Hamburger Menu --- */
+@import url('hamburger.css');
+
+/* --- Module Detail Page --- */
+@import url('module-detail/hero.css');
+@import url('module-detail/body.css');
+@import url('module-detail/sidebar.css');
+
+/* --- Module Viewer --- */
+@import url('module-viewer/layout.css');
+@import url('module-viewer/chat.css');
+@import url('module-viewer/video.css');
+@import url('module-viewer/topics.css');
+
+/* --- Responsive Breakpoints (must be last) --- */
+@import url('responsive.css');

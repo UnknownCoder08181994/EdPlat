@@ -1,0 +1,109 @@
+/* ---- Navigation ---- */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10010;
+    background: rgba(15, 15, 25, 0.45);
+    backdrop-filter: blur(20px) saturate(1.8) brightness(1.1);
+    -webkit-backdrop-filter: blur(20px) saturate(1.8) brightness(1.1);
+    border-bottom: 0.039vw solid rgba(255, 255, 255, 0.08);
+    will-change: transform;
+}
+
+.main-nav.scrolled {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2.89vw;
+    max-width: none;
+    padding-left: 12.89vw;
+    padding-right: 15vw;
+    margin: 0;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.3125vw;
+    white-space: nowrap;
+    transition: opacity var(--transition-base);
+}
+
+.nav-logo:hover { opacity: 0.8; }
+
+.logo-awm {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.8125vw;
+    letter-spacing: 0.065vw;
+    color: rgba(225, 228, 238, 0.95);
+}
+
+.logo-institute {
+    font-family: var(--font-body);
+    font-size: 0.8125vw;
+    font-weight: 300;
+    color: rgba(225, 228, 238, 0.35);
+    letter-spacing: 0.0325vw;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5625vw;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-size: 0.5625vw;
+    font-weight: 400;
+    color: rgba(225, 228, 238, 0.45);
+    letter-spacing: 0.028vw;
+    text-transform: uppercase;
+    transition: color var(--transition-base);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: rgba(225, 228, 238, 0.95);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -0.156vw;
+    left: 0;
+    width: 0;
+    height: 0.039vw;
+    background: linear-gradient(90deg, var(--accent), var(--accent-cyan));
+    transition: width var(--transition-base);
+}
+
+.nav-link:hover::after { width: 100%; }
+
+.nav-link.active {
+    color: rgba(225, 228, 238, 0.95);
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+
+.nav-glow-line {
+    height: 0.039vw;
+    background: linear-gradient(90deg, transparent, var(--accent-pink), var(--accent), var(--accent-blue), var(--accent-cyan), transparent);
+    opacity: 0.12;
+    animation: gradient-shift 8s ease infinite;
+    background-size: 200% 100%;
+}
+

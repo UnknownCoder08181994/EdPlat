@@ -1,0 +1,371 @@
+/* ---- Main Area ---- */
+.viewer-main {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: calc(3.854vw + 0.2vw) 1.875vw 0.3vw;
+}
+
+.viewer-main::-webkit-scrollbar { width: 0.313vw; }
+.viewer-main::-webkit-scrollbar-track { background: transparent; }
+.viewer-main::-webkit-scrollbar-thumb {
+    background: rgba(var(--module-accent-rgb), 0.3);
+    border-radius: 0.156vw;
+}
+
+.viewer-content {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* ---- Header ---- */
+.viewer-header {
+    margin-bottom: 0.25vw;
+}
+
+.viewer-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.417vw;
+    font-family: var(--font-mono);
+    font-size: 0.739vw;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--accent-cyan);
+    text-decoration: none;
+    margin-bottom: 0.4vw;
+    transition: color var(--transition-fast);
+}
+
+.viewer-back-link:hover {
+    color: var(--text-primary);
+}
+
+.viewer-title {
+    font-size: 1.979vw;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.15vw;
+}
+
+.viewer-subtitle {
+    font-size: 0.885vw;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin: -0.1vw 0 0.7vw;
+}
+
+/* ---- Video Wrapper (fullscreen target: video + timeline) ---- */
+.viewer-video-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+.viewer-video-wrapper:fullscreen {
+    background: #000;
+}
+
+.viewer-video-wrapper:fullscreen .viewer-video-container {
+    flex: 1;
+    border-radius: 0;
+    border: none;
+}
+
+.viewer-video-wrapper:fullscreen .viewer-video {
+    object-fit: contain;
+}
+
+.viewer-video-wrapper:fullscreen .viewer-timeline {
+    padding: 0.5vw 1.2vw 0.4vw;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.viewer-video-wrapper:fullscreen .viewer-timeline-time {
+    font-size: 0.8vw;
+    color: rgba(255, 255, 255, 0.75);
+    min-width: 2.5vw;
+}
+
+.viewer-video-wrapper:fullscreen .viewer-ctrl-btn {
+    width: 2.4vw;
+    height: 2.4vw;
+}
+
+.viewer-video-wrapper:fullscreen .viewer-video-controls {
+    bottom: 0.8vw;
+    right: 0.8vw;
+}
+
+.viewer-video-wrapper:fullscreen .viewer-timeline-labels {
+    display: none;
+}
+
+/* ---- Video Player ---- */
+.viewer-video-container {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    border-radius: 0.833vw;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid rgba(var(--module-accent-rgb), 0.1);
+    margin-bottom: 0;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.viewer-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+}
+
+.viewer-video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+
+.viewer-video-overlay.hidden { opacity: 0; pointer-events: none; }
+
+.viewer-play-btn {
+    width: 4.583vw;
+    height: 4.583vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    color: #111;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 1.563vw rgba(0, 0, 0, 0.3);
+}
+
+.viewer-play-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 2.083vw rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Video Controls (mute + fullscreen) ---- */
+.viewer-video-controls {
+    position: absolute;
+    bottom: 0.625vw;
+    right: 0.625vw;
+    display: flex;
+    gap: 0.417vw;
+    z-index: 10;
+    opacity: 0.5;
+    transition: opacity 0.25s ease;
+}
+
+.viewer-video-container:hover .viewer-video-controls {
+    opacity: 1;
+}
+
+.viewer-ctrl-btn {
+    width: 1.979vw;
+    height: 1.979vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(0.417vw);
+    -webkit-backdrop-filter: blur(0.417vw);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.viewer-ctrl-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(var(--module-accent-rgb), 0.4);
+    color: var(--module-accent);
+}
+
+/* ---- Video Timeline ---- */
+.viewer-timeline {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625vw;
+    padding: 0.729vw 0 0.313vw;
+}
+
+.viewer-timeline-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7vw;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    min-width: 2.188vw;
+    user-select: none;
+    padding-top: 0.2vw;
+}
+
+#timeline-current { text-align: right; margin-left: -0.5vw; }
+#timeline-total { text-align: left; }
+
+.viewer-timeline-bar {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+    padding: 0.521vw 0 1.875vw;
+}
+
+.viewer-timeline-track {
+    position: relative;
+    width: 100%;
+    height: 0.313vw;
+    border-radius: 0.156vw;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    overflow: visible;
+}
+
+.viewer-timeline-segment {
+    position: relative;
+    height: 100%;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+}
+
+.viewer-timeline-segment:first-child {
+    border-radius: 0.156vw 0 0 0.156vw;
+}
+
+.viewer-timeline-segment:last-child {
+    border-radius: 0 0.156vw 0.156vw 0;
+}
+
+/* Divider ticks between segments */
+.viewer-timeline-segment:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -0.208vw;
+    width: 0.104vw;
+    height: 0.729vw;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 2;
+    border-radius: 1px;
+}
+
+.viewer-timeline-segment-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    background: var(--module-accent);
+    transition: width 0.15s linear;
+}
+
+/* Completed segment: full fill */
+.viewer-timeline-segment.completed .viewer-timeline-segment-fill {
+    width: 100% !important;
+    background: var(--module-accent);
+    opacity: 0.85;
+}
+
+/* Active segment glow */
+.viewer-timeline-segment.active {
+    background: rgba(var(--module-accent-rgb), 0.12);
+}
+
+/* Future segments */
+.viewer-timeline-segment.future {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Playhead dot */
+.viewer-timeline-playhead {
+    position: absolute;
+    width: 0.729vw;
+    height: 0.729vw;
+    border-radius: 50%;
+    background: var(--module-accent);
+    box-shadow: 0 0 0.521vw rgba(var(--module-accent-rgb), 0.5);
+    top: 0.313vw;
+    transform: translateX(-50%);
+    left: 0%;
+    transition: left 0.15s linear;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.viewer-timeline-bar:hover .viewer-timeline-playhead {
+    width: 0.833vw;
+    height: 0.833vw;
+    box-shadow: 0 0 0.729vw rgba(var(--module-accent-rgb), 0.7);
+}
+
+/* Hover: expand track */
+.viewer-timeline-bar:hover .viewer-timeline-track {
+    height: 0.417vw;
+}
+
+.viewer-timeline-track {
+    transition: height 0.15s ease;
+}
+
+/* Disable playhead transition during drag */
+.viewer-timeline-playhead.dragging {
+    transition: none;
+}
+
+/* ---- Timeline Preview Tooltip ---- */
+.viewer-timeline-preview {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    transform: translateX(-50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    z-index: 20;
+    margin-bottom: 0.4vw;
+}
+
+.viewer-timeline-preview.visible {
+    display: flex;
+}
+
+.viewer-timeline-preview canvas {
+    width: 10vw;
+    border-radius: 0.3vw;
+    border: 1px solid rgba(var(--module-accent-rgb), 0.3);
+    box-shadow: 0 0.2vw 1vw rgba(0, 0, 0, 0.6);
+    background: #000;
+}
+
+.viewer-timeline-preview-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6vw;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.75);
+    padding: 0.1vw 0.35vw;
+    border-radius: 0.2vw;
+    margin-top: 0.15vw;
+}
+

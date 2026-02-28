@@ -1,0 +1,127 @@
+/* ---- Space Lab Environment — matches FAQ atmosphere ---- */
+.h2-lab-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 50% 40% at 50% 45%, rgba(34, 211, 238, 0.06) 0%, rgba(34, 211, 238, 0.02) 40%, transparent 70%),
+        radial-gradient(ellipse 45% 50% at 70% 30%, rgba(139, 92, 246, 0.05) 0%, rgba(139, 92, 246, 0.01) 40%, transparent 70%),
+        radial-gradient(ellipse 30% 25% at 50% 50%, rgba(30, 144, 255, 0.04) 0%, transparent 60%),
+        #020408;
+    z-index: 0;
+    opacity: 0;
+}
+
+.humanoid-cards-backdrop.lab-active .h2-lab-bg {
+    opacity: 1;
+}
+
+/* Grid overlay — matches FAQ grid */
+.h2-lab-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(34, 211, 238, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+    background-size: 2.344vw 2.344vw;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 15%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 15%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Neon race lines canvas — ambient data pulses along grid */
+.h2-neon-lines-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 10%, rgba(0,0,0,0.5) 35%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 10%, rgba(0,0,0,0.5) 35%, transparent 70%);
+    transition: opacity 1.5s ease;
+}
+
+/* Energy sources — reactor/nebula ambient lighting */
+.h2-lab-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Orb 1 — cyan, top right (matches FAQ) */
+.h2-lab-orb-1 {
+    width: 27.344vw;
+    height: 21.484vw;
+    background: radial-gradient(ellipse, rgba(34, 211, 238, 0.08) 0%, rgba(34, 211, 238, 0.02) 40%, transparent 70%);
+    top: -8%;
+    right: -5%;
+    left: auto;
+    transform: none;
+    filter: blur(3.906vw);
+    animation: orb-drift-2 22s ease-in-out infinite;
+}
+
+/* Orb 2 — blue, bottom left (matches FAQ) */
+.h2-lab-orb-2 {
+    width: 21.484vw;
+    height: 21.484vw;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.07) 0%, rgba(96, 165, 250, 0.02) 50%, transparent 70%);
+    bottom: -5%;
+    left: -8%;
+    right: auto;
+    filter: blur(4.297vw);
+    animation: orb-drift-1 28s ease-in-out infinite;
+}
+
+/* Orb 3 — purple, center left (matches FAQ) */
+.h2-lab-orb-3 {
+    width: 17.578vw;
+    height: 17.578vw;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+    top: 45%;
+    left: -6%;
+    filter: blur(4.688vw);
+    animation: orb-drift-1 30s ease-in-out infinite reverse;
+}
+
+/* Holographic scanlines — CRT / space station display */
+.h2-lab-scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 0.078vw,
+        rgba(34,211,238,0.012) 0.078vw,
+        rgba(34,211,238,0.012) 0.156vw
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Deep space vignette — void closing in at edges */
+.h2-lab-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 65% 60% at 50% 50%, transparent 25%, rgba(0,0,0,0.65) 100%),
+        linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 18%),
+        linear-gradient(0deg, rgba(0,0,0,0.45) 0%, transparent 14%);
+    pointer-events: none;
+    z-index: 3;
+}
+
+.humanoid-cards {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2.188vw;
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    max-width: 62.5vw;
+    margin: 2.25vw auto 0;
+    /* perspective removed — 3D tilt disabled */
+}

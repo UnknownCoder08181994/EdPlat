@@ -1,0 +1,34 @@
+/* ============================================
+   STANDALONE PAGES (Modules, Paths, FAQ)
+   ============================================ */
+body.page-standalone {
+    overflow: auto;
+}
+
+body.page-standalone .main-nav {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.standalone-page {
+    position: relative;
+    min-height: 100vh;
+    padding: 4.688vw 0 3.125vw;
+}
+
+.standalone-page .section-bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* On standalone pages, cards start visible (no fullpage reveal) */
+body.page-standalone .module-card,
+body.page-standalone .course-card,
+body.page-standalone .path-card,
+body.page-standalone .faq-item,
+body.page-standalone .faq-entry {
+    opacity: 1;
+    transform: none;
+}
+

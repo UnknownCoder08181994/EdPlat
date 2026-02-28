@@ -1,0 +1,251 @@
+/* ---- Feature Cards ---- */
+.program-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.625vw, 1.09vw, 1.094vw);
+    max-width: clamp(31.250vw, 46.9vw, 46.875vw);
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.program-card {
+    position: relative;
+    background: rgba(6, 6, 18, 0.8);
+    border: 1px solid rgba(167, 139, 250, 0.06);
+    border-radius: clamp(0.391vw, 0.63vw, 0.625vw);
+    padding: 0.078vw;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(clamp(0.938vw, 1.56vw, 1.563vw)) scale(0.97);
+}
+
+.card-inner {
+    position: relative;
+    z-index: 2;
+    background: rgba(6, 6, 18, 0.95);
+    border-radius: clamp(0.313vw, 0.55vw, 0.547vw);
+    padding: clamp(0.859vw, 1.41vw, 1.406vw) clamp(0.625vw, 1.09vw, 1.094vw) clamp(0.625vw, 1.09vw, 1.094vw);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.program-card.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.program-card:hover {
+    transform: translateY(-0.313vw) scale(1.015);
+    box-shadow:
+        0 1.172vw 3.125vw rgba(0, 0, 0, 0.7),
+        0 0 2.344vw rgba(167, 139, 250, 0.06);
+}
+
+.program-card.revealed:hover {
+    transform: translateY(-0.313vw) scale(1.015);
+}
+
+/* Animated gradient border */
+.card-animated-border {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.625vw;
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        transparent 40%,
+        rgba(167, 139, 250, 0.3) 50%,
+        transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    animation: rotate-border 4s linear infinite;
+}
+
+.program-card:hover .card-animated-border {
+    opacity: 1;
+}
+
+.featured-border {
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        transparent 30%,
+        rgba(34, 211, 238, 0.4) 45%,
+        rgba(52, 211, 153, 0.3) 55%,
+        transparent 70%
+    );
+}
+
+.card-featured .card-animated-border {
+    opacity: 0.5;
+}
+
+.card-featured:hover .card-animated-border {
+    opacity: 1;
+}
+
+/* Featured card */
+.card-featured {
+    border-color: rgba(34, 211, 238, 0.08);
+}
+
+.card-featured .card-inner {
+    background: rgba(4, 8, 22, 0.95);
+}
+
+.card-featured:hover {
+    box-shadow:
+        0 1.172vw 3.125vw rgba(0, 0, 0, 0.7),
+        0 0 2.344vw rgba(34, 211, 238, 0.08);
+}
+
+.featured-badge {
+    font-family: var(--font-body);
+    font-size: 0.363vw;
+    letter-spacing: 0.15em;
+    color: #000;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+    padding: 0.156vw 0.547vw 0.195vw;
+    border-radius: 0.781vw;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 0.625vw;
+    width: fit-content;
+}
+
+/* Card inner glow on hover */
+.card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(167, 139, 250, 0.04), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.program-card:hover .card-glow { opacity: 1; }
+.card-featured:hover .card-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.04), transparent 60%);
+}
+
+/* Card border glow */
+.card-border-glow {
+    position: absolute;
+    inset: -1px;
+    border-radius: 0.625vw;
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.12), transparent 40%, transparent 60%, rgba(96, 165, 250, 0.08));
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.program-card:hover .card-border-glow { opacity: 0.6; }
+.card-featured .card-border-glow {
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.15), transparent 40%, transparent 60%, rgba(52, 211, 153, 0.1));
+}
+
+/* Card icon */
+.card-icon {
+    position: relative;
+    width: 2.031vw;
+    height: 2.031vw;
+    border-radius: 0.547vw;
+    background: rgba(167, 139, 250, 0.06);
+    border: 1px solid rgba(167, 139, 250, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-bottom: 0.859vw;
+    transition: all 0.4s ease;
+}
+
+.icon-ring {
+    position: absolute;
+    inset: -0.156vw;
+    border-radius: 0.703vw;
+    border: 1px solid rgba(167, 139, 250, 0.05);
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+.icon-pulse {
+    position: absolute;
+    inset: -0.078vw;
+    border-radius: 0.625vw;
+    background: transparent;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+.program-card:hover .icon-ring {
+    border-color: rgba(167, 139, 250, 0.2);
+    inset: -0.273vw;
+    border-radius: 0.781vw;
+}
+
+.program-card:hover .icon-pulse {
+    inset: -0.469vw;
+    border-radius: 0.938vw;
+    box-shadow: 0 0 0.781vw rgba(167, 139, 250, 0.08);
+}
+
+.card-icon-lessons {
+    background: rgba(34, 211, 238, 0.05);
+    border-color: rgba(34, 211, 238, 0.12);
+    color: var(--accent-cyan);
+}
+
+.card-icon-lessons .icon-ring { border-color: rgba(34, 211, 238, 0.05); }
+.card-featured:hover .card-icon-lessons .icon-ring { border-color: rgba(34, 211, 238, 0.2); }
+.card-featured:hover .icon-pulse { box-shadow: 0 0 0.781vw rgba(34, 211, 238, 0.08); }
+
+.card-icon-quizzes {
+    background: rgba(52, 211, 153, 0.05);
+    border-color: rgba(52, 211, 153, 0.12);
+    color: var(--accent-green);
+}
+
+.card-icon-quizzes .icon-ring { border-color: rgba(52, 211, 153, 0.05); }
+.program-card[data-card="quizzes"]:hover .icon-ring { border-color: rgba(52, 211, 153, 0.2); }
+.program-card[data-card="quizzes"]:hover .icon-pulse { box-shadow: 0 0 0.781vw rgba(52, 211, 153, 0.08); }
+
+.program-card:hover .card-icon {
+    background: rgba(167, 139, 250, 0.12);
+    box-shadow: 0 0 0.938vw rgba(167, 139, 250, 0.1);
+    transform: scale(1.05);
+}
+
+.program-card:hover .card-icon-lessons {
+    background: rgba(34, 211, 238, 0.1);
+    box-shadow: 0 0 0.938vw rgba(34, 211, 238, 0.08);
+}
+
+.program-card:hover .card-icon-quizzes {
+    background: rgba(52, 211, 153, 0.1);
+    box-shadow: 0 0 0.938vw rgba(52, 211, 153, 0.08);
+}
+
+/* Card text */
+.card-title {
+    font-size: 0.844vw;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.391vw;
+    letter-spacing: -0.01em;
+}
+
+.card-desc {
+    font-size: 0.550vw;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 0.703vw;
+}

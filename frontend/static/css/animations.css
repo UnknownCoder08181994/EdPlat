@@ -1,0 +1,131 @@
+/* ============================================
+   AWM V2 — Animations & Keyframes
+   ============================================ */
+
+@keyframes gradient-shift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes gradient-text-shift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+@keyframes headline-blink {
+    0%, 100% { visibility: visible; }
+    50%      { visibility: hidden; }
+}
+
+@keyframes scan-line {
+    from { top: -2px; }
+    to   { top: 100%; }
+}
+
+@keyframes bounce-dots {
+    0%, 80%, 100% { transform: translateY(0); }
+    40%           { transform: translateY(-6px); }
+}
+
+@keyframes pulse-ring {
+    0%   { transform: scale(1); opacity: 0.3; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ---- V2 Background: Orb drift animations ---- */
+@keyframes orb-drift-1 {
+    0%, 100% { transform: translate(0, 0); }
+    25%      { transform: translate(40px, -30px); }
+    50%      { transform: translate(20px, 40px); }
+    75%      { transform: translate(-20px, 10px); }
+}
+
+@keyframes orb-drift-2 {
+    0%, 100% { transform: translate(0, 0); }
+    25%      { transform: translate(-30px, 20px); }
+    50%      { transform: translate(-50px, -30px); }
+    75%      { transform: translate(10px, -10px); }
+}
+
+@keyframes orb-drift-3 {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    33%      { transform: translate(-45%, -55%) scale(1.1); }
+    66%      { transform: translate(-55%, -48%) scale(0.9); }
+}
+
+/* ---- Card animated border rotation ---- */
+@property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotate-border {
+    to { --border-angle: 360deg; }
+}
+
+/* ---- Typing bounce dots ---- */
+@keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.3; }
+    30%           { transform: translateY(-4px); opacity: 0.9; }
+}
+
+/* ---- Score counter pulse ---- */
+@keyframes score-glow {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(52, 211, 153, 0.2)); }
+    50%      { filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.5)); }
+}
+
+/* ---- Chat page: Agent status dot pulse ---- */
+@keyframes status-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.4); }
+    50%      { opacity: 0.7; box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+}
+
+/* ---- Chat page: Welcome icon pulse rings ---- */
+@keyframes welcome-ring-pulse {
+    0%   { transform: scale(1); opacity: 0.35; }
+    100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ---- Chat page: Message entrance (spring-like) ---- */
+@keyframes msg-materialize {
+    0%   { opacity: 0; transform: translateY(14px) scale(0.97); }
+    50%  { opacity: 1; transform: translateY(-3px) scale(1.01); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---- Chat page: Chip stagger entrance ---- */
+@keyframes chip-stagger-in {
+    0%   { opacity: 0; transform: translateY(18px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---- Chat page: Welcome elements stagger ---- */
+@keyframes welcome-fade-up {
+    0%   { opacity: 0; transform: translateY(24px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Chat page: Chip sweep highlight ---- */
+@keyframes chip-sweep {
+    0%   { left: -100%; }
+    100% { left: 200%; }
+}
+
+/* ---- Chat page: Typing glow pulse ---- */
+@keyframes typing-glow-pulse {
+    0%, 100% { border-color: rgba(34, 211, 238, 0.08); }
+    50%      { border-color: rgba(34, 211, 238, 0.2); }
+}

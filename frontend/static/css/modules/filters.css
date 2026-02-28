@@ -1,0 +1,47 @@
+/* ---- Filter Pills ---- */
+.catalogue-filters-row {
+    margin-bottom: 0.725vw;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, black 0.907vw, black calc(100% - 0.907vw), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, black 0.907vw, black calc(100% - 0.907vw), transparent 100%);
+}
+
+.catalogue-filters-track {
+    display: flex;
+    gap: 0.453vw;
+    overflow-x: auto;
+    padding: 0.181vw 0.907vw;
+    scrollbar-width: none;
+}
+
+.catalogue-filters-track::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-pill {
+    flex-shrink: 0;
+    font-size: 0.725vw;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--text-secondary);
+    background: rgba(10, 10, 24, 0.7);
+    border: 1px solid rgba(34, 211, 238, 0.12);
+    border-radius: 0.907vw;
+    padding: 0.453vw 1.178vw;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.filter-pill:hover {
+    color: var(--text-primary);
+    border-color: rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.06);
+}
+
+.filter-pill.active {
+    color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    background: rgba(34, 211, 238, 0.08);
+    box-shadow: 0 0 0.625vw rgba(34, 211, 238, 0.12);
+}
+

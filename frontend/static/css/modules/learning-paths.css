@@ -1,0 +1,268 @@
+/* ============================================
+   LEARNING PATHS (Page 3 / data-section="3")
+   ============================================ */
+#paths {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paths-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.938vw;
+    max-width: 46.875vw;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.path-card {
+    position: relative;
+    background: rgba(6, 6, 18, 0.85);
+    border: 1px solid rgba(167, 139, 250, 0.06);
+    border-radius: 0.625vw;
+    padding: 0.078vw;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    transform: translateY(1.563vw) scale(0.97);
+}
+
+.path-card.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.path-card:hover {
+    transform: translateY(-0.234vw) scale(1.01);
+    box-shadow: 0 0.977vw 2.344vw rgba(0, 0, 0, 0.6), 0 0 1.953vw rgba(167, 139, 250, 0.05);
+}
+
+.path-card-inner {
+    background: rgba(6, 6, 18, 0.95);
+    border-radius: 0.547vw;
+    padding: 1.25vw 0.938vw 0.938vw;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Featured path (middle card) */
+.path-card.path-featured {
+    border-color: rgba(34, 211, 238, 0.1);
+}
+
+.path-card.path-featured .path-card-inner {
+    background: rgba(4, 8, 22, 0.95);
+}
+
+.path-card.path-featured:hover {
+    box-shadow: 0 0.977vw 2.344vw rgba(0, 0, 0, 0.6), 0 0 1.953vw rgba(34, 211, 238, 0.06);
+}
+
+/* Animated border on featured */
+.path-card .path-animated-border {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.625vw;
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        transparent 40%,
+        rgba(167, 139, 250, 0.3) 50%,
+        transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    animation: rotate-border 4s linear infinite;
+}
+
+.path-card:hover .path-animated-border {
+    opacity: 1;
+}
+
+.path-card.path-featured .path-animated-border {
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        transparent 30%,
+        rgba(34, 211, 238, 0.4) 45%,
+        rgba(52, 211, 153, 0.3) 55%,
+        transparent 70%
+    );
+    opacity: 0.4;
+}
+
+.path-card.path-featured:hover .path-animated-border {
+    opacity: 1;
+}
+
+.path-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.391vw;
+    margin-bottom: 0.625vw;
+}
+
+.path-difficulty {
+    font-size: 0.375vw;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.117vw 0.391vw;
+    border-radius: 0.469vw;
+}
+
+.path-difficulty.beginner {
+    color: var(--accent-green);
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.15);
+}
+
+.path-difficulty.intermediate {
+    color: var(--accent-cyan);
+    background: rgba(34, 211, 238, 0.08);
+    border: 1px solid rgba(34, 211, 238, 0.15);
+}
+
+.path-difficulty.advanced {
+    color: var(--accent-pink);
+    background: rgba(244, 114, 182, 0.08);
+    border: 1px solid rgba(244, 114, 182, 0.15);
+}
+
+.path-popular-badge {
+    font-size: 0.344vw;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #000;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+    padding: 0.117vw 0.391vw;
+    border-radius: 0.469vw;
+}
+
+.path-title {
+    font-size: 0.813vw;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.313vw;
+    letter-spacing: -0.01em;
+}
+
+.path-desc {
+    font-size: 0.531vw;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 0.859vw;
+}
+
+/* Step progression timeline */
+.path-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 0.781vw;
+    flex: 1;
+}
+
+.path-step {
+    display: flex;
+    align-items: center;
+    gap: 0.547vw;
+    position: relative;
+    padding: 0.313vw 0;
+}
+
+.step-node-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 0.781vw;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.step-node {
+    width: 0.391vw;
+    height: 0.391vw;
+    border-radius: 50%;
+    background: rgba(167, 139, 250, 0.2);
+    border: 1.5px solid rgba(167, 139, 250, 0.4);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.path-featured .step-node {
+    background: rgba(34, 211, 238, 0.2);
+    border-color: rgba(34, 211, 238, 0.4);
+}
+
+.path-card:hover .step-node {
+    background: rgba(167, 139, 250, 0.4);
+    box-shadow: 0 0 0.313vw rgba(167, 139, 250, 0.3);
+}
+
+.path-featured:hover .step-node {
+    background: rgba(34, 211, 238, 0.4);
+    box-shadow: 0 0 0.313vw rgba(34, 211, 238, 0.3);
+}
+
+/* Connecting line between nodes */
+.step-line {
+    width: 1.5px;
+    height: 100%;
+    background: rgba(167, 139, 250, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.path-featured .step-line {
+    background: rgba(34, 211, 238, 0.1);
+}
+
+.path-step:last-child .step-line {
+    display: none;
+}
+
+.step-label {
+    font-size: 0.488vw;
+    color: var(--text-secondary);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.path-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.313vw;
+    font-size: 0.531vw;
+    font-weight: 600;
+    color: var(--accent);
+    transition: all 0.3s ease;
+    padding-top: 0.625vw;
+    border-top: 1px solid rgba(167, 139, 250, 0.05);
+    margin-top: auto;
+}
+
+.path-featured .path-action {
+    color: var(--accent-cyan);
+    border-top-color: rgba(34, 211, 238, 0.05);
+}
+
+.path-action:hover {
+    color: var(--text-primary);
+    gap: 0.469vw;
+}
+
+.path-action .action-arrow {
+    transition: transform 0.3s ease;
+}
+
+.path-card:hover .path-action .action-arrow {
+    transform: translateX(0.156vw);
+}

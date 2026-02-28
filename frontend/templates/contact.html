@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — AWM Institute of Technology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.built.css') }}?v=346">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="prefetch" href="/?skip">
+    <link rel="prefetch" href="/chat">
+    <link rel="prefetch" href="/modules">
+</head>
+<body class="dark-theme page-standalone page-modules">
+    <div id="app">
+        <!-- Nav -->
+        <nav class="main-nav scrolled" id="main-nav">
+            <div class="nav-inner container">
+                <a href="/" class="nav-logo">
+                    <span class="logo-awm">AWM</span>
+                    <span class="logo-institute">Institute of Technology</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/?skip" class="nav-link">Home</a></li>
+                    <li><a href="/chat" class="nav-link">Chat</a></li>
+                    <li><a href="/modules" class="nav-link">Modules</a></li>
+                    <li><a href="/tutorials" class="nav-link">Tutorials</a></li>
+                    <li><a href="/contact" class="nav-link active">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-glow-line"></div>
+        </nav>
+
+        <!-- Contact Page -->
+        <div class="standalone-page" id="modules">
+            <div class="section-bg">
+                <div class="modules-grid-bg"></div>
+                <div class="modules-grid-sweep"></div>
+            </div>
+
+            <div class="section-content container">
+                <div class="contact-layout">
+
+                    <!-- Left: Info + Form -->
+                    <div class="contact-left">
+                        <h1 class="contact-title">Contact</h1>
+                        <p class="contact-desc" id="contact-typewriter"></p>
+
+                        <form class="contact-form" onsubmit="return false;">
+                            <div class="contact-field">
+                                <label class="contact-label">Name</label>
+                                <input type="text" class="contact-input" autocomplete="name">
+                            </div>
+                            <div class="contact-field">
+                                <label class="contact-label">E-Mail</label>
+                                <input type="email" class="contact-input" autocomplete="email">
+                            </div>
+                            <div class="contact-field">
+                                <label class="contact-label">Message</label>
+                                <textarea class="contact-textarea"></textarea>
+                            </div>
+                            <button type="submit" class="contact-submit">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                Send Via Email
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Right: Avatar + Info -->
+                    <div class="contact-right">
+                        <img class="contact-avatar" src="{{ url_for('static', filename='pictures/shane_avatar.png') }}" alt="Shane Anderson">
+                        <span class="contact-name">Shane Anderson</span>
+                        <span class="contact-role">AI/ML Data Operations Lead<br>Operational Transformation & Strategy</span>
+                        <a href="mailto:shane.anderson@jpmchase.com" class="contact-email">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            shane.anderson@jpmchase.com
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-fade-overlay" id="page-fade-overlay"></div>
+    <script>
+    (function() {
+        const overlay = document.getElementById('page-fade-overlay');
+        if (!overlay) return;
+        overlay.style.opacity = '1';
+        overlay.style.transition = 'opacity 0.35s ease';
+        requestAnimationFrame(() => { requestAnimationFrame(() => {
+            overlay.style.opacity = '0';
+            overlay.addEventListener('transitionend', () => { overlay.style.pointerEvents = 'none'; }, { once: true });
+        }); });
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href]');
+            if (!link) return;
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('javascript') || link.target === '_blank') return;
+            if (href.startsWith('http') && !href.startsWith(location.origin)) return;
+            e.preventDefault();
+            overlay.style.pointerEvents = 'all';
+            overlay.style.opacity = '1';
+            setTimeout(() => { window.location.href = href; }, 350);
+        });
+    })();
+    </script>
+    <script src="{{ url_for('static', filename='js/modules/card-fx.js') }}"></script>
+    <script>
+    (function() {
+        const lines = [
+            "Let's connect!",
+            "We're here to help, and we'd love to hear from you!",
+            "Whether you have a question, a comment, or just want to chat."
+        ];
+        const el = document.getElementById('contact-typewriter');
+        if (!el) return;
+        el.classList.add('typing');
+        let lineIdx = 0, charIdx = 0, built = '';
+        function type() {
+            if (lineIdx < lines.length) {
+                if (charIdx < lines[lineIdx].length) {
+                    built += lines[lineIdx].charAt(charIdx);
+                    el.innerHTML = built + '<span class="tw-cursor"></span>';
+                    charIdx++;
+                    setTimeout(type, 28);
+                } else {
+                    lineIdx++;
+                    charIdx = 0;
+                    if (lineIdx < lines.length) {
+                        built += '<br>';
+                        el.innerHTML = built + '<span class="tw-cursor"></span>';
+                        setTimeout(type, 300);
+                    } else {
+                        el.innerHTML = built;
+                        setTimeout(() => el.classList.remove('typing'), 400);
+                    }
+                }
+            }
+        }
+        setTimeout(type, 400);
+    })();
+    </script>
+</body>
+</html>

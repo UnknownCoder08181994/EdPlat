@@ -1,0 +1,155 @@
+/* ---- Hero Inline Terminal (Galactic style) ---- */
+.headline-terminal {
+    display: inline-block;
+    background:
+        radial-gradient(ellipse 60% 80% at 15% 50%, rgba(139, 92, 246, 0.35), transparent),
+        radial-gradient(ellipse 50% 70% at 85% 25%, rgba(34, 211, 238, 0.25), transparent),
+        radial-gradient(ellipse 40% 60% at 50% 90%, rgba(96, 165, 250, 0.2), transparent),
+        radial-gradient(circle at 70% 60%, rgba(192, 132, 252, 0.15), transparent 40%),
+        radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.1), transparent 40%),
+        linear-gradient(135deg, rgba(5, 2, 15, 0.97), rgba(10, 5, 25, 0.97), rgba(5, 8, 20, 0.97));
+    border: 1px solid rgba(139, 92, 246, 0.35);
+    border-radius: 0.23vw;
+    overflow: hidden;
+    margin-top: 0.625vw;
+    box-shadow:
+        0 0.313vw 1.953vw rgba(0, 0, 0, 0.7),
+        0 0 1.563vw rgba(139, 92, 246, 0.15),
+        0 0 3.125vw rgba(34, 211, 238, 0.08),
+        0 0 4.688vw rgba(139, 92, 246, 0.05),
+        inset 0 0 2.344vw rgba(139, 92, 246, 0.06),
+        inset 0 0 1.172vw rgba(34, 211, 238, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.headline-terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.31vw;
+    padding: 0.31vw 0.55vw;
+    background: linear-gradient(90deg, rgba(30, 20, 60, 0.6), rgba(45, 30, 80, 0.55), rgba(30, 20, 60, 0.6));
+    border-bottom: 0.078vw solid;
+    border-image: linear-gradient(90deg, rgba(139,92,246,0.1), rgba(34,211,238,0.6), rgba(139,92,246,0.8), rgba(34,211,238,0.6), rgba(139,92,246,0.1)) 1;
+    box-shadow: 0 0.078vw 0.781vw rgba(139, 92, 246, 0.2), 0 1px 0.391vw rgba(34, 211, 238, 0.1);
+}
+
+.headline-terminal-title {
+    font-family: var(--font-mono);
+    font-size: 0.5vw;
+    color: rgba(200, 200, 200, 0.9);
+    letter-spacing: 0.02em;
+    flex: 1;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 0.117vw;
+    text-decoration-color: rgba(200, 200, 200, 0.4);
+}
+
+.headline-terminal-controls {
+    display: flex;
+    gap: 0.156vw;
+    align-items: center;
+}
+
+.term-ctrl {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.86vw;
+    height: 0.78vw;
+    border: 1px solid rgba(180, 180, 200, 0.5);
+    background: rgba(20, 15, 40, 0.4);
+    color: rgba(200, 200, 220, 0.8);
+    font-size: 0.44vw;
+    cursor: default;
+    line-height: 1;
+}
+
+.term-close {
+    color: rgba(200, 200, 220, 0.8);
+}
+
+.headline-terminal-body {
+    padding: 0.78vw 1.09vw;
+    font-family: var(--font-mono);
+    font-size: 4.06vw;
+    font-weight: 400;
+    color: #0ff;
+    white-space: nowrap;
+    text-shadow:
+        0 0 0.313vw rgba(0, 255, 255, 0.4),
+        0 0 0.781vw rgba(0, 255, 255, 0.2),
+        0 0 1.563vw rgba(139, 92, 246, 0.15),
+        0 0 2.344vw rgba(34, 211, 238, 0.08);
+    position: relative;
+}
+
+/* Star field */
+.headline-terminal-body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        /* Bright stars */
+        radial-gradient(1.5px 1.5px at 5% 15%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 12% 65%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1.5px 1.5px at 22% 35%, rgba(255,255,255,0.35), transparent),
+        radial-gradient(1px 1px at 35% 80%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(0.078vw 0.078vw at 42% 10%, rgba(192,132,252,0.5), transparent),
+        radial-gradient(1px 1px at 50% 55%, rgba(255,255,255,0.35), transparent),
+        radial-gradient(1.5px 1.5px at 58% 25%, rgba(34,211,238,0.4), transparent),
+        radial-gradient(1px 1px at 65% 75%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 72% 45%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(0.078vw 0.078vw at 78% 15%, rgba(139,92,246,0.45), transparent),
+        radial-gradient(1px 1px at 85% 60%, rgba(255,255,255,0.35), transparent),
+        radial-gradient(1.5px 1.5px at 92% 30%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 95% 85%, rgba(34,211,238,0.35), transparent),
+        radial-gradient(1px 1px at 18% 90%, rgba(255,255,255,0.25), transparent),
+        radial-gradient(1.5px 1.5px at 68% 5%, rgba(255,255,255,0.4), transparent),
+        /* Nebula glow patches */
+        radial-gradient(ellipse 30% 40% at 20% 40%, rgba(139,92,246,0.12), transparent),
+        radial-gradient(ellipse 25% 35% at 75% 60%, rgba(34,211,238,0.08), transparent);
+    pointer-events: none;
+    z-index: 0;
+    animation: terminal-stars-twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes terminal-stars-twinkle {
+    0%   { opacity: 0.7; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+.headline-typed {
+    display: inline;
+}
+
+.headline-cursor {
+    display: inline;
+    color: #0ff;
+    font-weight: 400;
+    visibility: hidden;
+    margin-left: 0.078vw;
+    font-size: 1em;
+    line-height: 1;
+    text-shadow: 0 0 0.313vw rgba(0, 255, 255, 0.5);
+}
+
+.headline-cursor.visible {
+    visibility: visible;
+    animation: headline-blink 1s step-end infinite;
+}
+
+.headline-cursor.fade-out {
+    animation: cursor-fade-out 0.5s ease forwards;
+}
+
+@keyframes cursor-fade-out {
+    0% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+/* ---- V1 Hero Terminal ---- */
+.hero-terminal {
+    width: 100%;
+}

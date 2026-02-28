@@ -1,0 +1,235 @@
+/* ============================================
+   GATEWAY SECTION (Page 0) — Modern Digital Intelligence
+   Clean white split-layout: text left, image mosaic right.
+   ============================================ */
+
+/* ---- Section base ---- */
+#gateway {
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: var(--font-body);
+}
+
+/* ---- Grid background ---- */
+.gw-grid-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+        linear-gradient(rgba(140, 145, 160, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(140, 145, 160, 0.12) 1px, transparent 1px);
+    background-size: 2.4vw 2.4vw;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* ---- Grid sweep — silver grid lines revealed by moving mask ---- */
+.gw-grid-sweep {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(160, 165, 180, 0.7) 1.5px, transparent 1.5px),
+        linear-gradient(90deg, rgba(160, 165, 180, 0.7) 1.5px, transparent 1.5px);
+    background-size: 2.4vw 2.4vw;
+    -webkit-mask-image:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(0,0,0,0.4) 5%,
+            black 10%,
+            black 14%,
+            rgba(0,0,0,0.4) 19%,
+            transparent 24%
+        );
+    -webkit-mask-size: 300% 100%;
+    -webkit-mask-repeat: no-repeat;
+    animation: gw-sweep 10s linear infinite;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+/* Grid lines show when gateway is revealed (NOT fp-active — that fires too early) */
+#gateway.gw-revealed .gw-grid-bg {
+    opacity: 1;
+}
+
+/* Sweep starts when PCB pulse dots begin (Phase 2) */
+#gateway.gw-sweep-active .gw-grid-sweep {
+    opacity: 1;
+}
+
+@keyframes gw-sweep {
+    0%   { -webkit-mask-position: 100% 0; }
+    50%  { -webkit-mask-position: -50% 0; }
+    100% { -webkit-mask-position: -50% 0; }
+}
+
+/* ---- Split container ---- */
+.gw-split {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 72.9vw;
+    height: 78%;
+    display: flex;
+    align-items: center;
+    gap: 3.5vw;
+}
+
+/* ---- Left: text content ---- */
+.gw-left {
+    flex: 0 0 46%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.6vw;
+}
+
+.gw-heading {
+    font-family: var(--font-body);
+    font-size: 3.05vw;
+    font-weight: 700;
+    font-style: normal;
+    color: #111;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+
+.gw-subtitle {
+    color: #666;
+    font-size: 0.88vw;
+    font-weight: 400;
+    line-height: 1.7;
+    max-width: 30vw;
+    margin: 0;
+    min-height: 4.6vw;
+}
+
+.gw-cursor {
+    display: inline-block;
+    width: 0.44vw;
+    height: 0.92vw;
+    background: rgba(160,165,175,0.7);
+    vertical-align: text-bottom;
+    margin-left: 0.05vw;
+    animation: gw-blink 0.8s step-end infinite;
+}
+
+@keyframes gw-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Buttons row */
+.gw-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+    margin-top: 0.6vw;
+}
+
+.gw-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35vw;
+    padding: 0.82vw 1.8vw;
+    border-radius: 5.2vw;
+    font-size: 0.88vw;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+}
+
+.gw-btn-primary {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+.gw-btn-primary:hover {
+    background: #333;
+    border-color: #333;
+}
+
+.gw-btn-outline {
+    background: #fff;
+    color: #111;
+    border-color: #ccc;
+}
+
+.gw-btn-outline:hover {
+    border-color: #888;
+    background: #fafafa;
+}
+
+/* ---- Right: image mosaic ---- */
+.gw-right {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1vw;
+}
+
+.gw-img {
+    border-radius: 1vw;
+    overflow: hidden;
+    position: relative;
+    background: #ddd;
+}
+
+.gw-img canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Grid placement */
+.gw-img:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.gw-img:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.gw-img:nth-child(3) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+}
+
+/* ---- Gateway entrance animation ---- */
+/* Content hidden initially, revealed by fp-active or gw-revealed */
+.gw-left {
+    opacity: 0;
+    transform: translateY(1.5vw);
+    transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+}
+
+.gw-right {
+    opacity: 0;
+    transform: translateX(2vw);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#gateway.gw-revealed .gw-left {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#gateway.gw-revealed .gw-right {
+    opacity: 1;
+    transform: translateX(0);
+}
