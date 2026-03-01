@@ -4,7 +4,7 @@
    with dot navigation and reveal animations.
    Inactive sections have content hidden (display:none)
    for performance — only active section is rendered.
-   Section indices: 0=Gateway, 1=Humanoid, 2=FAQ
+   Section indices: 0=Gateway, 1=Vision, 2=FAQ
    ============================================ */
 
 class FullpageScroll {
@@ -34,7 +34,7 @@ class FullpageScroll {
                 section.classList.add('fp-active');
             } else {
                 section.classList.add('fp-below');
-                section.querySelector('.section-content, .humanoid-content, .gw-split')
+                section.querySelector('.section-content, .vision-content, .gw-split')
                     ?.classList.add('fp-hidden');
             }
         });
@@ -91,17 +91,17 @@ class FullpageScroll {
             });
 
             // Unhide next section content
-            const nextContent = nextSection.querySelector('.section-content, .humanoid-content, .gw-split');
+            const nextContent = nextSection.querySelector('.section-content, .vision-content, .gw-split');
             if (nextContent) {
                 nextContent.classList.remove('fp-hidden');
                 void nextContent.offsetHeight; // commit opacity:0 to render
             }
 
             // Kill prev section content
-            const prevContent = prevSection.querySelector('.section-content, .humanoid-content, .gw-split');
+            const prevContent = prevSection.querySelector('.section-content, .vision-content, .gw-split');
             if (prevContent) prevContent.classList.add('fp-hidden');
 
-            // Resume neon grid lines when entering humanoid (page 1)
+            // Resume neon grid lines when entering vision (page 1)
             if (index === 1) {
                 try { if (window.neonGridLines) window.neonGridLines.resume(); } catch (_) {}
             }
@@ -112,7 +112,7 @@ class FullpageScroll {
                 if (globeVid) globeVid.play();
             }
 
-            // Pause ALL humanoid (page 1) videos when leaving
+            // Pause ALL vision (page 1) videos when leaving
             if (prev === 1) {
                 const labVid = document.querySelector('.h2-lab-video');
                 if (labVid) labVid.pause();

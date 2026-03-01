@@ -36,7 +36,7 @@ class NeonGridLines {
     }
 
     init() {
-        const section = document.getElementById('humanoid');
+        const section = document.getElementById('vision');
         if (!section || this.canvas) return;
 
         this.canvas = document.createElement('canvas');

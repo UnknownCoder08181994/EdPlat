@@ -33,6 +33,15 @@
     inset: 0;
     z-index: 1;
     pointer-events: none;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+.gw-grid-sweep::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-image:
         linear-gradient(rgba(160, 165, 180, 0.7) 1.5px, transparent 1.5px),
         linear-gradient(90deg, rgba(160, 165, 180, 0.7) 1.5px, transparent 1.5px);
@@ -48,9 +57,10 @@
         );
     -webkit-mask-size: 300% 100%;
     -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: 100% 0;
+    will-change: transform;
     animation: gw-sweep 10s linear infinite;
-    opacity: 0;
-    transition: opacity 1.2s ease;
+    animation-play-state: paused;
 }
 
 /* Grid lines show when gateway is revealed (NOT fp-active — that fires too early) */
@@ -61,6 +71,11 @@
 /* Sweep starts when PCB pulse dots begin (Phase 2) */
 #gateway.gw-sweep-active .gw-grid-sweep {
     opacity: 1;
+}
+
+/* Only animate when section is visible */
+#gateway.fp-active .gw-grid-sweep::before {
+    animation-play-state: running;
 }
 
 @keyframes gw-sweep {
@@ -111,20 +126,7 @@
     min-height: 4.6vw;
 }
 
-.gw-cursor {
-    display: inline-block;
-    width: 0.44vw;
-    height: 0.92vw;
-    background: rgba(160,165,175,0.7);
-    vertical-align: text-bottom;
-    margin-left: 0.05vw;
-    animation: gw-blink 0.8s step-end infinite;
-}
-
-@keyframes gw-blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
+/* Cursor removed — subtitle now fades in instead of typewriter */
 
 /* Buttons row */
 .gw-buttons {

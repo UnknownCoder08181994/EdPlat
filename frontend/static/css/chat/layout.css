@@ -9,6 +9,14 @@ body.page-chat {
 .chat-grid-breathe {
     position: absolute;
     inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.chat-grid-breathe::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-image:
         linear-gradient(rgba(34, 211, 238, 0.25) 1px, transparent 1px),
         linear-gradient(90deg, rgba(34, 211, 238, 0.25) 1px, transparent 1px);
@@ -40,6 +48,7 @@ body.page-chat {
     -webkit-mask-size: 300% 100%, 100% 100%;
     mask-repeat: no-repeat, no-repeat;
     -webkit-mask-repeat: no-repeat, no-repeat;
+    will-change: transform;
     animation: grid-breathe 19s linear infinite;
 }
 

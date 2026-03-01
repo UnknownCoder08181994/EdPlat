@@ -1,0 +1,105 @@
+/* === V3 Glitch Effect — silver tones for light theme === */
+@keyframes glitch-trigger {
+    0%, 95.9%, 100% {
+        text-shadow: none;
+        transform: none;
+    }
+    96% {
+        text-shadow: -0.117vw 0 rgba(140,145,160,0.4), 0.117vw 0 rgba(100,105,120,0.3);
+        transform: translate(0.078vw, -0.039vw);
+    }
+    96.5% {
+        text-shadow: 0.117vw 0 rgba(140,145,160,0.4), -0.078vw 0 rgba(100,105,120,0.3);
+        transform: translate(-0.078vw, 0.039vw);
+    }
+    97% {
+        text-shadow: -0.078vw 0 rgba(140,145,160,0.4), 0.078vw 0 rgba(100,105,120,0.3);
+        transform: translate(0, -0.078vw);
+    }
+    97.5% {
+        text-shadow: 0.156vw 0 rgba(140,145,160,0.4), -0.117vw 0 rgba(100,105,120,0.3);
+        transform: translate(-0.117vw, 0.039vw);
+    }
+    98% {
+        text-shadow: -0.039vw 0 rgba(140,145,160,0.4), 0.039vw 0 rgba(100,105,120,0.3);
+        transform: translate(0.117vw, 0);
+    }
+    98.5% {
+        text-shadow: 0.078vw 0 rgba(140,145,160,0.4), -0.156vw 0 rgba(100,105,120,0.3);
+        transform: translate(-0.039vw, -0.039vw);
+    }
+    99% {
+        text-shadow: -0.117vw 0 rgba(140,145,160,0.4), 0.078vw 0 rgba(100,105,120,0.3);
+        transform: translate(0.039vw, 0.078vw);
+    }
+    99.5% {
+        text-shadow: 0.039vw 0 rgba(140,145,160,0.4), -0.039vw 0 rgba(100,105,120,0.3);
+        transform: translate(-0.039vw, 0);
+    }
+    99.8% {
+        text-shadow: none;
+        transform: none;
+    }
+}
+/* === V3 Glitch Effect END === */
+
+/* Subtitle */
+.vision-subtitle {
+    font-size: 0.742vw;
+    line-height: 1.7;
+    color: #555;
+    max-width: 32.031vw;
+    margin: 1.25vw auto 0.391vw;
+    min-height: 3.4em;
+}
+
+.hsub-cursor {
+    display: inline-block;
+    color: rgba(100, 105, 120, 0.6);
+    font-weight: 300;
+    animation: hsub-blink 0.7s step-end infinite;
+    margin-left: 1px;
+}
+
+@keyframes hsub-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Stat pills */
+.vision-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25vw;
+}
+
+.vision-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.31vw;
+    padding: 0 0.47vw;
+}
+
+.vision-stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.5vw;
+    font-weight: 600;
+    color: rgba(100,105,120,0.8);
+    letter-spacing: 0.05em;
+}
+
+.vision-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.313vw;
+    color: rgba(100,105,120,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.vision-stat-sep {
+    width: 1px;
+    height: 1.09vw;
+    background: rgba(100,105,120,0.12);
+}

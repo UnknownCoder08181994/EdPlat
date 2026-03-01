@@ -70,8 +70,8 @@
         padding: 0.625vw 0.781vw;
     }
 
-    /* Humanoid: stack cards */
-    .humanoid-cards {
+    /* Vision: stack cards */
+    .vision-cards {
         flex-direction: column;
         align-items: center;
         gap: 1.25vw;
@@ -82,11 +82,11 @@
         max-width: 18.359vw;
     }
 
-    .humanoid-title {
+    .vision-title {
         font-size: 1.5vw;
     }
 
-    .humanoid-content {
+    .vision-content {
         gap: 1.094vw;
         padding: 0.781vw 0;
     }
@@ -171,16 +171,16 @@
         font-size: 0.438vw;
     }
 
-    /* Humanoid */
-    .humanoid-header {
+    /* Vision */
+    .vision-header {
         max-width: 100%;
     }
 
-    .humanoid-title {
+    .vision-title {
         font-size: 1.25vw;
     }
 
-    .humanoid-subtitle {
+    .vision-subtitle {
         font-size: 0.625vw;
     }
 
@@ -336,17 +336,17 @@
         font-size: 0.375vw;
     }
 
-    /* Humanoid */
-    .humanoid-title {
+    /* Vision */
+    .vision-title {
         font-size: 1vw;
     }
 
-    .humanoid-subtitle {
+    .vision-subtitle {
         font-size: 0.563vw;
         min-height: auto;
     }
 
-    .humanoid-content {
+    .vision-content {
         gap: 0.781vw;
         padding: 0.586vw 0;
     }

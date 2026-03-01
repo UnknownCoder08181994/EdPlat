@@ -1,0 +1,67 @@
+/* ---- Typography ---- */
+.hcard-title {
+    font-size: 0.688vw;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 0;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    line-height: 1.2;
+}
+
+/* Accent rule between title & desc — silver */
+.hcard-rule {
+    height: 1px;
+    margin: 0.625vw 0;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.hcard[data-accent="cyan"] .hcard-rule {
+    background: linear-gradient(90deg, rgba(140,145,160,0.4), rgba(140,145,160,0.03) 85%, transparent);
+}
+.hcard[data-accent="purple"] .hcard-rule {
+    background: linear-gradient(90deg, rgba(140,145,160,0.4), rgba(140,145,160,0.03) 85%, transparent);
+}
+.hcard[data-accent="mixed"] .hcard-rule {
+    background: linear-gradient(90deg, rgba(140,145,160,0.4), rgba(140,145,160,0.03) 85%, transparent);
+}
+
+.hcard-desc {
+    font-size: 0.635vw;
+    color: #555;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    max-width: 15.6vw;
+    margin: 0;
+}
+
+/* ---- Bottom data readout ---- */
+.hcard-readout {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 0.547vw;
+    padding: 0 1.406vw 0.78vw 1.406vw;
+}
+
+.hcard-readout-item {
+    font-family: var(--font-mono);
+    font-size: 0.313vw;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(100,105,120,0.3);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.hcard-readout-sep {
+    display: inline-block;
+    width: 0.117vw;
+    height: 0.117vw;
+    border-radius: 50%;
+    background: rgba(100,105,120,0.15);
+    flex-shrink: 0;
+}

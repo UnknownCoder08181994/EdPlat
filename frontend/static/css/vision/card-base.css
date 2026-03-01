@@ -1,0 +1,37 @@
+/* ---- Card base ---- */
+.hcard {
+    position: relative;
+    width: 18.36vw;
+    opacity: 0;
+    transform: scale(0) translateY(1.563vw);
+    pointer-events: none;
+    transform-style: preserve-3d;
+    transition: box-shadow 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                filter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.313vw;
+}
+
+.hcard.summoned {
+    pointer-events: auto;
+    animation: hcard-materialize 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes hcard-materialize {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateY(1.563vw);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1.06) translateY(-0.156vw);
+    }
+    70% {
+        transform: scale(0.98) translateY(0.078vw);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}

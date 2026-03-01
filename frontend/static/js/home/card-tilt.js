@@ -34,7 +34,7 @@ class CardTilt {
         // Skip on touch devices — tilt is mouse-only
         if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
 
-        this.container = document.getElementById('humanoid-cards');
+        this.container = document.getElementById('vision-cards');
         if (!this.container) return;
 
         this.cards = [...this.container.querySelectorAll('.hcard')];
@@ -156,5 +156,5 @@ class CardTilt {
     }
 }
 
-// Global instance — init() called from humanoid-ripple.js after materialize completes
+// Global instance — init() called from vision-ripple.js after materialize completes
 window.cardTilt = new CardTilt();

@@ -71,6 +71,7 @@
     top: 10%;
     left: -10%;
     animation: orb-drift-1 20s ease-in-out infinite;
+    animation-play-state: paused;
 }
 
 .hero-orb-2 {
@@ -80,6 +81,7 @@
     bottom: 5%;
     right: -5%;
     animation: orb-drift-2 25s ease-in-out infinite;
+    animation-play-state: paused;
 }
 
 .hero-orb-3 {
@@ -90,6 +92,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     animation: orb-drift-3 18s ease-in-out infinite;
+    animation-play-state: paused;
+}
+
+/* Only animate orbs when hero section is visible */
+.fp-active .hero-orb-1,
+.fp-active .hero-orb-2,
+.fp-active .hero-orb-3 {
+    animation-play-state: running;
 }
 
 /* ---- V2 Background: Scanlines ---- */

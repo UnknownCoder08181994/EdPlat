@@ -102,65 +102,8 @@
     // Auto-start if section is already visible
     start();
 
-    /* --- Focus Typewriter (matches Gateway style) --- */
-    var focusTyped = document.querySelector('.focus-typed');
-    var focusLines = [
-        'An interactive learning platform built for everyone.',
-        'Hands-on modules, visual walkthroughs, and a built-in coach \u2014 all self-paced, all real-world.'
-    ];
-    var focusTyping = false;
-    var focusDone = false;
-    var focusGen = 0;
-
-    function typeLine(container, text, msPerChar, cb) {
-        var gen = focusGen;
-        var idx = 0;
-        var last = performance.now();
-        function step(now) {
-            if (gen !== focusGen) return;
-            if (idx >= text.length) { if (cb) cb(); return; }
-            var elapsed = now - last;
-            var chars = Math.max(1, Math.min(3, Math.floor(elapsed / msPerChar)));
-            var end = Math.min(idx + chars, text.length);
-            container.textContent += text.substring(idx, end);
-            idx = end;
-            last = now;
-            if (idx < text.length) requestAnimationFrame(step);
-            else if (cb) cb();
-        }
-        requestAnimationFrame(step);
-    }
-
-    function startFocusTypewriter() {
-        if (focusTyping || focusDone || !focusTyped) return;
-        focusTyping = true;
-        focusTyped.innerHTML = '';
-
-        // Type line 1, then <br>, then line 2
-        var span1 = document.createElement('span');
-        focusTyped.appendChild(span1);
-
-        typeLine(span1, focusLines[0], 25, function () {
-            focusTyped.appendChild(document.createElement('br'));
-            var span2 = document.createElement('span');
-            focusTyped.appendChild(span2);
-            typeLine(span2, focusLines[1], 25, function () {
-                focusDone = true;
-                focusTyping = false;
-            });
-        });
-    }
-
+    /* --- Focus subtitle fade-in (replaces typewriter) --- */
     window.resetFocusTypewriter = function () {
-        focusGen++;  // abort any running typeLine loops
-        focusDone = false;
-        focusTyping = false;
-        if (focusTyped) focusTyped.innerHTML = '';
+        // No-op — subtitle is now static HTML that fades in via CSS data-reveal
     };
-
-    document.addEventListener('section-revealed', function (e) {
-        if (e.detail.index === 1) {
-            setTimeout(startFocusTypewriter, 800);
-        }
-    });
 })();

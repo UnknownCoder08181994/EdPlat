@@ -25,19 +25,19 @@
 @import url('hero/terminal.css');
 @import url('hero/misc.css');
 
-/* --- Humanoid Section (Page 2) --- */
-@import url('humanoid/section.css');
-@import url('humanoid/header.css');
-@import url('humanoid/glitch.css');
-@import url('humanoid/cards-layout.css');
-@import url('humanoid/lab-environment.css');
-@import url('humanoid/card-base.css');
-@import url('humanoid/card-frame.css');
-@import url('humanoid/card-body.css');
-@import url('humanoid/card-status.css');
-@import url('humanoid/card-typography.css');
-@import url('humanoid/card-hover.css');
-@import url('humanoid/v3-upgrades.css');
+/* --- Vision Section (Page 2) --- */
+@import url('vision/section.css');
+@import url('vision/header.css');
+@import url('vision/glitch.css');
+@import url('vision/cards-layout.css');
+@import url('vision/lab-environment.css');
+@import url('vision/card-base.css');
+@import url('vision/card-frame.css');
+@import url('vision/card-body.css');
+@import url('vision/card-status.css');
+@import url('vision/card-typography.css');
+@import url('vision/card-hover.css');
+@import url('vision/v3-upgrades.css');
 
 /* --- Programs / Agent Command Center (Page 3) --- */
 @import url('faq/programs-section.css');

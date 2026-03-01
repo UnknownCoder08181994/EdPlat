@@ -710,53 +710,36 @@ class GatewayGrain {
 }
 
 /* ============================================
-   Gateway Typewriter
-   Types out the subtitle text with a blinking cursor.
+   Gateway Subtitle Fade-In
+   Fades in the subtitle text alongside the heading.
    ============================================ */
 class GatewayTypewriter {
     constructor(onDone) {
-        this.el = document.querySelector('.gw-typed');
-        this._onDone = onDone;
-        this._gen = 0;
+        this.el = document.querySelector('.gw-subtitle');
         if (!this.el) { if (onDone) onDone(); return; }
 
-        this.text = 'AWMIT is an educational platform focused on building structured, scalable systems that help teams design, communicate, and operate with clarity in digital environments.';
-        this.msPerChar = 25;
-        this.delay = 500;
+        // Start hidden, fade in after short delay
+        this.el.style.opacity = '0';
+        this.el.style.transform = 'translateY(0.5vw)';
+        this.el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
 
-        setTimeout(() => this.type(), this.delay);
-    }
-
-    type() {
-        const gen = ++this._gen;
-        let i = 0;
-        let last = performance.now();
-        const step = (now) => {
-            if (gen !== this._gen) return;
-            if (i >= this.text.length) {
-                if (this._onDone) this._onDone();
-                return;
-            }
-            const elapsed = now - last;
-            const chars = Math.max(1, Math.min(3, Math.floor(elapsed / this.msPerChar)));
-            const end = Math.min(i + chars, this.text.length);
-            this.el.textContent += this.text.substring(i, end);
-            i = end;
-            last = now;
-            if (i < this.text.length) {
-                requestAnimationFrame(step);
-            } else {
-                if (this._onDone) this._onDone();
-            }
-        };
-        requestAnimationFrame(step);
+        setTimeout(() => {
+            this.el.style.opacity = '1';
+            this.el.style.transform = 'translateY(0)';
+            // Fire onDone after fade completes
+            setTimeout(() => { if (onDone) onDone(); }, 800);
+        }, 500);
     }
 
     reset(onDone) {
-        this._gen++;  // immediately abort any running type loop
-        if (this.el) this.el.textContent = '';
-        if (onDone) this._onDone = onDone;
-        setTimeout(() => this.type(), this.delay);
+        if (!this.el) { if (onDone) onDone(); return; }
+        this.el.style.opacity = '0';
+        this.el.style.transform = 'translateY(0.5vw)';
+        setTimeout(() => {
+            this.el.style.opacity = '1';
+            this.el.style.transform = 'translateY(0)';
+            setTimeout(() => { if (onDone) onDone(); }, 800);
+        }, 500);
     }
 }
 

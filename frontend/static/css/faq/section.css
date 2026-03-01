@@ -64,6 +64,7 @@
     right: -5%;
     filter: blur(3.906vw);
     animation: orb-drift-2 22s ease-in-out infinite;
+    animation-play-state: paused;
 }
 
 .faq-orb-2 {
@@ -74,6 +75,7 @@
     left: -8%;
     filter: blur(4.297vw);
     animation: orb-drift-1 28s ease-in-out infinite;
+    animation-play-state: paused;
 }
 
 .faq-orb-3 {
@@ -84,6 +86,14 @@
     left: -6%;
     filter: blur(4.688vw);
     animation: orb-drift-1 30s ease-in-out infinite reverse;
+    animation-play-state: paused;
+}
+
+/* Only animate orbs when FAQ section is visible */
+.fp-active .faq-orb-1,
+.fp-active .faq-orb-2,
+.fp-active .faq-orb-3 {
+    animation-play-state: running;
 }
 
 .faq-scanlines {

@@ -32,6 +32,14 @@
 .grid-breathe {
     position: absolute;
     inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.grid-breathe::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-image:
         linear-gradient(rgba(34, 211, 238, 0.25) 1px, transparent 1px),
         linear-gradient(90deg, rgba(34, 211, 238, 0.25) 1px, transparent 1px);
@@ -63,7 +71,14 @@
     -webkit-mask-size: 300% 100%, 100% 100%;
     mask-repeat: no-repeat, no-repeat;
     -webkit-mask-repeat: no-repeat, no-repeat;
+    will-change: transform;
     animation: grid-breathe 14s linear infinite;
+    animation-play-state: paused;
+}
+
+/* Only animate when section is visible */
+.fp-active .grid-breathe::before {
+    animation-play-state: running;
 }
 
 @keyframes grid-breathe {
@@ -86,6 +101,7 @@
     top: 5%;
     right: -10%;
     animation: orb-drift-2 22s ease-in-out infinite;
+    animation-play-state: paused;
 }
 
 .section-orb-2 {
@@ -95,6 +111,12 @@
     bottom: 5%;
     left: -10%;
     animation: orb-drift-1 28s ease-in-out infinite;
+    animation-play-state: paused;
+}
+
+.fp-active .section-orb-1,
+.fp-active .section-orb-2 {
+    animation-play-state: running;
 }
 
 .section-scanlines {
