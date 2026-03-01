@@ -1,6 +1,6 @@
 /* ---- Typography ---- */
 .hcard-title {
-    font-size: 0.688vw;
+    font-size: clamp(7px, 0.688vw, 13px);
     font-weight: 700;
     color: #222;
     margin-bottom: 0;
@@ -29,7 +29,7 @@
 }
 
 .hcard-desc {
-    font-size: 0.635vw;
+    font-size: clamp(7px, 0.635vw, 12px);
     color: #555;
     line-height: 1.7;
     letter-spacing: 0.01em;
@@ -49,7 +49,7 @@
 
 .hcard-readout-item {
     font-family: var(--font-mono);
-    font-size: 0.313vw;
+    font-size: clamp(5px, 0.313vw, 6px);
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: rgba(100,105,120,0.3);

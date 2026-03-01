@@ -19,7 +19,7 @@
 
 .filter-pill {
     flex-shrink: 0;
-    font-size: 0.725vw;
+    font-size: clamp(7px, 0.725vw, 14px);
     font-weight: 500;
     letter-spacing: 0.02em;
     color: var(--text-secondary);

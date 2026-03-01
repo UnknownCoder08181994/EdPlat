@@ -82,7 +82,7 @@
     right: 1.484vw;
     white-space: nowrap;
     font-family: var(--font-mono);
-    font-size: 0.438vw;
+    font-size: clamp(5px, 0.438vw, 8px);
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: rgba(34, 211, 238, 0);

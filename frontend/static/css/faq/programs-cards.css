@@ -104,7 +104,7 @@
 
 .featured-badge {
     font-family: var(--font-body);
-    font-size: 0.363vw;
+    font-size: clamp(5px, 0.363vw, 7px);
     letter-spacing: 0.15em;
     color: #000;
     background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
@@ -236,7 +236,7 @@
 
 /* Card text */
 .card-title {
-    font-size: 0.844vw;
+    font-size: clamp(9px, 0.844vw, 16px);
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 0.391vw;
@@ -244,7 +244,7 @@
 }
 
 .card-desc {
-    font-size: 0.550vw;
+    font-size: clamp(6px, 0.55vw, 11px);
     color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 0.703vw;

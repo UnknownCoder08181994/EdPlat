@@ -84,8 +84,8 @@ body.page-chat {
         0deg,
         transparent,
         transparent 0.078vw,
-        rgba(167, 139, 250, 0.015) 0.078vw,
-        rgba(167, 139, 250, 0.015) 0.156vw
+        rgba(180, 180, 190, 0.015) 0.078vw,
+        rgba(180, 180, 190, 0.015) 0.156vw
     );
 }
 
@@ -243,7 +243,7 @@ body.page-chat {
     align-items: center;
     gap: 0.35vw;
     font-family: var(--font-mono);
-    font-size: 0.5vw;
+    font-size: clamp(5px, 0.5vw, 10px);
     font-weight: 500;
     letter-spacing: 0.25em;
     color: rgba(52, 211, 153, 0.8);
@@ -262,7 +262,7 @@ body.page-chat {
 
 .welcome-title {
     font-family: var(--font-body);
-    font-size: 1.1vw;
+    font-size: clamp(11px, 1.1vw, 21px);
     font-weight: 800;
     color: var(--text-primary);
     margin: 0 0 0.5vw;
@@ -270,7 +270,7 @@ body.page-chat {
 }
 
 .welcome-subtitle {
-    font-size: 0.7vw;
+    font-size: clamp(7px, 0.7vw, 13px);
     line-height: 1.8;
     color: var(--text-secondary);
     margin: 0;

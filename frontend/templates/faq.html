@@ -4,39 +4,33 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWM Institute of Technology</title>
+    <title>FAQ — AWM Institute of Technology</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.built.css') }}?v=379">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/gateway/section.css') }}?v=40">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/cinematic.css') }}">
     <script>
     (function(){var c=navigator.hardwareConcurrency||4,m=navigator.deviceMemory||4;if(c<=4||m<=4)document.documentElement.classList.add('low-power');})();
     </script>
     <link rel="prefetch" href="/vision">
     <link rel="prefetch" href="/chat">
+    <style>
+        [data-reveal] { opacity: 0; transform: translateY(2vw); }
+        .fp-section { position: relative !important; transform: none !important; height: 100vh !important; overflow: hidden !important; }
+    </style>
 </head>
-<body class="dark-theme">
-    <!-- Splash Screen (completely separate from home page) -->
-    <div class="splash-overlay" id="splash-overlay"></div>
-
+<body class="dark-theme page-standalone page-faq">
     <div id="app">
         <!-- Nav -->
-        <nav class="main-nav" id="main-nav">
+        <nav class="main-nav scrolled" id="main-nav">
             <div class="nav-inner container">
                 <a href="/" class="nav-logo">
                     <span class="logo-awm">AWM</span>
                     <span class="logo-institute">Institute of Technology</span>
                 </a>
-                <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                </button>
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="/" class="nav-link" data-nav-home>Home</a></li>
+                <ul class="nav-links">
+                    <li><a href="/?skip" class="nav-link">Home</a></li>
                     <li><a href="/chat" class="nav-link">Chat</a></li>
                     <li><a href="/modules" class="nav-link">Modules</a></li>
                     <li><a href="/tutorials" class="nav-link">Tutorials</a></li>
@@ -46,38 +40,18 @@
             <div class="nav-glow-line"></div>
         </nav>
 
-        <!-- Gateway — single full-screen section -->
-        <section class="fp-section fp-active" data-section="0" id="gateway">
-            <div class="gw-grid-bg"></div>
-            <div class="gw-grid-sweep"></div>
-            <div class="gw-split">
-                <!-- Left: text content -->
-                <div class="gw-left">
-                    <h1 class="gw-heading">Designing Systems for Modern Digital Intelligence</h1>
-                    <p class="gw-subtitle">AWMIT is an educational platform focused on building structured, scalable systems that help teams design, communicate, and operate with clarity in digital environments.</p>
-                    <div class="gw-buttons">
-                        <a href="/vision" class="gw-btn gw-btn-primary">Explore Our Approach</a>
-                        <a href="/chat" class="gw-btn gw-btn-outline">See How It Works</a>
-                    </div>
-                </div>
-                <!-- Right: image mosaic -->
-                <div class="gw-right">
-                    <div class="gw-img"><canvas class="gw-grain" data-seed="1"></canvas></div>
-                    <div class="gw-img"><canvas class="gw-grain" data-seed="2"></canvas></div>
-                    <div class="gw-img"><canvas class="gw-grain" data-seed="3"></canvas></div>
-                </div>
-            </div>
-        </section>
+        <!-- FAQ Section -->
+        {% include 'partials/faq-section.html' %}
 
         <!-- Pill Navigation -->
         <div class="fp-pill" id="fp-pill" aria-label="Navigate sections">
             <div class="pill-text-track">
-                <span class="pill-text pill-text-active">Home</span>
+                <span class="pill-text pill-text-active">FAQ</span>
             </div>
             <div class="pill-bars">
-                <span class="pill-bar pill-bar-active" data-href="/" data-index="0"></span>
+                <span class="pill-bar" data-href="/?skip" data-index="0"></span>
                 <span class="pill-bar" data-href="/vision" data-index="1"></span>
-                <span class="pill-bar" data-href="/faq" data-index="2"></span>
+                <span class="pill-bar pill-bar-active" data-href="/faq" data-index="2"></span>
             </div>
         </div>
 
@@ -90,7 +64,6 @@
         const overlay = document.getElementById('page-fade-overlay');
         if (!overlay) return;
 
-        // Fade out on page load (reveal from black)
         overlay.style.opacity = '1';
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
@@ -102,7 +75,6 @@
             });
         });
 
-        // Intercept internal nav links
         document.addEventListener('click', (e) => {
             const link = e.target.closest('a[href]');
             if (!link) return;
@@ -118,12 +90,30 @@
     })();
     </script>
 
-    <script src="{{ url_for('static', filename='js/home/gateway.js') }}?v=33"></script>
-    <script src="{{ url_for('static', filename='js/home/splash-intro.js') }}?v=10"></script>
-    <script src="{{ url_for('static', filename='js/home/nav.js') }}?v=7"></script>
+    <script src="{{ url_for('static', filename='js/home/section-fx.js') }}?v=104"></script>
+    <script src="{{ url_for('static', filename='js/faq/faq-bg-fx.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/faq/faq-constellation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/faq/faq-shatter.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/faq/faq-panels.js') }}"></script>
 
-    <!-- Scroll-triggered navigation: scroll down → /vision -->
-    <script>window.__pageNav = { prev: null, next: '/vision', current: 0, waitForSplash: true };</script>
+    <!-- Activate FAQ animations -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+            setTimeout(() => {
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 300 + i * 100);
+        });
+        document.dispatchEvent(new CustomEvent('section-revealed', {
+            detail: { index: 3, direction: 'down' }
+        }));
+    });
+    </script>
+
+    <!-- Scroll-triggered navigation: up → vision, carousel-aware -->
+    <script>window.__pageNav = { prev: '/vision', next: null, current: 2, faqCarousel: true };</script>
     <script src="{{ url_for('static', filename='js/shared/page-scroll-nav.js') }}?v=1"></script>
 </body>
 </html>

@@ -43,7 +43,7 @@
 /* V2-ORIGINAL: letter-spacing: 0.18em; font-weight: 500; */
 .hcard-status-label {
     font-family: var(--font-mono);
-    font-size: 0.344vw;
+    font-size: clamp(5px, 0.344vw, 7px);
     letter-spacing: 0.22em;
     text-transform: uppercase;
     font-weight: 400;
@@ -62,7 +62,7 @@
 
 .hcard-status-id {
     font-family: var(--font-mono);
-    font-size: 0.313vw;
+    font-size: clamp(5px, 0.313vw, 6px);
     letter-spacing: 0.1em;
     color: rgba(255,255,255,0.12);
     margin-left: auto;

@@ -33,7 +33,7 @@
     gap: 0.117vw;
     padding: 0.313vw 0.469vw;
     border-radius: 0.313vw;
-    font-size: 0.469vw;
+    font-size: clamp(5px, 0.469vw, 9px);
     line-height: 1.5;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .chat-label {
-    font-size: 0.375vw;
+    font-size: clamp(5px, 0.375vw, 7px);
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -145,13 +145,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.344vw;
+    font-size: clamp(5px, 0.344vw, 7px);
     color: var(--accent-cyan);
 }
 
 .ring-icon.check {
     color: var(--accent-green);
-    font-size: 0.438vw;
+    font-size: clamp(5px, 0.438vw, 8px);
 }
 
 .lesson-info {
@@ -163,7 +163,7 @@
 }
 
 .lesson-name {
-    font-size: 0.469vw;
+    font-size: clamp(5px, 0.469vw, 9px);
     font-weight: 600;
     color: var(--text-primary);
     white-space: nowrap;
@@ -172,12 +172,12 @@
 }
 
 .lesson-meta {
-    font-size: 0.388vw;
+    font-size: clamp(5px, 0.388vw, 7px);
     color: var(--text-muted);
 }
 
 .lesson-status {
-    font-size: 0.344vw;
+    font-size: clamp(5px, 0.344vw, 7px);
     font-weight: 700;
     letter-spacing: 0.1em;
     color: var(--accent-cyan);
@@ -232,14 +232,14 @@
 }
 
 .score-value {
-    font-size: 0.750vw;
+    font-size: clamp(8px, 0.75vw, 14px);
     font-weight: 800;
     color: var(--accent-green);
     line-height: 1;
 }
 
 .score-label {
-    font-size: 0.313vw;
+    font-size: clamp(5px, 0.313vw, 6px);
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -259,14 +259,14 @@
 }
 
 .quiz-stat-value {
-    font-size: 0.688vw;
+    font-size: clamp(7px, 0.688vw, 13px);
     font-weight: 700;
     color: var(--text-primary);
     line-height: 1.2;
 }
 
 .quiz-stat-label {
-    font-size: 0.375vw;
+    font-size: clamp(5px, 0.375vw, 7px);
     color: var(--text-muted);
     letter-spacing: 0.04em;
 }
@@ -281,7 +281,7 @@
 }
 
 .card-feature {
-    font-size: 0.425vw;
+    font-size: clamp(5px, 0.425vw, 8px);
     font-weight: 500;
     letter-spacing: 0.04em;
     color: var(--text-secondary);
@@ -313,7 +313,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.313vw;
-    font-size: 0.531vw;
+    font-size: clamp(5px, 0.531vw, 10px);
     font-weight: 600;
     color: var(--accent);
     transition: all 0.3s ease;
@@ -335,7 +335,7 @@
 .action-arrow {
     transition: transform 0.3s ease;
     display: inline-block;
-    font-size: 0.688vw;
+    font-size: clamp(7px, 0.688vw, 13px);
 }
 
 .program-card:hover .action-arrow {

@@ -9,9 +9,7 @@
 
 /* --- FAQ Entry Card --- */
 .faq-entry {
-    background: rgba(6, 8, 22, 0.65);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(6, 8, 22, 0.92);
     border: 1px solid rgba(34, 211, 238, 0.08);
     border-radius: 0.417vw;
     clip-path: polygon(0.625vw 0, 100% 0, 100% calc(100% - 0.625vw), calc(100% - 0.625vw) 100%, 0 100%, 0 0.625vw);
@@ -95,7 +93,7 @@
     cursor: pointer;
     text-align: left;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78vw;
+    font-size: clamp(8px, 0.78vw, 15px);
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.5;
     transition: color 0.2s ease;
@@ -108,7 +106,7 @@
 /* Index badge */
 .faq-entry-idx {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.55vw;
+    font-size: clamp(6px, 0.55vw, 11px);
     font-weight: 600;
     flex-shrink: 0;
     width: 1.95vw;
@@ -151,7 +149,7 @@
     position: relative;
     padding: 0 1.25vw 1.25vw 3.9vw;
     font-family: 'Inter', sans-serif;
-    font-size: 0.7vw;
+    font-size: clamp(7px, 0.7vw, 13px);
     color: var(--text-primary);
     line-height: 1.8;
 }
@@ -175,7 +173,7 @@
 /* --- Prompt Prefix (>>) --- */
 .faq-prompt-prefix {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7vw;
+    font-size: clamp(7px, 0.7vw, 13px);
     font-weight: 700;
     flex-shrink: 0;
     letter-spacing: -0.05em;
@@ -191,7 +189,7 @@
     align-items: center;
     gap: 0.313vw;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.47vw;
+    font-size: clamp(5px, 0.47vw, 9px);
     letter-spacing: 0.06em;
     opacity: 0.55;
     margin-bottom: 0.39vw;

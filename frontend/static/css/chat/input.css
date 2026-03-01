@@ -2,8 +2,7 @@
 .chat-input-area {
     position: relative;
     padding: 0.74vw 1.35vw 0.34vw;
-    background: linear-gradient(180deg, rgba(6, 6, 18, 0.3) 0%, rgba(6, 6, 18, 0.7) 100%);
-    backdrop-filter: blur(1.35vw) saturate(1.2);
+    background: linear-gradient(180deg, rgba(6, 6, 18, 0.85) 0%, rgba(6, 6, 18, 0.95) 100%);
 }
 
 /* Gradient separator line above input */
@@ -52,7 +51,7 @@
     border: none;
     outline: none;
     font-family: var(--font-body);
-    font-size: 0.7vw;
+    font-size: clamp(7px, 0.7vw, 13px);
     color: var(--text-primary);
     padding: 0.32vw 0;
     caret-color: transparent;
@@ -72,7 +71,7 @@
     animation: cursor-blink 0.7s step-end infinite;
     pointer-events: none;
     z-index: 5;
-    font-size: 0.78vw;
+    font-size: clamp(8px, 0.78vw, 15px);
 }
 
 .chat-send-btn {
@@ -110,7 +109,7 @@
     text-align: center;
     max-width: 35vw;
     margin: 0.47vw auto 0;
-    font-size: 0.54vw;
+    font-size: clamp(6px, 0.54vw, 10px);
     color: var(--text-muted);
     letter-spacing: 0.02em;
 }
@@ -145,9 +144,8 @@
     cursor: pointer;
     border-radius: 0.54vw;
     margin-bottom: 0.16vw;
-    background: rgba(10, 10, 24, 0.85);
+    background: rgba(10, 10, 24, 0.95);
     border: 0.04vw solid rgba(34, 211, 238, 0.06);
-    backdrop-filter: blur(0.45vw);
     transition: all 0.2s ease;
     animation: autocomplete-slide-up 0.25s ease both;
 }
@@ -181,7 +179,7 @@
 }
 
 .autocomplete-text {
-    font-size: 0.74vw;
+    font-size: clamp(8px, 0.74vw, 14px);
     color: var(--text-secondary);
     font-weight: 400;
     line-height: 1.4;
@@ -223,7 +221,7 @@
 
 .followup-btn {
     font-family: var(--font-body);
-    font-size: 0.57vw;
+    font-size: clamp(6px, 0.57vw, 11px);
     font-weight: 600;
     color: var(--accent-cyan);
     background: rgba(34, 211, 238, 0.06);
@@ -278,7 +276,7 @@
 
 .next-questions-label {
     font-family: var(--font-mono);
-    font-size: 0.48vw;
+    font-size: clamp(5px, 0.48vw, 9px);
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -291,7 +289,7 @@
     align-items: center;
     gap: 0.38vw;
     font-family: var(--font-body);
-    font-size: 0.6vw;
+    font-size: clamp(6px, 0.6vw, 12px);
     font-weight: 400;
     letter-spacing: 0.01em;
     color: var(--text-primary);
@@ -310,7 +308,7 @@
 
 .next-question-chip::before {
     content: '\25C6';
-    font-size: 0.36vw;
+    font-size: clamp(5px, 0.36vw, 7px);
     color: rgba(34, 211, 238, 0.4);
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }

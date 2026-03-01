@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request, jsonify, abort
+from flask_compress import Compress
 from backend.qa.engine import resolve_query, resolve_by_answer_id, get_autocomplete
 from backend.qa.chips import CHIPS
 from backend.modules import get_module, get_practice
@@ -10,6 +11,7 @@ app = Flask(
     template_folder='frontend/templates',
 )
 app.config['TEMPLATES_AUTO_RELOAD'] = True
+Compress(app)
 
 # -- Cache-busting helper for video URLs -----------------------------------
 # Appends ?v=<mtime> so browsers refetch after re-encodes.
@@ -35,9 +37,10 @@ def add_cache_headers(response):
     if request.path.startswith('/static/videos/'):
         response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
     elif request.path.startswith('/static/css/') or request.path.startswith('/static/js/'):
-        response.headers['Cache-Control'] = 'public, max-age=3600'
+        response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
     elif request.path.startswith('/static/'):
         response.headers['Cache-Control'] = 'no-cache'
+    response.headers['Vary'] = 'Accept-Encoding'
     return response
 
 # -- Favicon -------------------------------------------------------
@@ -51,6 +54,14 @@ def favicon():
 @app.route('/')
 def index():
     return render_template('base.html')
+
+@app.route('/vision')
+def vision():
+    return render_template('vision.html')
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
 
 @app.route('/modules')
 def modules():
@@ -139,4 +150,10 @@ def api_chips():
     return jsonify(CHIPS)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000, threaded=True)
+    port = int(os.environ.get('PORT', 5000))
+    if os.environ.get('FLASK_DEBUG', '1') == '0':
+        from waitress import serve
+        print(f'Serving on http://0.0.0.0:{port} (waitress)')
+        serve(app, host='0.0.0.0', port=port, threads=4)
+    else:
+        app.run(debug=True, port=port, threaded=True)

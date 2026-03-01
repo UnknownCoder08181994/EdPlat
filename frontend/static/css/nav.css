@@ -5,9 +5,7 @@
     left: 0;
     right: 0;
     z-index: 10010;
-    background: rgba(15, 15, 25, 0.45);
-    backdrop-filter: blur(20px) saturate(1.8) brightness(1.1);
-    -webkit-backdrop-filter: blur(20px) saturate(1.8) brightness(1.1);
+    background: rgba(15, 15, 25, 0.92);
     border-bottom: 0.039vw solid rgba(255, 255, 255, 0.08);
     will-change: transform;
 }
@@ -40,14 +38,14 @@
 .logo-awm {
     font-family: var(--font-body);
     font-weight: 700;
-    font-size: 0.8125vw;
+    font-size: clamp(8px, 0.8125vw, 16px);
     letter-spacing: 0.065vw;
     color: rgba(225, 228, 238, 0.95);
 }
 
 .logo-institute {
     font-family: var(--font-body);
-    font-size: 0.8125vw;
+    font-size: clamp(8px, 0.8125vw, 16px);
     font-weight: 300;
     color: rgba(225, 228, 238, 0.35);
     letter-spacing: 0.0325vw;
@@ -64,7 +62,7 @@
 
 .nav-link {
     font-family: var(--font-body);
-    font-size: 0.5625vw;
+    font-size: clamp(6px, 0.5625vw, 11px);
     font-weight: 400;
     color: rgba(225, 228, 238, 0.45);
     letter-spacing: 0.028vw;

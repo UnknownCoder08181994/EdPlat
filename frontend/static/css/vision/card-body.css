@@ -12,9 +12,7 @@
         /* Soft inner vignette */
         radial-gradient(ellipse 70% 60% at 50% 45%, rgba(255,255,255,0.0) 0%, rgba(220,222,230,0.12) 100%),
         /* Base — light */
-        rgba(248, 248, 250, 0.94);
-    backdrop-filter: blur(0.625vw) saturate(1.1);
-    -webkit-backdrop-filter: blur(0.625vw) saturate(1.1);
+        rgba(248, 248, 250, 0.97);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

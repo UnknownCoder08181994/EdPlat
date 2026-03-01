@@ -35,7 +35,7 @@
     align-items: center;
     gap: 0.417vw;
     font-family: var(--font-mono);
-    font-size: 0.739vw;
+    font-size: clamp(8px, 0.739vw, 14px);
     font-weight: 600;
     letter-spacing: 0.03em;
     color: var(--accent-cyan);
@@ -49,14 +49,14 @@
 }
 
 .viewer-title {
-    font-size: 1.979vw;
+    font-size: clamp(20px, 1.979vw, 38px);
     font-weight: 800;
     color: var(--text-primary);
     margin: 0 0 0.15vw;
 }
 
 .viewer-subtitle {
-    font-size: 0.885vw;
+    font-size: clamp(9px, 0.885vw, 17px);
     color: var(--text-primary);
     line-height: 1.6;
     margin: -0.1vw 0 0.7vw;
@@ -90,7 +90,7 @@
 }
 
 .viewer-video-wrapper:fullscreen .viewer-timeline-time {
-    font-size: 0.8vw;
+    font-size: clamp(8px, 0.8vw, 15px);
     color: rgba(255, 255, 255, 0.75);
     min-width: 2.5vw;
 }
@@ -188,8 +188,6 @@
     justify-content: center;
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(0.417vw);
-    -webkit-backdrop-filter: blur(0.417vw);
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.85);
     cursor: pointer;
@@ -212,7 +210,7 @@
 
 .viewer-timeline-time {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7vw;
+    font-size: clamp(7px, 0.7vw, 13px);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.75);
     min-width: 2.188vw;
@@ -360,7 +358,7 @@
 
 .viewer-timeline-preview-time {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6vw;
+    font-size: clamp(6px, 0.6vw, 12px);
     font-weight: 500;
     color: var(--text-primary);
     background: rgba(0, 0, 0, 0.75);

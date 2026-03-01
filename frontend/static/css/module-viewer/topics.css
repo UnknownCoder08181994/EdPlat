@@ -11,7 +11,7 @@
     align-items: flex-start;
     gap: 0.26vw;
     font-family: 'Inter', sans-serif;
-    font-size: 0.65vw;
+    font-size: clamp(7px, 0.65vw, 12px);
     color: rgba(255, 255, 255, 0.35);
     cursor: pointer;
     transition: color 0.2s;
@@ -68,7 +68,7 @@
 
 .viewer-breakdown-label {
     font-family: var(--font-mono);
-    font-size: 0.6vw;
+    font-size: clamp(6px, 0.6vw, 12px);
     font-weight: 600;
     letter-spacing: 0.12em;
     color: var(--accent-cyan);
@@ -121,7 +121,7 @@
 
 .viewer-breakdown-text {
     flex: 1;
-    font-size: 0.791vw;
+    font-size: clamp(8px, 0.791vw, 15px);
     font-weight: 500;
     color: rgba(255, 255, 255, 0.55);
     line-height: 1.4;
@@ -140,7 +140,7 @@
 .viewer-breakdown-time {
     flex-shrink: 0;
     font-family: var(--font-mono);
-    font-size: 0.65vw;
+    font-size: clamp(7px, 0.65vw, 12px);
     color: rgba(255, 255, 255, 0.25);
     transition: color 0.15s ease;
 }

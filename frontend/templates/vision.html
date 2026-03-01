@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision — AWM Institute of Technology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.built.css') }}?v=379">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <script>
+    (function(){var c=navigator.hardwareConcurrency||4,m=navigator.deviceMemory||4;if(c<=4||m<=4)document.documentElement.classList.add('low-power');})();
+    </script>
+    <link rel="prefetch" href="/?skip">
+    <link rel="prefetch" href="/faq">
+    <style>
+        [data-reveal] { opacity: 0; transform: translateY(2vw); }
+        /* Match fullpage section layout for standalone */
+        .standalone-vision {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="dark-theme page-standalone page-vision">
+    <div id="app">
+        <!-- Nav -->
+        <nav class="main-nav scrolled" id="main-nav">
+            <div class="nav-inner container">
+                <a href="/" class="nav-logo">
+                    <span class="logo-awm">AWM</span>
+                    <span class="logo-institute">Institute of Technology</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/?skip" class="nav-link">Home</a></li>
+                    <li><a href="/chat" class="nav-link">Chat</a></li>
+                    <li><a href="/modules" class="nav-link">Modules</a></li>
+                    <li><a href="/tutorials" class="nav-link">Tutorials</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-glow-line"></div>
+        </nav>
+
+        <!-- Vision Section -->
+        <div class="standalone-vision" id="vision">
+            <canvas id="plexus-canvas" class="plexus-bg"></canvas>
+            <div class="focus-section">
+                <h2 class="focus-heading" data-reveal>Master the Tools That Shape the Future</h2>
+                <p class="focus-subtitle" data-reveal>An interactive learning platform built for everyone.<br>Hands-on modules, visual walkthroughs, and a built-in coach — all self-paced, all real-world.</p>
+                <div class="vision-cards" id="vision-cards">
+                    <!-- Card 1 -->
+                    <div class="hcard" data-hcard="0" data-accent="cyan" data-reveal>
+                        <div class="hcard-glow"></div>
+                        <div class="hcard-tracer" data-v3></div>
+                        <svg class="hcard-frame" viewBox="0 0 400 500" preserveAspectRatio="none"><rect x="1" y="1" width="398" height="498" rx="6" ry="6" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/></svg>
+                        <div class="hcard-preview">
+                            <video class="hcard-vid" data-lazy-video muted loop playsinline preload="none">
+                                <source data-src="{{ vid_url('brain.mp4') }}" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div class="hcard-body">
+                            <div class="hcard-content">
+                                <h3 class="hcard-title">Real-World Application</h3>
+                                <div class="hcard-rule"></div>
+                                <p class="hcard-desc">Copilot, SmartSDK, and Stratos — learn the tools top teams use on day one.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2: Featured -->
+                    <div class="hcard hcard-featured" data-hcard="1" data-accent="cyan" data-reveal>
+                        <div class="hcard-halo" data-v3></div>
+                        <div class="hcard-glow"></div>
+                        <div class="hcard-tracer" data-v3></div>
+                        <svg class="hcard-frame" viewBox="0 0 400 500" preserveAspectRatio="none"><rect x="1" y="1" width="398" height="498" rx="6" ry="6" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/></svg>
+                        <div class="hcard-preview">
+                            <video class="hcard-vid" data-lazy-video muted loop playsinline preload="none">
+                                <source data-src="{{ vid_url('eye.mp4') }}" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div class="hcard-body">
+                            <div class="hcard-content">
+                                <h3 class="hcard-title">Visual Walkthroughs</h3>
+                                <div class="hcard-rule"></div>
+                                <p class="hcard-desc">Real developer workflows in focused video sections you can pause, replay, and master.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="hcard" data-hcard="2" data-accent="cyan" data-reveal>
+                        <div class="hcard-glow"></div>
+                        <div class="hcard-tracer" data-v3></div>
+                        <svg class="hcard-frame" viewBox="0 0 400 500" preserveAspectRatio="none"><rect x="1" y="1" width="398" height="498" rx="6" ry="6" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/></svg>
+                        <div class="hcard-preview">
+                            <video class="hcard-vid" data-lazy-video muted loop playsinline preload="none">
+                                <source data-src="{{ vid_url('face.mp4') }}" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div class="hcard-body">
+                            <div class="hcard-content">
+                                <h3 class="hcard-title">Adaptive Coaching</h3>
+                                <div class="hcard-rule"></div>
+                                <p class="hcard-desc">A built-in coach in every module — instant answers and guidance as you learn.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pill Navigation -->
+        <div class="fp-pill" id="fp-pill" aria-label="Navigate sections">
+            <div class="pill-text-track">
+                <span class="pill-text pill-text-active">Vision</span>
+            </div>
+            <div class="pill-bars">
+                <span class="pill-bar" data-href="/?skip" data-index="0"></span>
+                <span class="pill-bar pill-bar-active" data-href="/vision" data-index="1"></span>
+                <span class="pill-bar" data-href="/faq" data-index="2"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Black fade overlay for page transitions -->
+    <div class="page-fade-overlay" id="page-fade-overlay"></div>
+    <script>
+    (function() {
+        const overlay = document.getElementById('page-fade-overlay');
+        if (!overlay) return;
+
+        overlay.style.opacity = '1';
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                overlay.style.transition = 'opacity 0.35s ease';
+                overlay.style.opacity = '0';
+                overlay.addEventListener('transitionend', () => {
+                    overlay.style.pointerEvents = 'none';
+                }, { once: true });
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href]');
+            if (!link) return;
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('javascript') || link.target === '_blank') return;
+            if (href.startsWith('http') && !href.startsWith(location.origin)) return;
+
+            e.preventDefault();
+            overlay.style.pointerEvents = 'all';
+            overlay.style.opacity = '1';
+            setTimeout(() => { window.location.href = href; }, 350);
+        });
+    })();
+    </script>
+
+    <script src="{{ url_for('static', filename='js/shared/lazy-video.js') }}?v=3"></script>
+    <script src="{{ url_for('static', filename='js/home/vision-ripple.js') }}?v=201"></script>
+    <script src="{{ url_for('static', filename='js/home/vision-ripple-ext.js') }}?v=200"></script>
+    <script src="{{ url_for('static', filename='js/home/plexus.js') }}?v=8"></script>
+
+    <!-- Activate vision animations -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+            setTimeout(() => {
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 300 + i * 100);
+        });
+        document.dispatchEvent(new CustomEvent('section-revealed', {
+            detail: { index: 1, direction: 'down' }
+        }));
+    });
+    </script>
+
+    <!-- Scroll-triggered navigation: up → home, down → FAQ -->
+    <script>window.__pageNav = { prev: '/?skip', next: '/faq', current: 1 };</script>
+    <script src="{{ url_for('static', filename='js/shared/page-scroll-nav.js') }}?v=1"></script>
+</body>
+</html>

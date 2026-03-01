@@ -40,11 +40,9 @@
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(34, 211, 238, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(180, 180, 190, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(180, 180, 190, 0.04) 1px, transparent 1px);
     background-size: 2.34vw 2.34vw;
-    mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 15%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 15%, transparent 70%);
     pointer-events: none;
     z-index: 2;
 }
@@ -103,8 +101,8 @@
         0deg,
         transparent,
         transparent 0.078vw,
-        rgba(34, 211, 238, 0.012) 0.078vw,
-        rgba(34, 211, 238, 0.012) 0.156vw
+        rgba(180, 180, 190, 0.012) 0.078vw,
+        rgba(180, 180, 190, 0.012) 0.156vw
     );
     pointer-events: none;
     z-index: 2;
@@ -185,7 +183,7 @@
 
 .faq-tag-text {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.5vw;
+    font-size: clamp(5px, 0.5vw, 10px);
     font-weight: 400;
     letter-spacing: 0.35em;
     text-transform: uppercase;
@@ -204,7 +202,7 @@
 }
 
 .faq-title {
-    font-size: 1.875vw;
+    font-size: clamp(19px, 1.875vw, 36px);
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.2;
@@ -268,7 +266,7 @@
 
 .faq-subtitle {
     font-family: 'Inter', sans-serif;
-    font-size: 0.625vw;
+    font-size: clamp(6px, 0.625vw, 12px);
     color: rgba(255, 255, 255, 0.4);
     line-height: 1.6;
     margin: 0;

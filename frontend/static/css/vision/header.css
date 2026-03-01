@@ -27,7 +27,7 @@
 
 .vision-tag-text {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.5vw;
+    font-size: clamp(5px, 0.5vw, 10px);
     font-weight: 400;
     letter-spacing: 0.35em;
     color: #000;
@@ -43,7 +43,7 @@
 
 /* Title */
 .vision-title {
-    font-size: 1.875vw;
+    font-size: clamp(19px, 1.875vw, 36px);
     font-weight: 700;
     line-height: 1.2;
     color: #111;

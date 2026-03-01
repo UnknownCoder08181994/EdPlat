@@ -45,7 +45,7 @@
 
 /* Subtitle */
 .vision-subtitle {
-    font-size: 0.742vw;
+    font-size: clamp(8px, 0.742vw, 14px);
     line-height: 1.7;
     color: #555;
     max-width: 32.031vw;
@@ -84,7 +84,7 @@
 
 .vision-stat-value {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.5vw;
+    font-size: clamp(5px, 0.5vw, 10px);
     font-weight: 600;
     color: rgba(100,105,120,0.8);
     letter-spacing: 0.05em;
@@ -92,7 +92,7 @@
 
 .vision-stat-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.313vw;
+    font-size: clamp(5px, 0.313vw, 6px);
     color: rgba(100,105,120,0.4);
     letter-spacing: 0.1em;
     text-transform: uppercase;

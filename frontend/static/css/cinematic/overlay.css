@@ -1,5 +1,5 @@
 /* ============================================
-   AWM V2 — Cinematic Intro (V1 flow + V2 bg)
+   AWM V2 — Cinematic Intro
    ============================================ */
 
 /* ---- Cinematic Overlay ---- */
@@ -17,10 +17,6 @@
     pointer-events: none;
 }
 
-.cinematic-overlay.fade-out {
-    animation: cinematic-fade-out 1.2s ease forwards;
-}
-
 /* ---- Lens Flare ---- */
 .lens-flare {
     position: absolute;
@@ -31,50 +27,6 @@
     filter: blur(1.56vw);
     opacity: 0;
     animation: lens-flare-grow 6s ease-out forwards;
-}
-
-/* ---- Streak Particles ---- */
-.streak-particle {
-    position: fixed;
-    z-index: 10000;
-    pointer-events: none;
-    opacity: 0;
-    will-change: transform, opacity;
-}
-
-.streak-particle.animate {
-    animation: streak-inward var(--streak-dur, 1.5s) ease-in var(--streak-delay, 0s) forwards;
-}
-
-/* ---- Shockwave Rings ---- */
-.shock-ring {
-    position: fixed;
-    top: calc(2.89vw + (100vh - 2.89vw) / 2);
-    left: 50%;
-    width: 5.47vw;
-    height: 5.47vw;
-    margin-left: -2.73vw;
-    margin-top: -2.73vw;
-    border-radius: 50%;
-    z-index: 10001;
-    pointer-events: none;
-    opacity: 0;
-    border: 0.039vw solid rgba(0,0,0,0.15);
-    will-change: transform, opacity;
-}
-
-.shock-ring.fire {
-    animation: shock-ring-expand 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.shock-ring-2 { border-color: rgba(0,0,0,0.10); }
-.shock-ring-2.fire {
-    animation: shock-ring-expand 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
-}
-
-.shock-ring-3 { border-color: rgba(0,0,0,0.05); }
-.shock-ring-3.fire {
-    animation: shock-ring-expand 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.24s forwards;
 }
 
 /* ---- Screen Flash ---- */
@@ -92,22 +44,6 @@
 
 .screen-flash.fire {
     animation: flash-white 0.4s ease-out forwards;
-}
-
-/* ---- Sweep Highlight ---- */
-.sweep-highlight {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), rgba(0,0,0,0.03), transparent);
-    pointer-events: none;
-    z-index: 2;
-}
-
-.sweep-highlight.animate {
-    animation: sweep-across 0.8s ease-in-out forwards;
 }
 
 /* ============================================
@@ -136,4 +72,3 @@
     transition: opacity 0.8s ease;
     opacity: 0;
 }
-

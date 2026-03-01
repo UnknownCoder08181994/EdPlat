@@ -1,59 +1,6 @@
-/* ============================================
-   AWM V2 — Module Detail Page Controller
-   Toggle expand/collapse for topic breakdown
-   ============================================ */
-
-class ModuleDetail {
-    constructor() {
-        this.cards = document.querySelectorAll('.detail-chapter-card');
-        this.bindEvents();
-    }
-
-    bindEvents() {
-        this.cards.forEach(card => {
-            const toggle = card.querySelector('.detail-chapter-toggle');
-            if (toggle) {
-                toggle.addEventListener('click', () => this.toggleBreakdown(card));
-            }
-        });
-    }
-
-    toggleBreakdown(card) {
-        const isOpen = card.classList.contains('open');
-
-        // Close all other cards (accordion behavior)
-        this.cards.forEach(c => {
-            if (c !== card && c.classList.contains('open')) {
-                this.closeCard(c);
-            }
-        });
-
-        if (isOpen) {
-            this.closeCard(card);
-        } else {
-            this.openCard(card);
-        }
-    }
-
-    openCard(card) {
-        const breakdown = card.querySelector('.detail-chapter-breakdown');
-        const toggleText = card.querySelector('.detail-chapter-toggle-text');
-
-        card.classList.add('open');
-        breakdown.style.maxHeight = breakdown.scrollHeight + 'px';
-        toggleText.textContent = 'Hide Topic Details';
-    }
-
-    closeCard(card) {
-        const breakdown = card.querySelector('.detail-chapter-breakdown');
-        const toggleText = card.querySelector('.detail-chapter-toggle-text');
-
-        card.classList.remove('open');
-        breakdown.style.maxHeight = '0';
-        toggleText.textContent = 'View Topic Details';
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    new ModuleDetail();
-});
+class ModuleDetail{constructor(){this.cards=document.querySelectorAll('.detail-chapter-card');this.bindEvents();}
+bindEvents(){this.cards.forEach(card=>{const toggle=card.querySelector('.detail-chapter-toggle');if(toggle){toggle.addEventListener('click',()=>this.toggleBreakdown(card));}});}
+toggleBreakdown(card){const isOpen=card.classList.contains('open');this.cards.forEach(c=>{if(c!==card&&c.classList.contains('open')){this.closeCard(c);}});if(isOpen){this.closeCard(card);}else{this.openCard(card);}}
+openCard(card){const breakdown=card.querySelector('.detail-chapter-breakdown');const toggleText=card.querySelector('.detail-chapter-toggle-text');card.classList.add('open');breakdown.style.maxHeight=breakdown.scrollHeight+'px';toggleText.textContent='Hide Topic Details';}
+closeCard(card){const breakdown=card.querySelector('.detail-chapter-breakdown');const toggleText=card.querySelector('.detail-chapter-toggle-text');card.classList.remove('open');breakdown.style.maxHeight='0';toggleText.textContent='View Topic Details';}}
+document.addEventListener('DOMContentLoaded',()=>{new ModuleDetail();});

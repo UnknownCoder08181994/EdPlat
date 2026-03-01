@@ -18,14 +18,7 @@
 /* --- Gateway Section (Page 0) --- */
 @import url('gateway/section.css');
 
-/* --- Hero Section (Page 1) --- */
-@import url('hero/backgrounds.css');
-@import url('hero/content.css');
-@import url('hero/text.css');
-@import url('hero/terminal.css');
-@import url('hero/misc.css');
-
-/* --- Vision Section (Page 2) --- */
+/* --- Vision Section --- */
 @import url('vision/section.css');
 @import url('vision/header.css');
 @import url('vision/glitch.css');
@@ -79,5 +72,8 @@
 @import url('module-viewer/video.css');
 @import url('module-viewer/topics.css');
 
-/* --- Responsive Breakpoints (must be last) --- */
+/* --- Responsive Breakpoints --- */
 @import url('responsive.css');
+
+/* --- Low-Power Mode (must be last) --- */
+@import url('low-power.css');

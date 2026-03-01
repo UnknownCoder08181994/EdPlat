@@ -39,7 +39,7 @@
     align-items: center;
     gap: 0.313vw;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.729vw;
+    font-size: clamp(7px, 0.729vw, 14px);
     font-weight: 600;
     letter-spacing: 0.16em;
     color: var(--module-accent);
@@ -54,14 +54,14 @@
 }
 
 .viewer-welcome-title {
-    font-size: 1.042vw;
+    font-size: clamp(11px, 1.042vw, 20px);
     font-weight: 700;
     color: var(--text-primary);
     margin: 0;
 }
 
 .viewer-welcome-text {
-    font-size: 0.781vw;
+    font-size: clamp(8px, 0.781vw, 15px);
     color: rgba(255, 255, 255, 0.5);
     line-height: 1.5;
     margin: 0;
@@ -101,7 +101,7 @@
 .viewer-msg-sender {
     display: block;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.625vw;
+    font-size: clamp(6px, 0.625vw, 12px);
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -112,7 +112,7 @@
 .viewer-user-msg .viewer-msg-sender { color: rgba(34, 211, 238, 0.7); }
 
 .viewer-msg-body {
-    font-size: 0.781vw;
+    font-size: clamp(8px, 0.781vw, 15px);
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.8);
     padding: 0.625vw 0.833vw;
@@ -138,7 +138,7 @@
 
 .viewer-typing-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.677vw;
+    font-size: clamp(7px, 0.677vw, 13px);
     color: var(--module-accent);
     opacity: 0.7;
 }
@@ -171,7 +171,7 @@
 .viewer-followup-btn {
     padding: 0.417vw 0.833vw;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.677vw;
+    font-size: clamp(7px, 0.677vw, 13px);
     font-weight: 500;
     color: var(--module-accent);
     background: rgba(var(--module-accent-rgb), 0.06);
@@ -213,7 +213,7 @@
     gap: 0.417vw;
     padding: 0.417vw 0.833vw;
     font-family: 'Inter', sans-serif;
-    font-size: 0.729vw;
+    font-size: clamp(7px, 0.729vw, 14px);
     color: rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -251,7 +251,7 @@
     height: 2.396vw;
     padding: 0 0.833vw;
     font-family: 'Inter', sans-serif;
-    font-size: 0.781vw;
+    font-size: clamp(8px, 0.781vw, 15px);
     color: var(--text-primary);
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);

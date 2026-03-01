@@ -9,20 +9,13 @@
     background: rgba(6, 8, 22, 0.94);
     border: 1px solid rgba(255, 255, 255, 0.07);
     border-radius: var(--radius-lg);
-    backdrop-filter: blur(0.625vw) saturate(1.3);
-    -webkit-backdrop-filter: blur(0.625vw) saturate(1.3);
     padding: 1.328vw;
     transition: border-color 0.4s ease, box-shadow 0.4s ease,
                 background 0.35s ease,
-                backdrop-filter 0.35s ease,
-                -webkit-backdrop-filter 0.35s ease;
 }
 
 .detail-sidebar-card:hover {
-    animation: hover-breathe 2s ease-in-out infinite;
-    background: rgba(6, 8, 22, 0.35);
-    backdrop-filter: blur(0.2vw) saturate(1.1);
-    -webkit-backdrop-filter: blur(0.2vw) saturate(1.1);
+    border-color: rgba(34, 211, 238, 0.15);
 }
 
 .detail-sidebar-stats {
@@ -40,7 +33,7 @@
 
 .detail-stat-label {
     font-family: var(--font-mono);
-    font-size: 0.563vw;
+    font-size: clamp(6px, 0.563vw, 11px);
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -48,7 +41,7 @@
 }
 
 .detail-stat-value {
-    font-size: 0.656vw;
+    font-size: clamp(7px, 0.656vw, 13px);
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -64,7 +57,7 @@
     gap: 0.391vw;
     width: 100%;
     font-family: var(--font-mono);
-    font-size: 0.625vw;
+    font-size: clamp(6px, 0.625vw, 12px);
     font-weight: 600;
     letter-spacing: 0.04em;
     color: #000;
@@ -120,7 +113,7 @@
     }
 
     .detail-hero-title {
-        font-size: 1.125vw;
+        font-size: clamp(12px, 1.125vw, 22px);
     }
 
     .detail-section-card {
@@ -132,7 +125,7 @@
     }
 
     .detail-meta-pill {
-        font-size: 0.488vw;
+        font-size: clamp(5px, 0.488vw, 9px);
         padding: 0.195vw 0.469vw;
     }
 

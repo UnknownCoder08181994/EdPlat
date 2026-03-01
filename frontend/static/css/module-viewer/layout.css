@@ -33,14 +33,10 @@
     display: flex;
     flex-direction: column;
     background: rgb(6, 8, 22);
-    backdrop-filter: blur(0.833vw);
-    -webkit-backdrop-filter: blur(0.833vw);
     border-right: 1px solid rgba(var(--module-accent-rgb), 0.1);
     padding-top: 3.854vw;
     transition: border-color 0.4s ease, box-shadow 0.4s ease,
                 background 0.35s ease,
-                backdrop-filter 0.35s ease,
-                -webkit-backdrop-filter 0.35s ease;
 }
 
 /* ---- Section Navigator ---- */
@@ -57,7 +53,7 @@
 
 .viewer-sections-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.625vw;
+    font-size: clamp(6px, 0.625vw, 12px);
     font-weight: 600;
     letter-spacing: 0.14em;
     color: var(--module-accent);
@@ -101,7 +97,7 @@
     border-left: 0.156vw solid transparent;
     color: rgba(255, 255, 255, 0.5);
     font-family: 'Inter', sans-serif;
-    font-size: 0.781vw;
+    font-size: clamp(8px, 0.781vw, 15px);
     cursor: pointer;
     text-align: left;
     transition: all 0.2s;
@@ -121,7 +117,7 @@
 .viewer-section-time {
     flex-shrink: 0;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.625vw;
+    font-size: clamp(6px, 0.625vw, 12px);
     color: rgba(255, 255, 255, 0.25);
 }
 
@@ -132,7 +128,7 @@
 
 .viewer-section-number {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.677vw;
+    font-size: clamp(7px, 0.677vw, 13px);
     font-weight: 600;
     width: 1.563vw;
     height: 1.563vw;
@@ -151,7 +147,7 @@
 
 .viewer-section-title {
     flex: 1;
-    font-size: 0.781vw;
+    font-size: clamp(8px, 0.781vw, 15px);
     font-weight: 400;
     letter-spacing: 0;
     line-height: 1.3;
@@ -161,13 +157,10 @@
 /* ---- Breathe Effect — hover on viewer page elements ---- */
 /* Uses hover-breathe keyframes from modules/catalog.css */
 .viewer-sidebar:hover {
-    animation: hover-breathe 2s ease-in-out infinite;
-    background: rgba(6, 8, 22, 0.35);
-    backdrop-filter: blur(0.2vw) saturate(1.1);
-    -webkit-backdrop-filter: blur(0.2vw) saturate(1.1);
+    border-color: rgba(34, 211, 238, 0.15);
 }
 
 .viewer-video-container:hover:not(.fx-tv-on) {
-    animation: hover-breathe 2s ease-in-out infinite;
+    border-color: rgba(34, 211, 238, 0.2);
 }
 

@@ -24,7 +24,7 @@
 .institute-awm {
     font-family: var(--font-body);
     font-weight: 800;
-    font-size: 7.5vw;
+    font-size: clamp(77px, 7.5vw, 144px);
     letter-spacing: -0.03em;
     line-height: 1.1;
     display: flex;
@@ -117,40 +117,10 @@
 .institute-name {
     font-family: var(--font-body);
     font-weight: 300;
-    font-size: 1.25vw;
+    font-size: clamp(13px, 1.25vw, 24px);
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: rgba(100,100,110,0);
     white-space: nowrap;
 }
 
-/* AWM glow burst after reveal */
-.awm-glow-burst {
-    text-shadow:
-        0 0 10px rgba(255,255,255,0.3),
-        0 0 25px rgba(255,255,255,0.15),
-        0 0 50px rgba(255,255,255,0.06);
-    animation: glow-burst-fade 1.5s ease-out forwards;
-}
-
-/* Post-cinematic state */
-body.cinematic-done .headline-line,
-body.cinematic-done .headline-terminal,
-body.cinematic-done .hero-terminal {
-    opacity: 1;
-    transform: none;
-    filter: none;
-}
-
-body.cinematic-done .hero-bg-canvas {
-    opacity: 0;
-    z-index: 0;
-    pointer-events: none;
-}
-
-body.cinematic-done .hero-galaxy-bg,
-body.cinematic-done .hero-grid-overlay,
-body.cinematic-done .hero-orb,
-body.cinematic-done .hero-scanlines {
-    opacity: 1;
-}

@@ -21,9 +21,7 @@
         right: -100%;
         width: 10.938vw;
         height: 100vh;
-        background: rgba(5, 5, 16, 0.97);
-        backdrop-filter: blur(0.938vw);
-        -webkit-backdrop-filter: blur(0.938vw);
+        background: rgba(5, 5, 16, 0.98);
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
@@ -39,7 +37,7 @@
     }
 
     .nav-link {
-        font-size: 0.688vw;
+        font-size: clamp(7px, 0.688vw, 13px);
         padding: 0.313vw 0;
     }
 
@@ -51,23 +49,6 @@
     }
     .nav-hamburger.open .hamburger-bar:nth-child(3) {
         transform: rotate(-45deg) translate(0.195vw, -0.195vw);
-    }
-
-    /* Hero: stack columns */
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 1.563vw;
-        padding-top: 0.781vw;
-    }
-
-    .headline-line {
-        font-size: 3.75vw;
-        white-space: normal;
-    }
-
-    .headline-terminal-body {
-        font-size: 2.813vw;
-        padding: 0.625vw 0.781vw;
     }
 
     /* Vision: stack cards */
@@ -83,7 +64,7 @@
     }
 
     .vision-title {
-        font-size: 1.5vw;
+        font-size: clamp(15px, 1.5vw, 29px);
     }
 
     .vision-content {
@@ -137,10 +118,6 @@
         top: 2.344vw;
     }
 
-    .shock-ring {
-        top: calc(2.344vw + (100vh - 2.344vw) / 2);
-    }
-
     .institute-reveal {
         top: calc(2.344vw + (100vh - 2.344vw) / 2);
     }
@@ -150,25 +127,7 @@
     }
 
     .logo-awm {
-        font-size: 0.688vw;
-    }
-
-    /* Hero */
-    .headline-line {
-        font-size: 2.813vw;
-    }
-
-    .headline-terminal-body {
-        font-size: 2.188vw;
-        padding: 0.469vw 0.625vw;
-    }
-
-    .headline-terminal-bar {
-        padding: 0.234vw 0.391vw;
-    }
-
-    .headline-terminal-title {
-        font-size: 0.438vw;
+        font-size: clamp(7px, 0.688vw, 13px);
     }
 
     /* Vision */
@@ -177,11 +136,11 @@
     }
 
     .vision-title {
-        font-size: 1.25vw;
+        font-size: clamp(13px, 1.25vw, 24px);
     }
 
     .vision-subtitle {
-        font-size: 0.625vw;
+        font-size: clamp(6px, 0.625vw, 12px);
     }
 
     .hcard {
@@ -202,11 +161,11 @@
     }
 
     .hcard-title {
-        font-size: 0.813vw;
+        font-size: clamp(8px, 0.813vw, 16px);
     }
 
     .hcard-desc {
-        font-size: 0.594vw;
+        font-size: clamp(6px, 0.594vw, 11px);
         max-width: 100%;
     }
 
@@ -226,7 +185,7 @@
     }
 
     .section-subtitle {
-        font-size: 0.594vw;
+        font-size: clamp(6px, 0.594vw, 11px);
     }
 
     /* Dot nav: hidden */
@@ -295,54 +254,17 @@
         top: 2.109vw;
     }
 
-    .shock-ring {
-        top: calc(2.109vw + (100vh - 2.109vw) / 2);
-    }
-
     .institute-reveal {
         top: calc(2.109vw + (100vh - 2.109vw) / 2);
     }
 
-    /* Hero */
-    .hero-content {
-        gap: 0.938vw;
-    }
-
-    .headline-line {
-        font-size: 2.188vw;
-    }
-
-    .headline-terminal {
-        margin-top: 0.469vw;
-    }
-
-    .headline-terminal-body {
-        font-size: 1.563vw;
-        padding: 0.391vw 0.547vw;
-        white-space: normal;
-    }
-
-    .headline-terminal-bar {
-        padding: 0.195vw 0.313vw;
-    }
-
-    .term-ctrl {
-        width: 0.703vw;
-        height: 0.625vw;
-        font-size: 0.375vw;
-    }
-
-    .headline-terminal-title {
-        font-size: 0.375vw;
-    }
-
     /* Vision */
     .vision-title {
-        font-size: 1vw;
+        font-size: clamp(10px, 1vw, 19px);
     }
 
     .vision-subtitle {
-        font-size: 0.563vw;
+        font-size: clamp(6px, 0.563vw, 11px);
         min-height: auto;
     }
 
@@ -361,12 +283,12 @@
     }
 
     .hcard-title {
-        font-size: 0.719vw;
+        font-size: clamp(7px, 0.719vw, 14px);
         letter-spacing: 0.08em;
     }
 
     .hcard-desc {
-        font-size: 0.55vw;
+        font-size: clamp(6px, 0.55vw, 11px);
     }
 
     .hcard-rule {
@@ -378,11 +300,6 @@
         padding: 0.938vw 0.781vw 0.781vw;
     }
 
-    /* Neon grid lines: hide on phone for performance */
-    .h2-neon-lines-canvas {
-        display: none;
-    }
-
     /* Chat */
     .chat-input-area {
         padding: 0.469vw 0.625vw 0.781vw;
@@ -390,7 +307,7 @@
 
     .suggestion-chip {
         padding: 0.313vw 0.547vw;
-        font-size: 0.513vw;
+        font-size: clamp(5px, 0.513vw, 10px);
     }
 
     /* Module viewer: adjust for phone nav */

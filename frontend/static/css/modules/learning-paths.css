@@ -105,7 +105,7 @@
 }
 
 .path-difficulty {
-    font-size: 0.375vw;
+    font-size: clamp(5px, 0.375vw, 7px);
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -132,7 +132,7 @@
 }
 
 .path-popular-badge {
-    font-size: 0.344vw;
+    font-size: clamp(5px, 0.344vw, 7px);
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -143,7 +143,7 @@
 }
 
 .path-title {
-    font-size: 0.813vw;
+    font-size: clamp(8px, 0.813vw, 16px);
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 0.313vw;
@@ -151,7 +151,7 @@
 }
 
 .path-desc {
-    font-size: 0.531vw;
+    font-size: clamp(5px, 0.531vw, 10px);
     color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 0.859vw;
@@ -230,7 +230,7 @@
 }
 
 .step-label {
-    font-size: 0.488vw;
+    font-size: clamp(5px, 0.488vw, 9px);
     color: var(--text-secondary);
     font-weight: 500;
     line-height: 1.4;
@@ -240,7 +240,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.313vw;
-    font-size: 0.531vw;
+    font-size: clamp(5px, 0.531vw, 10px);
     font-weight: 600;
     color: var(--accent);
     transition: all 0.3s ease;

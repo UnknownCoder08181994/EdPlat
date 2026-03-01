@@ -26,7 +26,7 @@
 
 .msg-video-label {
     font-family: var(--font-mono);
-    font-size: 0.5vw;
+    font-size: clamp(5px, 0.5vw, 10px);
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -39,7 +39,7 @@
     align-items: center;
     gap: 0.3vw;
     font-family: var(--font-mono);
-    font-size: 0.45vw;
+    font-size: clamp(5px, 0.45vw, 9px);
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -140,9 +140,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(0.4vw);
-    -webkit-backdrop-filter: blur(0.4vw);
+    background: rgba(0, 0, 0, 0.8);
     border: 0.05vw solid rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.85);
     cursor: pointer;
@@ -171,7 +169,7 @@
 
 .msg-timeline-time {
     font-family: var(--font-mono);
-    font-size: 0.7vw;
+    font-size: clamp(7px, 0.7vw, 13px);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.75);
     min-width: 2.2vw;
@@ -268,7 +266,7 @@
 
 .msg-timeline-preview-time {
     font-family: var(--font-mono);
-    font-size: 0.5vw;
+    font-size: clamp(5px, 0.5vw, 10px);
     font-weight: 600;
     color: rgba(200, 200, 210, 0.85);
     background: rgba(0, 0, 0, 0.7);
@@ -318,7 +316,7 @@
     align-items: flex-start;
 }
 .msg-video-wrapper.fs-active .msg-timeline-time {
-    font-size: 0.8vw;
+    font-size: clamp(8px, 0.8vw, 15px);
     font-weight: 600;
     line-height: 1;
     color: rgba(255, 255, 255, 0.75);
@@ -342,5 +340,5 @@
     height: 6.75vw;
 }
 .msg-video-wrapper.fs-active .msg-timeline-preview-time {
-    font-size: 0.65vw;
+    font-size: clamp(7px, 0.65vw, 12px);
 }

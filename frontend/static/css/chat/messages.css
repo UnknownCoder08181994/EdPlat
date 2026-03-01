@@ -55,7 +55,7 @@
 
 .msg-sender {
     font-family: var(--font-mono);
-    font-size: 0.6vw;
+    font-size: clamp(6px, 0.6vw, 12px);
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -66,7 +66,7 @@
 
 /* Message body — enhanced glass + accent edge */
 .msg-body {
-    font-size: 0.68vw;
+    font-size: clamp(7px, 0.68vw, 13px);
     line-height: 1.75;
     color: var(--text-primary);
     background:
@@ -76,7 +76,6 @@
     border-left: 0.1vw solid rgba(34, 211, 238, 0.20);
     border-radius: 0.2vw 0.8vw 0.8vw 0.2vw;
     padding: 0.95vw 1.15vw;
-    backdrop-filter: blur(0.8vw) saturate(1.2);
     box-shadow:
         0 0.2vw 1.2vw rgba(0, 0, 0, 0.2),
         0 0 0.05vw rgba(34, 211, 238, 0.1);
@@ -98,7 +97,7 @@
 
 .msg-body code {
     font-family: var(--font-mono);
-    font-size: 0.73vw;
+    font-size: clamp(7px, 0.73vw, 14px);
     background: rgba(34, 211, 238, 0.08);
     padding: 0.1vw 0.35vw;
     border-radius: 0.25vw;
@@ -113,7 +112,7 @@
     margin: 0.6vw 0;
     overflow-x: auto;
     font-family: var(--font-mono);
-    font-size: 0.72vw;
+    font-size: clamp(7px, 0.72vw, 14px);
     line-height: 1.65;
     color: var(--text-primary);
 }
@@ -128,7 +127,7 @@
 .msg-module-ref-label {
     display: block;
     font-family: var(--font-mono);
-    font-size: 0.52vw;
+    font-size: clamp(5px, 0.52vw, 10px);
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -142,7 +141,7 @@
     gap: 0.4vw;
     padding: 0.4vw 0.85vw;
     font-family: var(--font-body);
-    font-size: 0.65vw;
+    font-size: clamp(7px, 0.65vw, 12px);
     font-weight: 500;
     color: var(--text-primary);
     text-decoration: none;
@@ -188,7 +187,7 @@
 
 .typing-label {
     font-family: var(--font-mono);
-    font-size: 0.6vw;
+    font-size: clamp(6px, 0.6vw, 12px);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: rgba(200, 200, 210, 0.8);

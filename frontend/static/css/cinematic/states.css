@@ -13,14 +13,6 @@ body.splash-playing .cinematic-overlay {
     z-index: 100000;
 }
 
-body.splash-playing .streak-particle {
-    z-index: 100001;
-}
-
-body.splash-playing .shock-ring {
-    z-index: 100002;
-}
-
 body.splash-playing .screen-flash {
     top: 2.89vw;
     z-index: 100003;
@@ -32,71 +24,4 @@ body.splash-playing .institute-reveal {
 
 body.splash-playing .glitch-flicker {
     z-index: 100006;
-}
-
-/* Hero animation phase: text/terminal hidden, galaxy already visible */
-body.hero-animating .hero-terminal {
-    opacity: 0;
-    transform: scaleY(0) scaleX(0.6);
-}
-
-body.hero-animating .headline-line,
-body.hero-animating .headline-terminal {
-    opacity: 0;
-    filter: blur(10px);
-}
-
-body.hero-animating [data-cinematic="line2"] {
-    opacity: 0;
-    transform: none;
-    filter: none;
-    transition: none;
-}
-
-/* Legacy: cinematic-playing (kept for compatibility) */
-body.cinematic-playing .hero-terminal {
-    opacity: 0;
-    transform: scaleY(0) scaleX(0.6);
-}
-
-body.cinematic-playing .headline-line,
-body.cinematic-playing .headline-terminal {
-    opacity: 0;
-    filter: blur(10px);
-}
-
-body.cinematic-playing [data-cinematic="line2"] {
-    opacity: 0;
-    transform: none;
-    filter: none;
-    transition: none;
-}
-
-/* Particle canvas stays visible during cinematic, elevated above overlay */
-body.cinematic-playing .hero-bg-canvas {
-    opacity: 1;
-    z-index: 10004;
-}
-
-body.cinematic-playing .hero-galaxy-bg,
-body.cinematic-playing .hero-grid-overlay,
-body.cinematic-playing .hero-orb,
-body.cinematic-playing .hero-scanlines {
-    opacity: 0;
-}
-
-/* Reveal classes */
-.cinematic-reveal-line1 {
-    animation: blur-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
-    overflow: hidden;
-    padding: 0.39vw 0;
-    margin: -0.39vw 0;
-}
-
-.cinematic-reveal-terminal {
-    animation: crt-power-on 0.6s ease-out forwards !important;
-}
-
-.cinematic-reveal-bg {
-    animation: bg-fade-in 1.5s ease forwards !important;
 }

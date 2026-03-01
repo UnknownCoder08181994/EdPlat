@@ -107,7 +107,7 @@
 
 .gw-heading {
     font-family: var(--font-body);
-    font-size: 3.05vw;
+    font-size: clamp(31px, 3.05vw, 59px);
     font-weight: 700;
     font-style: normal;
     color: #111;
@@ -118,7 +118,7 @@
 
 .gw-subtitle {
     color: #666;
-    font-size: 0.88vw;
+    font-size: clamp(9px, 0.88vw, 17px);
     font-weight: 400;
     line-height: 1.7;
     max-width: 30vw;
@@ -142,7 +142,7 @@
     gap: 0.35vw;
     padding: 0.82vw 1.8vw;
     border-radius: 5.2vw;
-    font-size: 0.88vw;
+    font-size: clamp(9px, 0.88vw, 17px);
     font-weight: 500;
     text-decoration: none;
     transition: all 0.25s ease;

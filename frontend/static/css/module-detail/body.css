@@ -12,18 +12,14 @@
     background: rgba(6, 8, 22, 0.94);
     border: 1px solid rgba(255, 255, 255, 0.07);
     border-radius: var(--radius-lg);
-    backdrop-filter: blur(0.625vw) saturate(1.3);
-    -webkit-backdrop-filter: blur(0.625vw) saturate(1.3);
     padding: 1.719vw 1.875vw;
     margin-bottom: 1.094vw;
     transition: border-color 0.4s ease, box-shadow 0.4s ease,
                 background 0.35s ease,
-                backdrop-filter 0.35s ease,
-                -webkit-backdrop-filter 0.35s ease;
 }
 
 .detail-section-heading {
-    font-size: 0.938vw;
+    font-size: clamp(10px, 0.938vw, 18px);
     font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--text-primary);
@@ -41,7 +37,7 @@
     display: flex;
     align-items: flex-start;
     gap: 0.547vw;
-    font-size: 0.656vw;
+    font-size: clamp(7px, 0.656vw, 13px);
     color: var(--text-primary);
     line-height: 1.55;
 }
@@ -54,7 +50,7 @@
 
 /* ---- Description ---- */
 .detail-description {
-    font-size: 0.688vw;
+    font-size: clamp(7px, 0.688vw, 13px);
     color: var(--text-primary);
     line-height: 1.8;
 }
@@ -102,7 +98,7 @@
     height: 1.563vw;
     flex-shrink: 0;
     font-family: var(--font-mono);
-    font-size: 0.594vw;
+    font-size: clamp(6px, 0.594vw, 11px);
     font-weight: 600;
     color: var(--accent-cyan);
     background: rgba(34, 211, 238, 0.08);
@@ -111,13 +107,13 @@
 }
 
 .detail-chapter-title {
-    font-size: 0.719vw;
+    font-size: clamp(7px, 0.719vw, 14px);
     font-weight: 700;
     color: var(--text-primary);
 }
 
 .detail-chapter-desc {
-    font-size: 0.638vw;
+    font-size: clamp(7px, 0.638vw, 12px);
     color: var(--text-primary);
     line-height: 1.65;
     margin: 0;
@@ -146,7 +142,7 @@
     border: none;
     padding: 0;
     font-family: inherit;
-    font-size: 0.594vw;
+    font-size: clamp(6px, 0.594vw, 11px);
     font-weight: 600;
     color: var(--accent-cyan);
     cursor: pointer;
@@ -169,7 +165,7 @@
 /* Coming soon placeholder */
 .detail-chapter-coming-soon {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.513vw;
+    font-size: clamp(5px, 0.513vw, 10px);
     font-weight: 500;
     color: rgba(148, 163, 184, 0.6);
     letter-spacing: 0.04em;
@@ -182,7 +178,7 @@
     align-items: center;
     gap: 0.313vw;
     font-family: var(--font-mono);
-    font-size: 0.575vw;
+    font-size: clamp(6px, 0.575vw, 11px);
     font-weight: 600;
     letter-spacing: 0.04em;
     color: var(--accent-cyan);
@@ -251,7 +247,7 @@
 
 .detail-breakdown-text {
     flex: 1;
-    font-size: 0.656vw;
+    font-size: clamp(7px, 0.656vw, 13px);
     font-weight: 500;
     color: var(--text-primary);
     line-height: 1.4;
@@ -264,7 +260,7 @@
 .detail-breakdown-start-btn {
     flex-shrink: 0;
     padding: 0.234vw 0.703vw;
-    font-size: 0.513vw;
+    font-size: clamp(5px, 0.513vw, 10px);
     font-weight: 600;
     letter-spacing: 0.02em;
     color: var(--accent-cyan);
@@ -287,10 +283,8 @@
     color: var(--text-primary);
 }
 
-/* Breathe hover on section cards */
+/* Hover on section cards */
 .detail-section-card:hover {
-    animation: hover-breathe 2s ease-in-out infinite;
+    border-color: rgba(34, 211, 238, 0.15);
     background: rgba(6, 8, 22, 0.35);
-    backdrop-filter: blur(0.2vw) saturate(1.1);
-    -webkit-backdrop-filter: blur(0.2vw) saturate(1.1);
 }
