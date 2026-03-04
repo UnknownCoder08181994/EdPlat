@@ -1,0 +1,36 @@
+/* ============================================
+   VISION PAGE (Page 1 — Vision)
+   ============================================ */
+#vision {
+    background: #f5f5f5;
+}
+
+/* ---- Grid background (matches Gateway) ---- */
+.h2-grid-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+        linear-gradient(rgba(180, 180, 190, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(180, 180, 190, 0.04) 1px, transparent 1px);
+    background-size: 2.34vw 2.34vw;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+#vision.h2-grid-ready .h2-grid-bg {
+    opacity: 1;
+}
+
+.vision-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 1.56vw;
+    padding: 1.17vw 0;
+}

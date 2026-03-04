@@ -1,0 +1,75 @@
+/* ============================================
+   MODULES CATALOGUE
+   ============================================ */
+#modules {
+    background: transparent;
+}
+
+/* ---- Hero Banner ---- */
+.catalogue-hero {
+    position: relative;
+    background: rgba(6, 8, 22, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
+    padding: 1.812vw 2.175vw;
+    margin-bottom: 1.268vw;
+    overflow: hidden;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease,
+                background 0.35s ease,
+}
+
+.catalogue-hero::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0.136vw;
+    background: linear-gradient(180deg, var(--text-primary), var(--accent-blue));
+    opacity: 0.6;
+    transition: opacity 0.4s ease, box-shadow 0.4s ease;
+}
+
+.catalogue-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.453vw;
+    font-size: clamp(6px, 0.594vw, 11px);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 0.907vw;
+    padding: 0.181vw 0.634vw;
+    margin-bottom: 0.725vw;
+}
+
+.catalogue-hero-title {
+    font-size: clamp(23px, 2.262vw, 43px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin-bottom: 0.634vw;
+}
+
+.catalogue-hero-desc {
+    font-size: clamp(9px, 0.87vw, 17px);
+    color: #b0b4d4;
+    line-height: 1.7;
+    max-width: 28.094vw;
+}
+
+/* ---- Breathe Effect — hover on any modules page element ---- */
+/* hover-breathe removed for performance */
+
+/* bar-breathe removed for performance */
+
+/* Hero hover */
+.catalogue-hero:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.catalogue-hero:hover::before {
+    opacity: 1;
+}
+

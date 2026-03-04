@@ -1,0 +1,27 @@
+/* ============================================
+   Cinematic State Classes
+   ============================================ */
+
+/* Splash phase: page content hidden, nav stays visible */
+body.splash-playing .fp-wrapper {
+    display: none !important;
+}
+
+/* All cinematic elements above splash overlay (z-index 99999) */
+body.splash-playing .cinematic-overlay {
+    top: 2.89vw;
+    z-index: 100000;
+}
+
+body.splash-playing .screen-flash {
+    top: 2.89vw;
+    z-index: 100003;
+}
+
+body.splash-playing .institute-reveal {
+    z-index: 100004;
+}
+
+body.splash-playing .glitch-flicker {
+    z-index: 100006;
+}

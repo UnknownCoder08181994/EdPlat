@@ -1,0 +1,40 @@
+/* =========================
+   LOW POWER MODE (CPU SAFE)
+   Activated: <html class="low-power">
+   Auto-detected on weak hardware or togglable manually.
+   ========================= */
+
+/* --- Kill ALL animations and transitions --- */
+html.low-power *,
+html.low-power *::before,
+html.low-power *::after {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* --- Kill backdrop-filter (biggest CPU win) --- */
+html.low-power .hcard-body,
+html.low-power #vision .hcard-body,
+html.low-power .main-nav,
+html.low-power .nav-links,
+html.low-power .chat-input-area,
+html.low-power .autocomplete-item,
+html.low-power .faq-entry,
+html.low-power .catalogue-hero,
+html.low-power .catalogue-toolbar,
+html.low-power .toolbar-dropdown-menu,
+html.low-power .course-card,
+html.low-power .viewer-sidebar,
+html.low-power .viewer-ctrl-btn,
+html.low-power .chat-bubble-assistant {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* --- Kill masks (second biggest CPU win) --- removed legacy selectors ---*/
+
+/* --- Video containment (limit repaint spread) --- */
+.viewer-video-container,
+.hcard-preview {
+    contain: layout paint size;
+}

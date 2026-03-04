@@ -1,0 +1,7 @@
+/* ---- Hover states ---- */
+/* V3: 3D tilt + sibling dimming removed. Only rule hover remains. */
+
+/* Hover: rule brightens (silver) */
+.hcard.summoned:hover .hcard-rule {
+    background: linear-gradient(90deg, rgba(120,125,140,0.5), rgba(120,125,140,0.04) 85%, transparent);
+}

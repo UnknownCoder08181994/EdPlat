@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — AWM Institute of Technology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.built.css') }}?v=424">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <script>
+    (function(){var c=navigator.hardwareConcurrency||4,m=navigator.deviceMemory||4;if(c<=4||m<=4)document.documentElement.classList.add('low-power');})();
+    </script>
+    <link rel="prefetch" href="/vision">
+    <link rel="prefetch" href="/chat">
+    <style>
+        [data-reveal] { opacity: 0; transform: translateY(2vw); }
+        .fp-section { position: relative !important; transform: none !important; height: 100vh !important; overflow: hidden !important; }
+    </style>
+</head>
+<body class="dark-theme page-standalone page-faq">
+    <div id="app">
+        <!-- Nav -->
+        <nav class="main-nav scrolled" id="main-nav">
+            <div class="nav-inner container">
+                <a href="/" class="nav-logo">
+                    <span class="logo-awm">AWM</span>
+                    <span class="logo-institute">Institute of Technology</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/?skip" class="nav-link">Home</a></li>
+                    <li><a href="/chat" class="nav-link">Chat</a></li>
+                    <li><a href="/modules" class="nav-link">Modules</a></li>
+                    <li><a href="/tutorials" class="nav-link">Tutorials</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-glow-line"></div>
+        </nav>
+
+        <!-- FAQ Section -->
+        {% include 'partials/faq-section.html' %}
+
+        <!-- Pill Navigation -->
+        <div class="fp-pill" id="fp-pill" aria-label="Navigate sections">
+            <div class="pill-text-track">
+                <span class="pill-text pill-text-active">FAQ</span>
+            </div>
+            <div class="pill-bars">
+                <span class="pill-bar" data-href="/?skip" data-index="0"></span>
+                <span class="pill-bar" data-href="/vision" data-index="1"></span>
+                <span class="pill-bar pill-bar-active" data-href="/faq" data-index="2"></span>
+            </div>
+            <div class="pill-scroll-hint">
+                <span class="pill-scroll-text">03/03</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Black fade overlay for page transitions -->
+    <div class="page-fade-overlay" id="page-fade-overlay"></div>
+    <script>
+    (function() {
+        const overlay = document.getElementById('page-fade-overlay');
+        if (!overlay) return;
+
+        overlay.style.opacity = '1';
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                overlay.style.transition = 'opacity 0.35s ease';
+                overlay.style.opacity = '0';
+                overlay.addEventListener('transitionend', () => {
+                    overlay.style.pointerEvents = 'none';
+                }, { once: true });
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href]');
+            if (!link) return;
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('javascript') || link.target === '_blank') return;
+            if (href.startsWith('http') && !href.startsWith(location.origin)) return;
+
+            e.preventDefault();
+            overlay.style.pointerEvents = 'all';
+            overlay.style.opacity = '1';
+            setTimeout(() => { window.location.href = href; }, 350);
+        });
+    })();
+    </script>
+
+    <script src="{{ url_for('static', filename='js/home/section-fx.js') }}?v=104"></script>
+    <script src="{{ url_for('static', filename='js/faq/faq-bg-fx.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/faq/faq-constellation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/faq/faq-shatter.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/faq/faq-panels.js') }}"></script>
+
+    <!-- Activate FAQ animations -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+            setTimeout(() => {
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 300 + i * 100);
+        });
+        document.dispatchEvent(new CustomEvent('section-revealed', {
+            detail: { index: 3, direction: 'down' }
+        }));
+    });
+    </script>
+
+    <!-- Scroll-triggered navigation: up → vision, carousel-aware -->
+    <script>window.__pageNav = { prev: '/vision', next: null, current: 2, faqCarousel: true };</script>
+    <script src="{{ url_for('static', filename='js/shared/page-scroll-nav.js') }}?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+/* ============================================
+   AWM Institute of Technology — Master Stylesheet
+   Split from monolithic main.css into feature modules
+   ============================================ */
+
+/* --- Foundation --- */
+@import url('variables.css');
+@import url('reset.css');
+@import url('layout.css');
+@import url('typography.css');
+@import url('nav.css');
+
+/* --- Fullpage Scroll System --- */
+@import url('fullpage/scroll.css');
+
+/* --- Gateway Section (Page 0) --- */
+@import url('gateway/section.css');
+
+/* --- Vision Section --- */
+@import url('vision/section.css');
+@import url('vision/glitch.css');
+@import url('vision/cards-layout.css');
+@import url('vision/card-base.css');
+@import url('vision/card-frame.css');
+@import url('vision/card-body.css');
+@import url('vision/card-status.css');
+@import url('vision/card-typography.css');
+@import url('vision/card-hover.css');
+
+/* --- Standalone Pages --- */
+@import url('standalone.css');
+
+/* --- Modules Catalogue --- */
+@import url('modules/catalog.css');
+@import url('modules/filters.css');
+@import url('modules/toolbar.css');
+@import url('modules/cards.css');
+@import url('modules/card-fx.css');
+
+/* --- FAQ Section --- */
+@import url('faq/section.css');
+@import url('faq/cards.css');
+
+/* --- Chat Page --- */
+@import url('chat/layout.css');
+@import url('chat/messages.css');
+@import url('chat/messages-video.css');
+@import url('chat/input.css');
+
+/* --- Hamburger Menu --- */
+@import url('hamburger.css');
+
+/* --- Module Detail Page --- */
+@import url('module-detail/hero.css');
+@import url('module-detail/body.css');
+@import url('module-detail/sidebar.css');
+
+/* --- Module Viewer --- */
+@import url('module-viewer/layout.css');
+@import url('module-viewer/chat.css');
+@import url('module-viewer/video.css');
+@import url('module-viewer/topics.css');
+
+/* --- Responsive Breakpoints --- */
+@import url('responsive.css');
+
+/* --- Low-Power Mode (must be last) --- */
+@import url('low-power.css');

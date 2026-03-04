@@ -1,0 +1,45 @@
+/* ============================================
+   AWM V2 — Animations & Keyframes
+   ============================================ */
+
+@keyframes gradient-shift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* ---- Typing bounce dots ---- */
+@keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.3; }
+    30%           { transform: translateY(-4px); opacity: 0.9; }
+}
+
+/* ---- Chat page: Agent status dot pulse ---- */
+@keyframes status-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.4); }
+    50%      { opacity: 0.7; box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+}
+
+/* ---- Chat page: Welcome icon pulse rings ---- */
+@keyframes welcome-ring-pulse {
+    0%   { transform: scale(1); opacity: 0.35; }
+    100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ---- Chat page: Message entrance (spring-like) ---- */
+@keyframes msg-materialize {
+    0%   { opacity: 0; transform: translateY(14px) scale(0.97); }
+    50%  { opacity: 1; transform: translateY(-3px) scale(1.01); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---- Chat page: Welcome elements stagger ---- */
+@keyframes welcome-fade-up {
+    0%   { opacity: 0; transform: translateY(24px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+

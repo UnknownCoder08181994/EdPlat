@@ -1,0 +1,74 @@
+/* ============================================
+   AWM V2 — Cinematic Intro
+   ============================================ */
+
+/* ---- Cinematic Overlay ---- */
+.cinematic-overlay {
+    position: fixed;
+    top: 2.89vw;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* ---- Lens Flare ---- */
+.lens-flare {
+    position: absolute;
+    width: 11.72vw;
+    height: 11.72vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.02) 30%, transparent 70%);
+    filter: blur(1.56vw);
+    opacity: 0;
+    animation: lens-flare-grow 6s ease-out forwards;
+}
+
+/* ---- Screen Flash ---- */
+.screen-flash {
+    position: fixed;
+    top: 2.89vw;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10002;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.screen-flash.fire {
+    animation: flash-white 0.4s ease-out forwards;
+}
+
+/* ============================================
+   Splash Overlay (independent of page 1)
+   ============================================ */
+.splash-overlay {
+    position: fixed;
+    top: 2.89vw;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    background: #fff;
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.splash-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.splash-overlay.fade-out {
+    transition: opacity 0.8s ease;
+    opacity: 0;
+}

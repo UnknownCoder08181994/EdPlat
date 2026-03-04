@@ -1,0 +1,45 @@
+/* === V3 Glitch Effect — silver tones for light theme === */
+@keyframes glitch-trigger {
+    0%, 95.9%, 100% {
+        text-shadow: none;
+        transform: none;
+    }
+    96% {
+        text-shadow: -0.117vw 0 rgba(140,145,160,0.4), 0.117vw 0 rgba(100,105,120,0.3);
+        transform: translate(0.078vw, -0.039vw);
+    }
+    96.5% {
+        text-shadow: 0.117vw 0 rgba(140,145,160,0.4), -0.078vw 0 rgba(100,105,120,0.3);
+        transform: translate(-0.078vw, 0.039vw);
+    }
+    97% {
+        text-shadow: -0.078vw 0 rgba(140,145,160,0.4), 0.078vw 0 rgba(100,105,120,0.3);
+        transform: translate(0, -0.078vw);
+    }
+    97.5% {
+        text-shadow: 0.156vw 0 rgba(140,145,160,0.4), -0.117vw 0 rgba(100,105,120,0.3);
+        transform: translate(-0.117vw, 0.039vw);
+    }
+    98% {
+        text-shadow: -0.039vw 0 rgba(140,145,160,0.4), 0.039vw 0 rgba(100,105,120,0.3);
+        transform: translate(0.117vw, 0);
+    }
+    98.5% {
+        text-shadow: 0.078vw 0 rgba(140,145,160,0.4), -0.156vw 0 rgba(100,105,120,0.3);
+        transform: translate(-0.039vw, -0.039vw);
+    }
+    99% {
+        text-shadow: -0.117vw 0 rgba(140,145,160,0.4), 0.078vw 0 rgba(100,105,120,0.3);
+        transform: translate(0.039vw, 0.078vw);
+    }
+    99.5% {
+        text-shadow: 0.039vw 0 rgba(140,145,160,0.4), -0.039vw 0 rgba(100,105,120,0.3);
+        transform: translate(-0.039vw, 0);
+    }
+    99.8% {
+        text-shadow: none;
+        transform: none;
+    }
+}
+/* === V3 Glitch Effect END === */
+

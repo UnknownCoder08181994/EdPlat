@@ -1,0 +1,6 @@
+class FAQCarousel{constructor(){this.track=document.querySelector('.faq-track');this.cards=[...document.querySelectorAll('.faq-card')];this.prevBtn=document.querySelector('.faq-arrow-prev');this.nextBtn=document.querySelector('.faq-arrow-next');if(!this.track||!this.cards.length)return;this.current=0;this.total=this.cards.length;this.prevBtn?.addEventListener('click',()=>this.go(this.current-1));this.nextBtn?.addEventListener('click',()=>this.go(this.current+1));this.cards.forEach((card,i)=>{card.addEventListener('click',()=>{if(i!==this.current)this.go(i);});});this.update();}
+go(index){if(index<0||index>=this.total)return;this.current=index;this.update();}
+update(){this.cards.forEach((card,i)=>{card.classList.toggle('faq-card-active',i===this.current);});const vw=window.innerWidth/100;const inactiveW=20*vw;const activeW=28*vw;const gap=1.2*vw;let offset=0;for(let i=0;i<this.current;i++){offset+=inactiveW+gap;}
+this.track.style.transform=`translateX(-${offset}px)`;if(this.prevBtn){this.prevBtn.classList.toggle('faq-arrow-disabled',this.current===0);}
+if(this.nextBtn){this.nextBtn.classList.toggle('faq-arrow-disabled',this.current===this.total-1);}}}
+document.addEventListener('DOMContentLoaded',()=>{window._faqCarousel=new FAQCarousel();});

@@ -1,0 +1,22 @@
+/* ---- Vision Cards — Agentic tech panels ---- */
+
+.vision-cards-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.vision-cards-backdrop.lab-active {
+    opacity: 1;
+}
+
+.h2-lab-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}

@@ -1,0 +1,19 @@
+/* ---- Layout ---- */
+.container {
+    max-width: 74.219vw;
+    margin: 0 auto;
+    padding: 0 var(--space-lg) 0 var(--space-md);
+    position: relative;
+    z-index: 1;
+}
+
+section {
+    position: relative;
+    z-index: 1;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+

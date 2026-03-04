@@ -1,0 +1,45 @@
+/* ============================================
+   FULLPAGE SCROLL SYSTEM
+   ============================================ */
+.fp-wrapper {
+    position: fixed;
+    top: 2.89vw;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.fp-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    will-change: transform, opacity;
+    transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1),
+                opacity 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* Sections stack — JS positions them via transform */
+.fp-section[data-section="0"] { z-index: 4; }
+.fp-section[data-section="1"] { z-index: 3; transform: translateY(100%); }
+.fp-section[data-section="2"] { z-index: 2; transform: translateY(100%); }
+.fp-section[data-section="3"] { z-index: 1; transform: translateY(100%); }
+
+/* Active state */
+.fp-section.fp-active {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+}
+
+.fp-section.fp-above {
+    transform: translateY(-100%) !important;
+}
+
+.fp-section.fp-below {
+    transform: translateY(100%) !important;
+}
+
