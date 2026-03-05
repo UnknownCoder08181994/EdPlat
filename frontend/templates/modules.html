@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.built.css') }}?v=424">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.built.css') }}?v=426">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
     <script>
     (function(){var c=navigator.hardwareConcurrency||4,m=navigator.deviceMemory||4;if(c<=4||m<=4)document.documentElement.classList.add('low-power');})();
@@ -59,6 +59,10 @@
                     <div class="catalogue-filters-track">
                         <button class="filter-pill active" data-filter="all">All</button>
                         <button class="filter-pill" data-filter="copilot">Copilot</button>
+                        <button class="filter-pill" data-filter="prompting">Prompting</button>
+                        <button class="filter-pill" data-filter="smartsdk">SmartSDK</button>
+                        <button class="filter-pill" data-filter="stratos">Stratos</button>
+                        <button class="filter-pill" data-filter="fullstack">Full Stack</button>
                     </div>
                 </div>
 
@@ -79,6 +83,10 @@
                         <div class="toolbar-dropdown-menu" id="toolbar-topic-menu">
                             <div class="toolbar-dropdown-item active" data-value="">All Topics</div>
                             <div class="toolbar-dropdown-item" data-value="copilot">Copilot</div>
+                            <div class="toolbar-dropdown-item" data-value="prompting">Prompting</div>
+                            <div class="toolbar-dropdown-item" data-value="smartsdk">SmartSDK</div>
+                            <div class="toolbar-dropdown-item" data-value="stratos">Stratos</div>
+                            <div class="toolbar-dropdown-item" data-value="fullstack">Full Stack</div>
                         </div>
                     </div>
 
