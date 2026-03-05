@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.built.css') }}?v=424">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.built.css') }}?v=429">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
     <script>
     (function(){var c=navigator.hardwareConcurrency||4,m=navigator.deviceMemory||4;if(c<=4||m<=4)document.documentElement.classList.add('low-power');})();
@@ -58,16 +58,27 @@
                             </div>
                             <div class="contact-field">
                                 <label class="contact-label">E-Mail</label>
-                                <input type="email" class="contact-input" autocomplete="email">
+                                <input type="email" class="contact-input" id="contact-email" autocomplete="email">
+                            </div>
+                            <div class="contact-field">
+                                <label class="contact-label">Subject</label>
+                                <input type="text" class="contact-input" id="contact-subject">
                             </div>
                             <div class="contact-field">
                                 <label class="contact-label">Message</label>
-                                <textarea class="contact-textarea"></textarea>
+                                <textarea class="contact-textarea" id="contact-message"></textarea>
                             </div>
-                            <button type="submit" class="contact-submit">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                Send Via Email
-                            </button>
+                            <div class="contact-actions">
+                                <button type="submit" class="contact-submit" id="contact-send-btn">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                    Send Via Email
+                                </button>
+                                <label class="contact-attach-btn" id="contact-attach-label">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+                                    <span id="attach-label-text">Attachments</span>
+                                    <input type="file" id="contact-attachments" multiple hidden>
+                                </label>
+                            </div>
                         </form>
                     </div>
 
@@ -145,6 +156,40 @@
             }
         }
         setTimeout(type, 400);
+    })();
+    </script>
+    <script>
+    (function() {
+        var fileInput = document.getElementById('contact-attachments');
+        var attachLabel = document.getElementById('contact-attach-label');
+        var labelText = document.getElementById('attach-label-text');
+        var sendBtn = document.getElementById('contact-send-btn');
+
+        fileInput.addEventListener('change', function() {
+            var count = fileInput.files.length;
+            if (count === 0) {
+                labelText.textContent = 'Attachments';
+                attachLabel.classList.remove('has-files');
+            } else if (count === 1) {
+                labelText.textContent = fileInput.files[0].name;
+                attachLabel.classList.add('has-files');
+            } else {
+                labelText.textContent = count + ' files selected';
+                attachLabel.classList.add('has-files');
+            }
+        });
+
+        sendBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var subject = (document.getElementById('contact-subject').value || '').trim();
+            var message = (document.getElementById('contact-message').value || '').trim();
+            var mailto = 'mailto:shane.anderson@jpmchase.com';
+            var params = [];
+            if (subject) params.push('subject=' + encodeURIComponent(subject));
+            if (message) params.push('body=' + encodeURIComponent(message));
+            if (params.length) mailto += '?' + params.join('&');
+            window.location.href = mailto;
+        });
     })();
     </script>
 </body>
