@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+  <link rel="stylesheet" href="/static/css/chat.css">
+  <link rel="stylesheet" href="/static/css/markdown.css">
+  <link rel="stylesheet" href="/static/css/files.css">
+  <link rel="stylesheet" href="/static/css/terminal.css">
+  <link rel="stylesheet" href="/static/css/hljs-dark.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar sidebar-noise"></div>
+    <!-- Main content area -->
+    <main id="main" class="main-content"></main>
+  </div>
+
+  <!-- New Task Modal (hidden by default) -->
+  <div id="new-task-modal"></div>
+
+  <!-- Vendor libraries -->
+  <script src="/static/vendor/marked.min.js"></script>
+  <script src="/static/vendor/highlight.min.js"></script>
+
+  <!-- App scripts (order matters) -->
+  <script src="/static/js/icons.js"></script>
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/markdown.js"></script>
+  <script src="/static/js/codeblock.js"></script>
+  <script src="/static/js/toolcall.js"></script>
+  <script src="/static/js/thinking.js"></script>
+  <script src="/static/js/chat.js"></script>
+  <script src="/static/js/files.js"></script>
+  <script src="/static/js/terminal.js"></script>
+  <script src="/static/js/task-detail.js"></script>
+  <script src="/static/js/new-task-modal.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+[
+  {
+    "createdAt": "2026-02-08T13:42:46.250340",
+    "id": "f00c2236-13a8-4b38-867c-8e34d51b1b3c",
+    "messages": [
+      {
+        "content": "Begin the REQUIREMENTS step.\n\nTask: Build a simple to-do list app where users can add, complete, and delete tasks\n\nFollow the instructions in the system prompt. Write requirements.md and say [STEP_COMPLETE].",
+        "id": "fd358429-50e4-42c6-90a6-62fa7e2ce3fe",
+        "role": "user",
+        "timestamp": "2026-02-08T13:43:17.362494"
+      }
+    ],
+    "name": "Requirements",
+    "status": "active",
+    "taskId": "78351789-c16b-41b2-86b5-12e37c5237de"
+  }
+]

@@ -1,0 +1,163 @@
+/* ── Markdown Rendering ──────────────────────────────── */
+.markdown-body { line-height: 1.7; word-break: break-word; }
+.markdown-body > *:first-child { margin-top: 0; }
+.markdown-body > *:last-child { margin-bottom: 0; }
+
+.markdown-body h1 {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 24px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-md-border);
+}
+.markdown-body h1:first-child { margin-top: 0; }
+.markdown-body h2 {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 24px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--color-md-border);
+}
+.markdown-body h2:first-child { margin-top: 0; }
+.markdown-body h3 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 20px 0 8px;
+}
+.markdown-body h4 {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 16px 0 6px;
+}
+.markdown-body p {
+  font-size: 14px;
+  color: var(--color-text-primary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.markdown-body p:last-child { margin-bottom: 0; }
+
+.markdown-body ul {
+  list-style-type: disc;
+  margin-left: 24px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+.markdown-body ol {
+  list-style-type: decimal;
+  margin-left: 24px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+.markdown-body ul ul { list-style-type: circle; }
+.markdown-body ol ol { list-style-type: lower-alpha; }
+.markdown-body li { line-height: 1.7; margin-bottom: 4px; }
+.markdown-body li > p { margin-bottom: 4px; }
+.markdown-body li > p:last-child { margin-bottom: 0; }
+
+.markdown-body code:not(pre code) {
+  display: inline;
+  padding: 2px 8px;
+  margin: 0 2px;
+  background: var(--color-chip-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--color-chip-text);
+}
+
+.markdown-body a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body strong { font-weight: 600; color: var(--color-text-primary); }
+.markdown-body em { font-style: italic; }
+
+.markdown-body blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding: 4px 12px 4px 16px;
+  margin: 12px 0;
+  background: rgba(39, 39, 42, 0.3);
+  color: var(--color-text-secondary);
+  font-style: italic;
+  border-radius: 0 4px 4px 0;
+}
+
+.markdown-body hr {
+  border: none;
+  border-top: 1px solid var(--color-md-border);
+  margin: 24px 0;
+}
+
+.markdown-body table {
+  font-size: 13px;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 16px 0;
+  overflow-x: auto;
+  display: block;
+}
+.markdown-body thead { background: var(--color-bg-secondary); }
+.markdown-body th {
+  text-align: left;
+  padding: 8px 16px;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  border: 1px solid var(--color-md-border);
+}
+.markdown-body td {
+  padding: 8px 16px;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-md-border);
+}
+
+.markdown-body input[type="checkbox"] {
+  margin-right: 6px;
+  accent-color: var(--color-accent);
+}
+
+/* Code blocks */
+.code-block {
+  margin: 12px 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-md-code-border);
+}
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: var(--color-md-code-header-bg);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+.code-block-copy {
+  color: var(--color-text-tertiary);
+  font-size: 12px;
+  transition: color 150ms;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+.code-block-copy:hover { color: var(--color-text-primary); }
+.code-block pre {
+  padding: 16px;
+  background: var(--color-md-code-body-bg);
+  overflow-x: auto;
+  font-size: 13px;
+  font-family: var(--font-mono);
+  line-height: 1.6;
+  margin: 0;
+}
+.code-block code { color: var(--color-text-primary); }

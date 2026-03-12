@@ -1,0 +1,49 @@
+{
+  "branch": "new-task-7835",
+  "createdAt": "2026-02-08T13:41:38.486090",
+  "details": "Build a simple to-do list app where users can add, complete, and delete tasks",
+  "filesCount": 1,
+  "id": "78351789-c16b-41b2-86b5-12e37c5237de",
+  "projectId": "2f6be26b-9268-4ee7-9794-1db1d16dd615",
+  "projectName": "Demo Project",
+  "settings": {},
+  "status": "In Progress",
+  "steps": [
+    {
+      "chatId": "f00c2236-13a8-4b38-867c-8e34d51b1b3c",
+      "description": "Create a Product Requirements Document (PRD) based on the feature description.\n\n1. Read the task description carefully\n2. Write requirements for ONLY what the user asked for\n3. Do NOT add features the user did not request\n\nSave the PRD to `requirements.md`.",
+      "id": "requirements",
+      "name": "Requirements",
+      "parentId": null,
+      "status": "in_progress"
+    },
+    {
+      "chatId": null,
+      "description": "Create a technical specification based on the PRD in `requirements.md`.\n\n1. Assess the task complexity (simple, medium, complex)\n2. Choose technology that matches the task \u2014 simple tasks need simple tech\n3. Write a spec sized to match the task\n\nSave to `spec.md`.",
+      "id": "technical-specification",
+      "name": "Technical Specification",
+      "parentId": null,
+      "status": "pending"
+    },
+    {
+      "chatId": null,
+      "description": "Create a detailed implementation plan based on `spec.md`.\n\n1. Assess task complexity (simple, medium, complex)\n2. Break down the work into categories matching the complexity\n3. Simple tasks: 1 category. Medium: 2-3. Complex: 3-5.\n\nSave to `implementation-plan.md`.",
+      "id": "planning",
+      "name": "Planning",
+      "parentId": null,
+      "status": "pending"
+    },
+    {
+      "chatId": null,
+      "description": "This step will be replaced with the implementation tasks from Planning.",
+      "id": "implementation",
+      "name": "Implementation",
+      "parentId": null,
+      "status": "pending"
+    }
+  ],
+  "title": "Build a simple to-do list app where users can add,...",
+  "workflowType": "Full SDD workflow",
+  "workspaceMethod": "file-copy",
+  "workspacePath": "C:\\Users\\Shane\\Desktop\\zenflow-rebuild\\storage\\workspaces\\78351789-c16b-41b2-86b5-12e37c5237de"
+}

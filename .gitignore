@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+build/
+
+# Project Specific
+storage/
+.DS_Store
+.idea/
+.vscode/
+
+# Windows reserved names (created by bash redirects)
+nul
+.venv/
+
+# Large model files
+model/
+*.safetensors
+*.gguf

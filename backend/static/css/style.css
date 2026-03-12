@@ -1,0 +1,202 @@
+/* ── Base Reset & Variables ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Colors */
+  --color-bg-app: #0f0f10;
+  --color-bg-panel: #161618;
+  --color-bg-panel-hover: #1f1f22;
+  --color-bg-secondary: #27272a;
+  --color-bg-input: #202022;
+
+  --color-border: #27272a;
+  --color-border-hover: #3f3f46;
+
+  --color-text-primary: #f4f4f5;
+  --color-text-secondary: #a1a1aa;
+  --color-text-tertiary: #71717a;
+
+  --color-accent: #f97316;
+  --color-accent-hover: #ea580c;
+  --color-accent-text: #fff;
+
+  /* Semantic Colors */
+  --color-status-todo: #71717a;
+  --color-status-inprogress: #3b82f6;
+  --color-status-review: #a855f7;
+  --color-status-action: #f97316;
+  --color-status-success: #22c55e;
+  --color-status-paused: #6366f1;
+
+  --color-modal-overlay: rgba(0, 0, 0, 0.7);
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-modal: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+
+  /* Sidebar-specific tokens */
+  --sidebar-bg-start: #18181a;
+  --sidebar-bg-end: #141416;
+  --sidebar-radial: rgba(255, 255, 255, 0.02);
+
+  --border-hairline: rgba(255, 255, 255, 0.06);
+
+  --button-filled-bg: rgba(255, 255, 255, 0.08);
+  --button-filled-hover: rgba(255, 255, 255, 0.12);
+  --button-filled-active: rgba(255, 255, 255, 0.05);
+
+  --button-ghost-border: rgba(255, 255, 255, 0.08);
+  --button-ghost-hover: rgba(255, 255, 255, 0.04);
+
+  --task-hover-bg: rgba(255, 255, 255, 0.03);
+  --task-active-bg: rgba(255, 255, 255, 0.06);
+
+  --pill-bg: #3f3f46;
+
+  /* Thinking blocks */
+  --color-thinking-border: rgba(255, 255, 255, 0.08);
+  --color-chip-bg: rgba(255, 255, 255, 0.13);
+  --color-chip-text: #e2e2e5;
+
+  /* Markdown-specific contrast tokens */
+  --color-md-border: #3f3f46;
+  --color-md-code-header-bg: #1e1e22;
+  --color-md-code-body-bg: #161618;
+  --color-md-code-border: #333338;
+}
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-app);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; padding: 0; }
+input, textarea, select { font-family: inherit; }
+img { max-width: 100%; }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInFromLeft {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes thinkingSlideIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+@keyframes thinkingPulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.animate-in { animation: fadeIn 0.2s ease-out; }
+.animate-slide-right { animation: slideInFromRight 0.3s ease-out; }
+.animate-slide-left { animation: slideInFromLeft 0.3s ease-out; }
+.animate-spin { animation: spin 1s linear infinite; }
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.03); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
+
+/* Chat scrollbar */
+.chat-scrollbar { scrollbar-gutter: stable; }
+.chat-scrollbar::-webkit-scrollbar { width: 8px; }
+.chat-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); }
+.chat-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.12); border-radius: 4px; border: 2px solid transparent; background-clip: content-box; }
+.chat-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); background-clip: content-box; }
+
+/* Sidebar noise overlay */
+.sidebar-noise { position: relative; }
+.sidebar-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Thinking blocks */
+.thinking-group { animation: fadeIn 0.2s ease-out; }
+.thinking-section { animation: thinkingSlideIn 0.25s ease-out; }
+.thinking-sections-container { display: flex; flex-direction: column; gap: 4px; }
+
+/* Inline code/file/tool chips */
+.inline-chip {
+  display: inline;
+  padding: 2px 8px;
+  margin: 0 2px;
+  background: var(--color-chip-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--color-chip-text);
+  white-space: nowrap;
+}
+
+/* Streaming pulse indicator */
+.thinking-pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: thinkingPulse 1.2s ease-in-out infinite;
+}
+
+/* Utility: truncate text */
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Utility: line clamp */
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Utility: hidden */
+.hidden { display: none !important; }

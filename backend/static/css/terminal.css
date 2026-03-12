@@ -1,0 +1,150 @@
+/* ── Terminal Panel ───────────────────────────────────── */
+.terminal-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #1e1e1e;
+  color: #cccccc;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+/* Toolbar with Run/Kill + action buttons */
+.terminal-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-bottom: 1px solid #333;
+  background: #252526;
+}
+.terminal-run-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: white;
+  background: #22c55e;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 150ms;
+}
+.terminal-run-btn:hover { background: #16a34a; }
+.terminal-run-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.terminal-kill-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: white;
+  background: #ef4444;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 150ms;
+}
+.terminal-kill-btn:hover { background: #dc2626; }
+
+.terminal-autofix-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: white;
+  background: #8b5cf6;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 150ms;
+}
+.terminal-autofix-btn:hover { background: #7c3aed; }
+.terminal-autofix-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.terminal-toolbar-spacer { flex: 1; }
+
+.terminal-toolbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: color 150ms, background 150ms;
+}
+.terminal-toolbar-btn:hover {
+  color: #e5e7eb;
+  background: #3c3c3c;
+}
+
+.terminal-output {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+.terminal-output > * + * { margin-top: 4px; }
+.terminal-line { white-space: pre-wrap; word-break: break-all; }
+.terminal-line-cmd { color: white; font-weight: 700; margin-top: 8px; }
+.terminal-line-err { color: #f87171; }
+.terminal-line-info { color: #60a5fa; font-style: italic; }
+.terminal-processing { color: #6b7280; }
+
+.terminal-timestamp {
+  color: #6b7280;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  margin-right: 10px;
+  user-select: none;
+}
+
+.terminal-input-bar {
+  padding: 16px;
+  border-top: 1px solid #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #252526;
+}
+.terminal-input-icon { color: #007acc; }
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+.terminal-input::placeholder { color: #4b5563; }
+
+/* Fullscreen overlay */
+.terminal-fullscreen {
+  position: fixed !important;
+  inset: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0 !important;
+}
